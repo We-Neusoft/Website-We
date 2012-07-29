@@ -2,6 +2,18 @@
 <html>
    <head>
       <meta charset="UTF-8" />
+      <style type="text/css">
+      body{background: #FFFFFF; font-size: 16px; font-family: Courier New;}
+      a{text-decoration: none; color: #0000EE;}
+      a:hover{text-decoration: underline;}
+      .we-mirror-table, .we-mirror-table th, .we-mirror-table td{border: 1px solid #CCC; border-collapse: collapse;}
+      .we-mirror-table{border-width: 2px;}
+      .we-mirror-table th,.we-mirror-table td{padding:2px 5px; background-color: #EEEEEE;}
+      .we-mirror-table .we-mirror-syncing{background-color: #FBD10A;}
+      .we-mirror-table .we-mirror-sync-success{background-color: #629600;}
+      .we-mirror-table .we-mirror-sync-faild{background-color: #F05133;}
+      .we-table-3-columns{width: 320px;}
+      </style>
       <title>We - 开源镜像站 - The Open Source Mirror Site</title>
    </head>
    <body>
@@ -17,7 +29,7 @@
 {% for result in results %}
          <tr>
             <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
-            <td>{{ result.status }}</td>
+            <td class="{{ result.style }}">{{ result.status }}</td>
             <td>{{ result.timestamp }}</td>
          </tr>{% endfor %}
       </table>
