@@ -14,11 +14,11 @@
       </ul>
       <table border="1">
          <tr><th>名称</th><th>状态</th><th>时间</th></tr>
-{% for mirror in mirrors %}
+{% for result in results %}
          <tr>
-            <td><a href="{% mirror %}/">{% mirror %}</a></td>
-         </tr>
-%}
+            <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
+            <td>{{ result.status }}</td>
+         </tr>{% endfor %}
       </table>
       &copy; 2008-2012 by <a href="http://we.neusoft.edu.cn/">we.neusoft.edu.cn</a>. All rights reserved
    </body>
