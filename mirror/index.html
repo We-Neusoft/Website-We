@@ -25,7 +25,7 @@
          <li><a href="http://mirror.we.neusoft.edu.cn/">http://mirror.we.neusoft.edu.cn/</a></li>
       </ul>
       <table class="we-mirror-table we-mirror-columns">
-         <tr><th>名称</th><th>状态</th><th>时间</th></tr>
+         <tr><th>源名称</th><th>最新状态</th><th>最新状态时间</th></tr>
 {% for result in results %}         <tr>
             <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
             <td class="{{ result.style }}">{{ result.status }}</td>
