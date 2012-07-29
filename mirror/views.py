@@ -9,10 +9,13 @@ def index(request):
       result = result_file.readline()[:-1]
       if result == '-1':
          result = '同步中...'
-      elif result == '0':
+         style = 'we-mirror-syncing'
+      elif result == 0:
          result = '同步成功'
+         style = 'we-mirror-sync-success'
       else:
          result = '同步失败'
+         style = 'we-mirror-sync-faild'
       result_file.close()
-      results.append({'mirror': mirror, 'status': result})
+      results.append({'mirror': mirror, 'status': result, 'style': style})
    return render_to_response('mirror/index.html', {'results': results})
