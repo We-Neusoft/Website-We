@@ -1,31 +1,25 @@
 ﻿<!DOCTYPE html>
 <html>
- <head>
-  <meta charset="UTF-8" />
-  <title>We - 开源镜像站 - The Open Source Mirror Site</title>
-  <style type="text/css">
-   body {
-    width: 1200px;
-    font-family: "Bitstream Vera Sans", "Lucida Grande", Verdana, Lucida, sans-serif;
-   }
-   hr {
-    height: 1px;
-    border-width: 0;
-    background-color: black;
-   }
-   table {
-    width: 1200px;
-   }
-  </style>
- </head>
- <body>
-  <h1>We - 开源镜像站 - The Open Source Mirror Site</h1>
-  <p>本站由<a href="http://we.neusoft.edu.cn">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源均每小时与官方同步一次。</p>
-  <p>如果你有任何问题或建议，可加入We开源技术小组唯一官方QQ群<a target="_blank" href="http://qun.qq.com/#jointhegroup/gid/85949649">85949649</a>与我们联系。</p>
-  <p><strong>请通过本站域名访问:</strong></p>
-  <ul>
-   <li><a href="http://mirror.we.neusoft.edu.cn/">http://mirror.we.neusoft.edu.cn/</a></li>
-  </ul>
-  &copy; 2008-2012 by <a href="http://we.neusoft.edu.cn/">we.neusoft.edu.cn</a>. All rights reserved
- </body>
+   <head>
+      <meta charset="UTF-8" />
+      <title>We - 开源镜像站 - The Open Source Mirror Site</title>
+   </head>
+   <body>
+      <h1>We - 开源镜像站 - The Open Source Mirror Site</h1>
+      <p>本站由<a href="http://we.neusoft.edu.cn">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源均每小时与官方同步一次。</p>
+      <p>如果你有任何问题或建议，可加入We开源技术小组唯一官方QQ群<a target="_blank" href="http://qun.qq.com/#jointhegroup/gid/85949649">85949649</a>与我们联系。</p>
+      <p><strong>请通过本站域名访问:</strong></p>
+      <ul>
+         <li><a href="http://mirror.we.neusoft.edu.cn/">http://mirror.we.neusoft.edu.cn/</a></li>
+      </ul>
+      <table border="1">
+         <tr><th>名称</th><th>状态</th><th>时间</th></tr>
+{% for mirror in mirrors %}
+         <tr>
+            <td><a href="{% mirror %}/">{% mirror %}</a></td>
+         </tr>
+%}
+      </table>
+      &copy; 2008-2012 by <a href="http://we.neusoft.edu.cn/">we.neusoft.edu.cn</a>. All rights reserved
+   </body>
 </html>
