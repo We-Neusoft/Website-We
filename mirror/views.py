@@ -6,10 +6,10 @@ def index(request):
    results = []
    for mirror in mirrors:
       result_file = open('/storage/mirror/.' + mirror, 'r')
-      result = result_file.read()
-      if result < 0:
+      result = result_file.readline()[:-1]
+      if result == '-1':
          result = '同步中...'
-      elif result == 0:
+      elif result == '0':
          result = '同步成功'
       else:
          result = '同步失败'
