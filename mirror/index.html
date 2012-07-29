@@ -12,7 +12,7 @@
       .we-mirror-table .we-mirror-syncing{background-color: #FBD10A;}
       .we-mirror-table .we-mirror-sync-success{background-color: #629600;}
       .we-mirror-table .we-mirror-sync-faild{background-color: #F05133;}
-      .we-table-3-columns{width: 320px;}
+      .we-mirror-columns{width: 320px;}
       </style>
       <title>We - 开源镜像站 - The Open Source Mirror Site</title>
    </head>
@@ -24,7 +24,7 @@
       <ul>
          <li><a href="http://mirror.we.neusoft.edu.cn/">http://mirror.we.neusoft.edu.cn/</a></li>
       </ul>
-      <table border="1">
+      <table class="we-mirror-table we-mirror-columns">
          <tr><th>名称</th><th>状态</th><th>时间</th></tr>
 {% for result in results %}
          <tr>
