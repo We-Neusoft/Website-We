@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 
 def index(request):
-   mirrors = ['apache', 'centos', 'cpan', 'cygwin', 'eclipse', 'epel', 'gentoo', 'putty', 'putty', 'pypi', 'ubuntu', 'ubuntu-release']
+   mirrors = ['apache', 'centos', 'cpan', 'cygwin', 'eclipse', 'epel', 'gentoo', 'putty', 'pypi', 'ubuntu', 'ubuntu-release']
    results = []
    for mirror in mirrors:
       result_file = open('/storage/mirror/.' + mirror, 'r')
@@ -10,7 +10,7 @@ def index(request):
       if result == '-1':
          result = '同步中...'
          style = 'we-mirror-syncing'
-      elif result == 0:
+      elif result == '0':
          result = '同步成功'
          style = 'we-mirror-sync-success'
       else:
