@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 
 def index(request):
-   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'apache', 'cygwin', 'eclipse', 'putty']
+   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'apache', 'cygwin', 'eclipse', 'putty']
    results = []
    for mirror in mirrors:
       pathname = '/storage/mirror/'
