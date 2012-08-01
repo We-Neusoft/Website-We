@@ -18,7 +18,7 @@
    </head>
    <body>
       <h1>We - 开源镜像站 - The Open Source Mirror Site</h1>
-      <p>本站由<a href="https://github.com/We-Neusoft/We">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源均每小时与官方同步一次。</p>
+      <p>本站由<a href="https://github.com/We-Neusoft/We">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源约每三小时同步一次。</p>
       <p>如果你有任何问题或建议，可加入We开源技术小组唯一官方QQ群85949649与我们联系。</p>
       <p><strong>请通过本站域名访问:</strong></p>
       <ul>
@@ -28,8 +28,8 @@
          <tr><th>源名称</th><th>当前状态</th><th>上次同步成功时间</th></tr>
 {% for result in results %}         <tr>
             <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
-            <td class="{{ result.style }}">{{ result.status }}</td>
-            <td>{{ result.timestamp }}</td>
+            <td class="{{ result.style }}" style="text-align:center">{{ result.status }}</td>
+            <td style="text-align:center">{{ result.timestamp }}</td>
          </tr>{% endfor %}
       </table>
       <p>
