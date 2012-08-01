@@ -28,8 +28,8 @@
          <tr><th>源名称</th><th>当前状态</th><th>上次同步成功时间</th></tr>
 {% for result in results %}         <tr>
             <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
-            <td class="{{ result.style }}" style="text-align:center">{{ result.status }}</td>
-            <td style="text-align:center">{{ result.timestamp }}</td>
+            <td class="{{ result.style }}" style="text-align: center;">{{ result.status }}</td>
+            <td style="text-align: center;">{{ result.timestamp }}</td>
          </tr>{% endfor %}
       </table>
       <p>
