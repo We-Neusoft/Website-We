@@ -2,39 +2,43 @@
 <html>
    <head>
       <meta charset="UTF-8" />
-      <style type="text/css">
-      body {background: #FFFFFF; font-size: 16px; font-family: Courier New;}
-      a {text-decoration: none; color: #0000EE;}
-      a:hover {text-decoration: underline;}
-      .we-mirror-table, .we-mirror-table th, .we-mirror-table td {border: 1px solid #CCC; border-collapse: collapse;}
-      .we-mirror-table {border-width: 2px; margin-bottom: 10px;}
-      .we-mirror-table th, .we-mirror-table td {padding:2px 5px; background-color: #EEEEEE;}
-      .we-mirror-table .we-mirror-syncing {background-color: #FBD10A;}
-      .we-mirror-table .we-mirror-sync-success {background-color: #629600;}
-      .we-mirror-table .we-mirror-sync-faild {background-color: #F05133;}
-      .we-mirror-columns {width: 540px;}
-      </style>
-      <title>We - 开源镜像站 - The Open Source Mirror Site</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+      <title>We - 开源镜像站</title>
+      <link href="http://we/css/we.css" rel="stylesheet" />
+      <link href="http://we/css/bootstrap.min.css" rel="stylesheet" />
    </head>
    <body>
-      <h1>We - 开源镜像站 - The Open Source Mirror Site</h1>
-      <p>本站由<a href="https://github.com/We-Neusoft/We">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源均滚动更新。</p>
-      <p>如果你有任何问题或建议，可加入We开源技术小组唯一官方QQ群85949649与我们联系。</p>
-      <p><strong>请通过本站域名访问:</strong></p>
-      <ul>
-         <li><a href="http://mirror.we.neusoft.edu.cn/">http://mirror.we.neusoft.edu.cn/</a></li>
-      </ul>
-      <table class="we-mirror-table we-mirror-columns">
-         <tr><th>源名称</th><th>当前状态</th><th>上次同步成功时间</th></tr>
-{% for result in results %}         <tr>
-            <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
-            <td class="{{ result.style }}" style="text-align: center;">{{ result.status }}</td>
-            <td style="text-align: center;">{{ result.timestamp }}</td>
-         </tr>{% endfor %}
-      </table>
-      <p>
-         Powered by <a href="http://we.neusoft.edu.cn/">we.neusoft.edu.cn</a><br />
-         本站的网络和硬件由大连东软信息学院网络中心提供支持。
-      </p>
+      <nav class="navbar navbar-static-top">
+         <div class="navbar-inner">
+            <div class="container">
+               <a class="brand" href="http://we">http://we</a>
+               <ul class="nav">
+                  <li><a href="http://we.neusoft.edu.cn">首页</a></li>
+                  <li><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
+                  <li class="active"><a href="http://mirror.we.neusoft.edu.cn">开源镜像</a></li>
+               </ul>
+            </div>
+         </div>
+      </nav>
+      <header class="container">
+         <div class="page-header">
+            <h1>We - 开源镜像站</h1>
+            <p>本站由<a href="https://github.com/We-Neusoft/We">We开源技术小组</a>运营维护，欢迎大家使用，所有镜像资源均滚动更新。</p>
+         </div>
+      </header>
+      <section class="container">
+         <table class="table table-hover">
+            <thead>
+               <tr><th>源名称</th><th>当前状态</th><th>上次同步成功时间</th></tr>
+            </thead>
+            <tbody>
+{% for result in results %}               <tr class="{{ result.style }}">
+                  <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
+                  <td>{{ result.status }}</td>
+                  <td>{{ result.timestamp }}</td>
+               </tr>{% endfor %}
+            </tbody>
+         </table>
+      </section>
    </body>
 </html>
