@@ -1,9 +1,18 @@
-.table-hover tbody tr td.we-mirror-success, .table-hover tbody tr:hover td.we-mirror-success {
+.table-hover tbody tr td.we-mirror-success {
    background-color: #3C3;
 }
-.table-hover tbody tr td.we-mirror-error, .table-hover tbody tr:hover td.we-mirror-error {
+.table-hover tbody tr td.we-mirror-error {
    background-color: #C33;
 }
-.table-hover tbody tr td.we-mirror-info, .table-hover tbody tr:hover td.we-mirror-info {
+.table-hover tbody tr td.we-mirror-info {
    background-color: #CC3;
+}
+.table-hover tbody tr:hover td.we-mirror-success {
+   background-color: #9C9;
+}
+.table-hover tbody tr:hover td.we-mirror-error {
+   background-color: #C99;
+}
+.table-hover tbody tr:hover td.we-mirror-info {
+   background-color: #CC9;
 }
