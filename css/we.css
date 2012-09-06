@@ -1,8 +1,11 @@
 body {
    padding-top: 40px;
-   position: relative;
 }
 
-#blocks div div.span4 h2 {
+section p {
+   text-indent: 2em;
+}
+
+.blocks div div.span4 h2 {
    text-align: center;
 }
