@@ -1,10 +1,10 @@
 .sidenav {
    width: 190px;
+   margin: 30px 0 0;
 }
 
 .sidenav.affix {
    top: 40px;
-   margin: 30px 0 0;
 }
 
 @media (min-width: 1200px) {
@@ -16,6 +16,10 @@
 @media (min-width: 768px) AND (max-width: 980px) {
    body {
       padding-top: 0;
+   }
+
+   .sidenav {
+      width: 136px;
    }
 
    .sidenav.affix {
