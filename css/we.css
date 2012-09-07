@@ -2,8 +2,16 @@ body {
    padding-top: 40px;
 }
 
+section {
+   padding-top: 30px;
+}
+
 section p {
    text-indent: 2em;
+}
+
+.table th, .table td {
+   text-align: center;
 }
 
 .blocks div div.span4 h2 {
