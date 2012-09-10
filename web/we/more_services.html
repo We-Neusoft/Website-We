@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+      <title>We · Cloud云技术小组 - 东软校园内的云服务平台</title>
+      <link href="/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
+      <link href="/css/we.css" rel="stylesheet" />
+      <link href="/css/we-sidenav.css" rel="stylesheet" />
+      <!--[if lt IE 9]>
+         <script src="/js/html5shiv.js"></script>
+      <![endif]-->
+   </head>
+   <body data-spy="scroll" data-offset="30" data-target=".sidebar">
+      <div class="navbar navbar-fixed-top">
+         <div class="navbar-inner">
+            <div class="container">
+               <a class="brand" href="http://we">http://we</a>
+               <ul class="nav">
+                  <li class="active"><a href="http://we.neusoft.edu.cn">首页</a></li>
+                  <li><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
+                  <li><a href="http://mirror.we.neusoft.edu.cn">开源镜像</a></li>
+               </ul>
+               <ul class="nav pull-right">
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务 <b class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="#wsus">Windows Server 更新服务</a></li>
+                        <li><a href="#kms">密钥管理服务</a></li>
+                     </ul>
+                  </li>
+            </div>
+         </div>
+      </div>
+      <header class="container">
+         <div class="hero-unit">
+            <h1>We · Cloud云技术小组</h1>
+            <p>网站仍在开发中，敬请期待……</p>
+         </div>
+      </header>
+      <div class="container">
+         <div class="row">
+            <div class="span3 sidebar">
+               <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="260">
+                  <li class="active"><a href="#wsus"><i class="icon-chevron-right"></i>Windows Server 更新服务</a></li>
+                  <li><a href="#kms"><i class="icon-chevron-right"></i>密钥管理服务</a></li>
+               </ul>
+            </div>
+            <div class="span9">
+               <section id="wsus">
+                  <header class="page-header">
+                     <h1>Windows Server 更新服务 <small>Windows Server Update Services</small></h1>
+                  </header>
+                  <h2>服务介绍</h2>
+                  <p>Windows Server 更新服务由微软官方提供，方便企业内部快速部署微软产品（包括 Windows 、 Office 、 SQL Server 、 Visual Studio 、 .NET Framework 等）更新及补丁的服务。</p>
+                  <p>为了让大家能够快速、及时的下载安装微软更新及补丁，你只需要经过简单的设置，便可以使用由 We 提供的校园网高速 Windows Server 更新服务。</p>
+                  <h2>设置方法</h2>
+                  <ol start="0">
+                     <li>Windows 8 、 7 、 Vista 、 XP 、 Server 2012 、 Server 2008 R2 、 Server 2008 、 Server 2003 （ R2 ） 的用户，可以通过按键盘上的<code>⊞</code>+<code>R</code>组合键，在弹出的窗口中输入<code>gpedit.msc</code>来启动<strong>『组策略编辑器』</strong>；</li>
+                     <li>在<strong>『组策略编辑器』</strong>左侧窗格中，依次选择<strong>「计算机配置」</strong>、<strong>「管理模板」</strong>、<strong>「Windows 组件」</strong>、<strong>「Windows Update」</strong>，并在右侧窗格中双击选择<strong>「配置自动更新」</strong>；</li>
+                     <li>在<strong>『配置自动更新』</strong>的属性窗口中，选择<strong>「启用」</strong>，并按照你自己喜欢的方式来设置一种更新方式，设置完成后单击<strong>「确定」</strong>按钮；</li>
+                     <li>在<strong>『组策略编辑器』</strong>右侧空格中，继续双击选择<strong>「指定 Intranet Microsoft 更新服务器位置」</strong>；</li>
+                     <li>在<strong>『指定 Intranet Microsoft 更新服务器位置』</strong>的属性窗口中，选择<strong>「启用」</strong>，并在两个输入框内均填入<code>http://wsus.neusoft.edu.cn:8530</code>，设置完成后单击<strong>「确定」</strong>按钮；</li>
+                     <li>关闭<strong>『组策略编辑器』</strong>窗口。</li>
+                  </ol>
+                  <p class="text-success">恭喜你，你已经成功设置你的操作系统从 We 服务器来检测、下载并安装微软更新及补丁啦！</p>
+                  <h2>注意事项</h2>
+                  <ol start="0">
+                     <li>由于 We 服务器下载速度比较快，你可能在短时间内下载大量更新及补丁，请注意安排补丁安装时间，以免由于上、下课或者熄灯停电等原因而导致更新及补丁安装被强行中断；</li>
+                     <li>虽然是在 We 服务器进行更新检测与安装，但是依然使用的是微软 Windows 操作系统的更新机制，请确定你所使用的操作系统是微软原版，并且不要与第三方工具（如 360 安全卫士、 QQ 安全管家等）同时对你的系统进行更新操作，否则可能会由于多套不同的更新机制而产生冲突；</li>
+                     <li>当你由于放假、毕业等原因离开校园网，或者由于其他原因不想再继续从 We 更新你的系统，你可以参照上面的设置，在第2步和第4步操作中，选择<strong>「未配置」</strong>来停止使用由 We 提供的 Windows Server 更新服务。</li>
+                  </ol>
+               </section>
+               <section id="kms">
+                  <header class="page-header">
+                     <h1>密钥管理服务 <small>Key Management Service</small></h1>
+                  </header>
+                  <h2>服务介绍</h2>
+                  <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 开始，微软将系统批量授权机制升级到了 VA 2.0  （ VA 1.0 只需要使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
+                  <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本。</p>
+                  <h2>系统下载</h2>
+                  <p>下表中列出了 We KMS 所支持的 Windows 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
+                  <table class="table table-hover">
+                     <thead>
+                        <tr><th>系统版本</th><th>32 位简体中文版</th><th>64 位简体中文版</th><th>32 位英文版</th><th>64 位英文版</th></tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>Windows 7 企业版</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_enterprise_with_sp1_x86_dvd_u_677716.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_enterprise_with_sp1_x64_dvd_u_677685.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_enterprise_with_sp1_x86_dvd_u_677710.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>Windows 7 专业版</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677939.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677816.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677896.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677791.iso">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>Windows Vista 企业版</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_vista_enterprise_with_sp2_x86_dvd_x15-40257.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_vista_enterprise_with_sp2_x64_dvd_x15-40402.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_enterprise_sp2_x86_dvd_342329.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_enterprise_sp2_x64_dvd_342332.iso">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>Windows Vista 商业版</td>
+                           <td class="muted">暂无下载</td>
+                           <td class="muted">暂无下载</td>
+                           <td class="muted">暂无下载</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_business_sp2_x64_dvd_342327.iso">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>Windows Server 2008 R2</td>
+                           <td class="muted">无此版本</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_x64_dvd_617598.iso">点此下载</a></td>
+                           <td class="muted">无此版本</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_vl_build_x64_dvd_617403.iso">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>Windows Server 2008</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_standard_enterprise_and_datacenter_with_sp2_x86_dvd_x15-41045.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_2008_standard_enterprise_and_datacenter_with_sp2_x64_dvd_x15-41319.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_datacenter_enterprise_standard_sp2_x86_dvd_342333.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_datacenter_enterprise_standard_sp2_x64_dvd_342336.iso">点此下载</a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <h2>常见问题</h2>
+                  <dl>
+                     <dt>0. 企业版是什么版？为什么没有旗舰版呢？</dt>
+                     <dd>企业版其实就是“旗舰批量授权版”，两者除了授权方式不同以外，其他功能上完全一致。</dd>
+                  </dl>
+                  <dl>
+                     <dt>1. 我使用上面的光盘镜像安装了操作系统，要如何操作才能激活？我可不可以使用别的光盘镜像安装来从 We KMS 激活？</dt>
+                     <dd>如果你使用 We 提供的光盘镜像安装，安装完成后无法做任何设置，连接校园网后便会自动激活。如果你是从其他地方下载的批量授权版本镜像，也一样可以从 We KMS 激活。</dd>
+                  </dl>
+                  <dl>
+                     <dt>2. 是不是激活以后就永远可以使用呢？</dt>
+                     <dd>不是的。按照微软的激活策略，激活后最多可以使用 180 天。不过不用担心，只要你在校园网内使用，系统每次连接到 We KMS 服务器时，都会将时间重置到 180 天，即使你放假回家， 180 天的激活期也足够使用到你返校的了。</dd>
+                  </dl>
+                  <dl>
+                     <dt>3. 我给家里的电脑也用上面的光盘镜像安装，是不是也可以激活呢？</dt>
+                     <dd>不能。 We KMS 服务器只对校园网内的用户提供激活支持，如果你要给校园网以外的计算机使用 We 提供的光盘镜像安装的话，是无法通过 We KMS 进行激活的。</dd>
+                  </dl>
+                  <dl>
+                     <dt>4. 我从 We 下载站下载了 Windows 8 企业版，为什么没有激活呢？</dt>
+                     <dd>抱歉， We KMS 暂时还不支持 Windows 8 及 Windows Server 2012 操作系统的激活。你可以尝试从网络上寻找其他方式进行激活，或者等 We KMS 支持 Windows 8 时，你的系统也将自动激活。</dd>
+                  </dl>
+               </section>
+            </div>
+         </div>
+      </section>
+      <script src="/js/jquery-1.8.0.min.js"></script>
+      <script src="/js/bootstrap.min.js"></script>
+   </body>
+</html>
