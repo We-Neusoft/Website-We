@@ -9,7 +9,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'we.views.home', name='home'),
     # url(r'^we/', include('we.foo.urls')),
     url(r'^mirror/$', 'mirror.views.index'),
-    url(r'^mirror/index\.py$', 'mirror.views.index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
