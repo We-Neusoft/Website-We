@@ -1,0 +1,19 @@
+[Theme]
+DisplayName=We Campus
+
+[Control Panel\Desktop]
+TileWallpaper=0
+WallpaperStyle=2
+
+[Slideshow]
+Interval=86400000
+Shuffle=1
+RSSFeed=http://theme.we.neusoft.edu.cn/campus.rss
+
+[VisualStyles]
+Path=%SystemRoot%\resources\themes\Aero\Aero.msstyles
+ColorStyle=NormalColor
+Size=NormalSize
+
+[MasterThemeSelector]
+MTSM=DABJDKT
