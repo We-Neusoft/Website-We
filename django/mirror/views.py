@@ -17,5 +17,7 @@ def index(request):
          status = '同步失败'
          style = 'error'
       timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
-      results.append({'mirror': mirror, 'status': status, 'style': style, 'timestamp': timestamp})
-   return render_to_response('mirror/index.html', {'results': results})
+      count = open(pathname + '.' + mirror + '.count').readline()[:-1]
+      size = open(pathname + '.' + mirror + '.size').readline()[:-1]
+      results.append({'mirror': mirror, 'status': status, 'style': style, 'timestamp': timestamp, 'count': count, 'size': size})
+   return render_to_response('mirror/index.weml', {'results': results})
