@@ -20,5 +20,5 @@ def index(request):
       size = open(pathname + '.' + mirror + '.size').readline()[:-1]
       count = open(pathname + '.' + mirror + '.count').readline()[:-1]
       timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
-      results.append({'mirror': mirror, 'status': status, 'style': style, 'size': file_size(size), 'count': count, 'timestamp': timestamp})
+      results.append({'mirror': mirror, 'status': status, 'style': style, 'size': file_size(int(size)), 'count': count, 'timestamp': timestamp})
    return render_to_response('mirror/index.weml', {'results': results})
