@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from common.unit import file_size
 
 def index(request):
-   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'apache', 'cygwin', 'eclipse', 'mozilla-current', 'putty']
+   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'apache', 'cygwin', 'eclipse', 'mozilla-current', 'putty']
    results = []
    for mirror in mirrors:
       pathname = '/storage/mirror/'
