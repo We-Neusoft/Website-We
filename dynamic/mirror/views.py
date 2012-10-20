@@ -20,7 +20,6 @@ def index(request):
       if mirror == 'cpan':
          status = '实时同步'
          style = 'success'
-         timestamp = time.strftime('%Y-%m-%d %H-%M-%S %Z', time.localtime(json.loads(open(pathname + 'cpan/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time']))
       else:
          status = open(pathname + '.' + mirror + '.status').readline()[:-1]
          if status == '-1':
