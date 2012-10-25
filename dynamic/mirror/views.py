@@ -43,10 +43,14 @@ def index(request):
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/TIME').readline()))
       elif mirror == 'ubuntu':
          timestamp = timestring_to_localtime(open(pathname + mirror + '/project/trace/sadashbia.canonical.com').readline()[:-1])
+      elif mirror == 'ubuntu-releases':
+         timestamp = timestring_to_localtime(open(pathname + mirror + '/.trace/mirrors.neusoft.edu.cn').readline()[:-1])
       elif mirror == 'archlinux':
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/lastsync').readline()))
       elif mirror == 'gentoo':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/experimental/timestamp.mirmon').readline()))
+         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/distfiles/timestamp.mirmon').readline()))
+      elif mirror == 'gentoo-portage':
+         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/metadata/timestamp.x').readline()[:-29]))
       elif mirror == 'apache':
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/zzz/time.txt').readline()))
       elif mirror == 'eclipse':
