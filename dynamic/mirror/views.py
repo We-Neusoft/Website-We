@@ -13,7 +13,7 @@ def timestring_to_localtime(timestring):
 
 def index(request):
    pathname = '/storage/mirror/'
-   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'apache', 'cygwin', 'eclipse', 'mozilla-current', 'putty']
+   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty']
    results = []
 
    for mirror in mirrors:
@@ -51,12 +51,8 @@ def index(request):
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/distfiles/timestamp.mirmon').readline()))
       elif mirror == 'gentoo-portage':
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/metadata/timestamp.x').readline()[:-29]))
-      elif mirror == 'apache':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/zzz/time.txt').readline()))
       elif mirror == 'eclipse':
          timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/TIME').readline()))
-#      elif mirror == 'mozilla-current':
-#         timestamp = timestring_to_localtime(open(pathname + mirror + '/zz/marker.txt').readline()[:-1])
       else:
          timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
 
