@@ -1,4 +1,4 @@
-{% extends "/common/template.weml" %}
+{% extends "common/template.weml" %}
 
 {% block title%}开源镜像站{% endblock %}
 
