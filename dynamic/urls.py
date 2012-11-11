@@ -8,6 +8,9 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'we.views.home', name='home'),
     # url(r'^we/', include('we.foo.urls')),
+    url(r'^www/$', 'www.views.index'),
+    url(r'^www/more_services.we$', 'www.views.more_services'),
+
     url(r'^mirror/$', 'mirror.views.index'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
