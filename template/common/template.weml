@@ -34,9 +34,10 @@
       </nav>
 {% block content %}
 {% endblock %}
+      <hr />
       <footer class="container">
          <!--[if lte IE 8]><span style="filter: FlipH; -ms-filter: "FlipH"; display: inline-block;"><![endif]-->
-            <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">&copy;</span>
+            <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">&copy;</span>
          <!--[if lte IE 8]></span><![endif]-->
          Copyleft 2012 <a href="mailto:we@nou.com.cn">We · Cloud云技术小组</a> All rights reversed.<br />
          本小组所有硬件及网络资源均由大连东软信息学院网络中心提供。
