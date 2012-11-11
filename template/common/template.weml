@@ -35,7 +35,8 @@
 {% block content %}
 {% endblock %}
       <div class="container">
-         &copy; Copyleft 2012 <a href="mailto:we@nou.com.cn">We · Cloud云技术小组</a> All rights reversed.
+         &copy; Copyleft 2012 <a href="mailto:we@nou.com.cn">We · Cloud云技术小组</a> All rights reversed.<br />
+         本小组所有硬件及网络资源均由大连东软信息学院网络中心提供。
       </div>
       <script src="/js/jquery-1.8.2.min.js"></script>
       <script src="/js/bootstrap.min.js"></script>
