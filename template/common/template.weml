@@ -5,7 +5,7 @@
       <!--[if IE]
          <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
       <![endif]-->
-      <title>We - {% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
+      <title>{% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
       <link href="/css/bootstrap.min.css" rel="stylesheet" />
       <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
       <link href="/css/we.css" rel="stylesheet" />
