@@ -15,7 +15,7 @@
          <script src="/js/html5shiv.js"></script>
       <![endif]-->
    </head>
-   <body>
+   <body {% block body_attribute %}{% endblock %}>
       <nav class="navbar navbar-fixed-top">
          <div class="navbar-inner">
             <div class="container">
