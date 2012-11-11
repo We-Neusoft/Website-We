@@ -1,37 +1,18 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-      <title>We · Cloud云技术小组 - 东软校园内的云服务平台</title>
-      <link href="/css/bootstrap.min.css" rel="stylesheet" />
-      <link href="/css/bootstrap-responsive.min.css" rel="stylesheet" />
-      <link href="/css/we.css" rel="stylesheet" />
-      <!--[if lt IE 9]>
-         <script src="/js/html5shiv.js"></script>
-      <![endif]-->
-   </head>
-   <body>
-      <nav class="navbar navbar-fixed-top">
-         <div class="navbar-inner">
-            <div class="container">
-               <a class="brand" href="http://we">http://we</a>
-               <ul class="nav">
-                  <li class="active"><a href="http://we.neusoft.edu.cn">首页</a></li>
-                  <li><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
-                  <li><a href="http://mirror.we.neusoft.edu.cn">开源镜像</a></li>
-               </ul>
-               <ul class="nav pull-right">
+{% extends "common/template.weml" %}
+
+{% block title %}首页{% endblock %}
+
+{% block nav_more %}
                   <li class="dropdown">
                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务 <b class="caret"></b></a>
                      <ul class="dropdown-menu">
-                        <li><a href="more_services.html#wsus">Windows Server 更新服务</a></li>
-                        <li><a href="more_services.html#kms">密钥管理服务</a></li>
+                        <li><a href="more_services.we#wsus">Windows Server 更新服务</a></li>
+                        <li><a href="more_services.we#kms">密钥管理服务</a></li>
                      </ul>
                   </li>
-            </div>
-         </div>
-      </nav>
+{% endblock %}
+
+{% block content %}
       <article class="container">
          <header class="hero-unit">
             <h1>We · Cloud云技术小组</h1>
@@ -61,7 +42,4 @@
             </div>
          </div>
       </div>
-      <script src="/js/jquery-1.8.2.min.js"></script>
-      <script src="/js/bootstrap.min.js"></script>
-   </body>
-</html>
+{% endblock %}
