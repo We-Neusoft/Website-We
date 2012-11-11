@@ -13,16 +13,16 @@
 {% endblock %}
 
 {% block content %}
-      <article class="container">
-         <header class="hero-unit">
+      <header class="container">
+         <div class="hero-unit">
             <h1>We · Cloud云技术小组</h1>
             <p>网站仍在开发中，敬请期待……</p>
-         </header>
-      </article>
+         </div>
+      </header>
       <div class="container">
          <form action="https://www.google.com/search" class="form-search" style="text-align: center;">
             <input type="hidden" name="hl" value="en" />
-            <input type="text" name="q" class="input-xxlarge search-query" placeholder="请在此输入搜索关键词" />
+            <input type="text" name="q" class="input-xxlarge search-query" placeholder="大连东软信息学院" />
             <button type="submit" class="btn">Google Search</button>
          </form>
       </div>

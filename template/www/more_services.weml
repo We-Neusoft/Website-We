@@ -25,7 +25,7 @@
             <p>网站仍在开发中，敬请期待……</p>
          </div>
       </header>
-      <section class="container">
+      <div class="container">
          <div class="row">
             <div class="span3 sidebar">
                <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="260">
@@ -158,5 +158,5 @@
                </section>
             </div>
          </div>
-      </section>
+      </div>
 {% endblock %}
