@@ -1,6 +1,6 @@
 {% extends "common/template.weml" %}
 
-{% block title %}首页 - 更多服务{% endblock %}
+{% block title %}更多服务 - 首页{% endblock %}
 
 {% block stylesheets %}
       <link href="/css/we-sidenav.css" rel="stylesheet" />
