@@ -58,4 +58,4 @@ def index(request):
 
       results.append({'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp})
 
-   return render_to_response('mirror/index.weml', {'results': results})
+   return render_to_response('mirror/index.weml', {'nav_mirror': 'active', 'results': results})

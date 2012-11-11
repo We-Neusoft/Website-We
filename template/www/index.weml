@@ -1,0 +1,45 @@
+{% extends "common/template.weml" %}
+
+{% block title %}首页{% endblock %}
+
+{% block nav_more %}
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务 <b class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="more_services.we#wsus">Windows Server 更新服务</a></li>
+                        <li><a href="more_services.we#kms">密钥管理服务</a></li>
+                     </ul>
+                  </li>
+{% endblock %}
+
+{% block content %}
+      <header class="container">
+         <div class="hero-unit">
+            <h1>We · Cloud云技术小组</h1>
+            <p>网站仍在开发中，敬请期待……</p>
+         </div>
+      </header>
+      <div class="container">
+         <form action="https://www.google.com/search" class="form-search" style="text-align: center;">
+            <input type="hidden" name="hl" value="en" />
+            <input type="text" name="q" class="input-xxlarge search-query" placeholder="大连东软信息学院" />
+            <button type="submit" class="btn">Google Search</button>
+         </form>
+      </div>
+      <div class="container blocks">
+         <div class="row-fluid">
+            <div class="span4">
+               <h2>开源</h2>
+               <p>We所采用的全部技术均为开源技术。同时，We所有的技术也完全开源，你可以随时从We的<a href="https://github.com/We-Neusoft/We">代码托管站</a>浏览及下载我们全部的文档及源码。
+            </div>
+            <div class="span4">
+               <h2>同等</h2>
+               <p>We对所有人均提供完全同等的无偿服务。无论你是否加入We小组，只要是他人在We能得到的服务、技术与支持，你也同样可以无偿的得到。</p>
+            </div>
+            <div class="span4">
+               <h2>自由</h2>
+               <p>We·Cloud云技术小组QQ群号为85949649，你可以在里面自由的说出任何想法，提出任何问题，只要在We的能力范围内都将会尽力解答。</p>
+            </div>
+         </div>
+      </div>
+{% endblock %}
