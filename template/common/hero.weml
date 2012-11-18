@@ -1,0 +1,5 @@
+{% extends "common/base.weml" %}
+
+{% block hero %}
+{% include "common/include/hero.weml" %}
+{% endblock %}

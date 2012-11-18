@@ -1,0 +1,7 @@
+                  <li class="dropdown">
+                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务&nbsp;<b class="caret"></b></a>
+                     <ul class="dropdown-menu">
+                        <li><a href="more_services.we#wsus">Windows Server 更新服务</a></li>
+                        <li><a href="more_services.we#kms">密钥管理服务</a></li>
+                     </ul>
+                  </li>
