@@ -1,4 +1,4 @@
-{% extends "common/side_base.weml" %}
+{% extends "common/base.weml" %}
 
 {% block extra_css %}
       <link href="/css/we-sidenav.css" rel="stylesheet" />
@@ -12,7 +12,7 @@
             <div class="span3 sidebar">
                <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="{% block data_offset_top %}0{% endblock %}">
 {% block nav_list %}
-{% endblock }
+{% endblock %}
                </ul>
             </div>
             <div class="span9">
