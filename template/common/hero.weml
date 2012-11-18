@@ -1,5 +1,10 @@
 {% extends "common/base.weml" %}
 
 {% block hero %}
-{% include "common/include/hero.weml" %}
+      <header class="container">
+         <div class="hero-unit">
+            <h1>{% block hero_title %}{% endblock %}</h1>
+            <p>{% block hero_subtitle %}{% endblock %}</p>
+         </div>
+      </header>
 {% endblock %}
