@@ -18,9 +18,5 @@
 {% block content %}
 {% include "www/include/wsus.weml" %}
 {% include "www/include/kms.weml" %}
-<<<<<<< HEAD
 {% include "www/include/eset.weml" %}
 {% endblock %}
-=======
-{% endblock %}
->>>>>>> Code sync.
