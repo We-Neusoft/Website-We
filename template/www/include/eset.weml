@@ -1,0 +1,56 @@
+               <section id="eset">
+                  <header class="page-header">
+                     <h1>ESET 病毒库定义更新 <small>ESET virus signature database update</small></h1>
+                  </header>
+                  <h2>服务介绍</h2>
+                  <p>ESET 是总部位于中欧的斯洛伐克布拉迪斯拉发的一家世界知名的电脑安全软件公司，其主要产品有 ESET NOD32 Antivirus （简称 EAV ）、 ESET Smart Security （简称 ESS ）。 EAV 是一款商业性质的安全软件，在我们学院广泛部署到网络中心服务器、实验室、教师办公机及其他公用计算机上。同时， ESS 在 EAV 的基本功能上，又增加了对网络访问规则的管理。</p>
+                  <p>由于 EAV 及 ESS 属于商业安全软件，所以需要购买授权才可以激活软件及更新病毒库定义。因此，为了方便大家安装及更新这两款安全软件，保障电脑系统的安全稳定运行， We 在校园网提供了安装文件下载及病毒库定义更新服务，可在下面表格中找到适合你的安装文件，并按照表格下方的配置说明进行配置，便可以在校园网内实时更新你的病毒库定义文件到最新版本。</p>
+                  <h2>软件下载</h2>
+                  <p>下表中列出了 ESET 的部分安装文件，所有安装文件均为 ESET 原版文件，未经任何修改。</p>
+                  <table class="table table-hover">
+                     <thead>
+                        <tr><th>软件版本</th><th>32 位简体中文版</th><th>64 位简体中文版</th><th>32 位英文版</th><th>64 位英文版</th></tr>
+                     </thead>
+                     <tbody>
+                        <tr>
+                           <td>ESET NOD32 Antivirus</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/eav_nt32_chs.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/eav_nt64_chs.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/eav_nt32_enu.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/eav_nt64_enu.msi">点此下载</a></td>
+                        </tr>
+                        <tr>
+                           <td>ESET Smart Security</td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/ess_nt32_chs.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/ess_nt64_chs.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/ess_nt32_enu.msi">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/ESET/ess_nt64_enu.msi">点此下载</a></td>
+                        </tr>
+                     </tbody>
+                  </table>
+                  <h2>配置方法</h2>
+                  <ol start="0">
+                     <li>启动 ESET 软件，打开主界面，按键盘上的<code>f5</code>键，弹出<strong>『高级设置』</strong>窗口；</li>
+                     <li>在<strong>『高级设置』</strong>窗口的左侧窗格中，依次选择<strong>「更新」</strong>、<strong>「更新」</strong>，在右侧窗格中，先将<strong>「用户名」</strong>和<strong>「密码」</strong>输入框填入小写的<code>we</code>，再单击<strong>「高级更新设置」</strong>后面的<strong>「设置」</strong>按钮；</li>
+                     <li>在新弹出<strong>『高级设置』</strong>的窗口中，选择<strong>「 HTTP 代理」</strong>选项卡，在<strong>「 HTTP 代理」</strong>选项卡中，选择<strong>「通过代理服务器连接」</strong>，并在<strong>「代理服务器」</strong>和<strong>「端口」</strong>输入框内填入<code>proxy.we.neusoft.edu.cn</code>和<code>80</code>，<strong>「用户名」</strong>和<strong>「密码」</strong>输入框留空。设置完成后单击<strong>「确定」</strong>按钮关闭再弹出窗口；</li>
+                     <li>再单击<strong>「确定」</strong>按钮，关闭<strong>『高级设置』</strong>窗口返回到主界面。</li>
+                  </ol>
+                  <p class="text-success">恭喜你，你已经成功设置你的 ESET 安全软件从 We 服务器来更新病毒库定义啦！</p>
+                  <h2>常见问题</h2>
+                  <dl>
+                     <dt>0. 你在上面说了有两款软件，我到底应该选择哪一种呢？</dt>
+                     <dd>如果你通过上面的介绍仍然不清楚这两款软件的区别，那你推荐你使用 EAV 即可。使用 ESS 需要对网络规则进行配置，如果配置不当，可能会导致你正常上网行为被限制。</dd>
+                  </dl>
+                  <dl>
+                     <dt>1. 是不是激活以后就永远可以使用呢？</dt>
+                     <dd>是的。只要你激活一次，这套安全软件就可以一直使用，直到你卸载掉为止。</dd>
+                  </dl>
+                  <dl>
+                     <dt>3. 我给家里的电脑也用上面的安装文件进行安装，是不是也可以激活呢？</dt>
+                     <dd>不能。 We 服务器只对校园网内的用户提供激活及更新支持，如果你要给校园网以外的计算机使用 We 提供的安装文件进行安装的话，是无法通过 We 进行激活与更新的。</dd>
+                  </dl>
+                  <dl>
+                     <dt>4. 我已经正确设置从 We 更新病毒库定义，但是为什么显示的版本日期总是昨天的日期呢？</dt>
+                     <dd>首先请放心，这是正常现象。造成这种现象的原因是时差问题，众所周知，中国大陆地区使用的东8区北京时间，要早于世界很多国家的时候，其中也包括 ESET 公司的时间，当北京时间已经到了“今天”时， ESET 公司所在国家还是处于“昨天”，所以你看到的版本日期也会显示成“昨天”的日期。等到傍晚以后，你将会更新到“今天”的第一个版本。</dd>
+                  </dl>
+               </section>

@@ -5,7 +5,7 @@
                   <h2>服务介绍</h2>
                   <p>Windows Server 更新服务由微软官方提供，方便企业内部快速部署微软产品（包括 Windows 、 Office 、 SQL Server 、 Visual Studio 、 .NET Framework 等）更新及补丁的服务。</p>
                   <p>为了让大家能够快速、及时的下载安装微软更新及补丁，你只需要经过简单的设置，便可以使用由 We 提供的校园网高速 Windows Server 更新服务。</p>
-                  <h2>设置方法</h2>
+                  <h2>配置方法</h2>
                   <ol start="0">
                      <li>Windows 8 、 7 、 Vista 、 XP 、 Server 2012 、 Server 2008 R2 、 Server 2008 、 Server 2003 （ R2 ） 的用户，可以通过按键盘上的<code>⊞</code>+<code>R</code>组合键，在弹出的窗口中输入<code>gpedit.msc</code>来启动<strong>『组策略编辑器』</strong>；</li>
                      <li>在<strong>『组策略编辑器』</strong>左侧窗格中，依次选择<strong>「计算机配置」</strong>、<strong>「管理模板」</strong>、<strong>「Windows 组件」</strong>、<strong>「Windows Update」</strong>，并在右侧窗格中双击选择<strong>「配置自动更新」</strong>；</li>
