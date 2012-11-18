@@ -1,24 +1,15 @@
-{% extends "common/template.weml" %}
+{% extends "common/hero.weml" %}
 
 {% block title %}首页{% endblock %}
 
 {% block nav_more %}
-                  <li class="dropdown">
-                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务 <b class="caret"></b></a>
-                     <ul class="dropdown-menu">
-                        <li><a href="more_services.we#wsus">Windows Server 更新服务</a></li>
-                        <li><a href="more_services.we#kms">密钥管理服务</a></li>
-                     </ul>
-                  </li>
+{% include "www/include/nav_more.weml" %}
 {% endblock %}
 
+{% block hero_title %}We · Cloud云技术小组{% endblock %}
+{% block hero_subtitle %}网站仍在开发中，敬请期待……{% endblock %}
+
 {% block content %}
-      <header class="container">
-         <div class="hero-unit">
-            <h1>We · Cloud云技术小组</h1>
-            <p>网站仍在开发中，敬请期待……</p>
-         </div>
-      </header>
       <div class="container">
          <form action="https://www.google.com/search" class="form-search" style="text-align: center;">
             <input type="hidden" name="hl" value="en" />

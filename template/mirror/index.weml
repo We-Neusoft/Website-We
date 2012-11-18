@@ -1,18 +1,15 @@
-{% extends "common/template.weml" %}
+{% extends "common/hero.weml" %}
 
 {% block title %}开源镜像站{% endblock %}
 
-{% block stylesheets %}
+{% block extra_css %}
       <link href="/css/we-mirror.css" rel="stylesheet" />
 {% endblock %}
 
+{% block hero_title %}We - 开源镜像站{% endblock %}
+{% block hero_subtitle %}咱东软信息学院自己的开源镜像站！{% endblock %}
+
 {% block content %}
-      <article class="container">
-         <header class="hero-unit">
-            <h1>We - 开源镜像站</h1>
-            <p>咱东软信息学院自己的开源镜像站！</p>
-         </header>
-      </article>
       <div class="container">
          <table class="table table-hover">
             <thead>

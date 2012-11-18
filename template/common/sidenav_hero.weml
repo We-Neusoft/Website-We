@@ -1,0 +1,7 @@
+{% extends "common/sidenav_base.weml" %}
+
+{% block hero %}
+{% include "include/hero.weml" %}
+{% endblock %}
+
+{% block data_offset_top %}260{% endblock %}
