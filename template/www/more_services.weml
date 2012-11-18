@@ -25,7 +25,7 @@
             <p>网站仍在开发中，敬请期待……</p>
          </div>
       </header>
-      <section class="container">
+      <div class="container">
          <div class="row">
             <div class="span3 sidebar">
                <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="260">
@@ -64,7 +64,7 @@
                   </header>
                   <h2>服务介绍</h2>
                   <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 开始，微软将系统批量授权机制升级到了 VA 2.0  （ VA 1.0 只需要使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
-                  <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本。</p>
+                  <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本。</p>
                   <h2>系统下载</h2>
                   <p>下表中列出了 We KMS 所支持的 Windows 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
                   <table class="table table-hover">
@@ -74,59 +74,59 @@
                      <tbody>
                         <tr>
                            <td>Windows 8 企业版</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_8_enterprise_x86_dvd_917682.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_8_enterprise_x64_dvd_917570.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_8_enterprise_x86_dvd_917587.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_8_enterprise_x64_dvd_917522.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_enterprise_x86_dvd_917682.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_enterprise_x64_dvd_917570.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_enterprise_x86_dvd_917587.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_enterprise_x64_dvd_917522.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows 8 专业版</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_8_pro_vl_x86_dvd_917720.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_8_pro_vl_x64_dvd_917773.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_8_pro_vl_x86_dvd_917830.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_8_pro_vl_x64_dvd_917699.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_pro_vl_x86_dvd_917720.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_pro_vl_x64_dvd_917773.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_pro_vl_x86_dvd_917830.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_pro_vl_x64_dvd_917699.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows 7 企业版</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_enterprise_with_sp1_x86_dvd_u_677716.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_enterprise_with_sp1_x64_dvd_u_677685.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_enterprise_with_sp1_x86_dvd_u_677710.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_enterprise_with_sp1_x86_dvd_u_677716.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_enterprise_with_sp1_x64_dvd_u_677685.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_enterprise_with_sp1_x86_dvd_u_677710.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows 7 专业版</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677939.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677816.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677896.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677791.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677939.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677816.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677896.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677791.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows Vista 企业版</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_vista_enterprise_with_sp2_x86_dvd_x15-40257.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_vista_enterprise_with_sp2_x64_dvd_x15-40402.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_enterprise_sp2_x86_dvd_342329.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_enterprise_sp2_x64_dvd_342332.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_vista_enterprise_with_sp2_x86_dvd_x15-40257.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_vista_enterprise_with_sp2_x64_dvd_x15-40402.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_enterprise_sp2_x86_dvd_342329.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_enterprise_sp2_x64_dvd_342332.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows Vista 商业版</td>
                            <td class="muted">无此版本</td>
                            <td class="muted">无此版本</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_business_sp2_x86_dvd_342321.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_vista_business_sp2_x64_dvd_342327.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_business_sp2_x86_dvd_342321.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_business_sp2_x64_dvd_342327.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows Server 2008 R2</td>
                            <td class="muted">无此版本</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_x64_dvd_617598.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_x64_dvd_617598.iso">点此下载</a></td>
                            <td class="muted">无此版本</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_vl_build_x64_dvd_617403.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_vl_build_x64_dvd_617403.iso">点此下载</a></td>
                         </tr>
                         <tr>
                            <td>Windows Server 2008</td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_standard_enterprise_and_datacenter_with_sp2_x86_dvd_x15-41045.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/cn_windows_server_2008_standard_enterprise_and_datacenter_with_sp2_x64_dvd_x15-41319.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_datacenter_enterprise_standard_sp2_x86_dvd_342333.iso">点此下载</a></td>
-                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/en_windows_server_2008_datacenter_enterprise_standard_sp2_x64_dvd_342336.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_standard_enterprise_and_datacenter_with_sp2_x86_dvd_x15-41045.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_2008_standard_enterprise_and_datacenter_with_sp2_x64_dvd_x15-41319.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_datacenter_enterprise_standard_sp2_x86_dvd_342333.iso">点此下载</a></td>
+                           <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_datacenter_enterprise_standard_sp2_x64_dvd_342336.iso">点此下载</a></td>
                         </tr>
                      </tbody>
                   </table>
@@ -158,5 +158,5 @@
                </section>
             </div>
          </div>
-      </section>
+      </div>
 {% endblock %}
