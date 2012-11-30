@@ -34,27 +34,7 @@ def index(request):
 
       count = open(pathname + '.' + mirror + '.count').readline()[:-1]
       size = open(pathname + '.' + mirror + '.size').readline()[:-1]
-
-      if mirror == 'centos':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/TIME').readline()))
-      elif mirror == 'cpan':
-         timestamp = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
-      elif mirror == 'repoforge':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/TIME').readline()))
-      elif mirror == 'ubuntu':
-         timestamp = timestring_to_localtime(open(pathname + mirror + '/project/trace/sadashbia.canonical.com').readline()[:-1])
-      elif mirror == 'ubuntu-releases':
-         timestamp = timestring_to_localtime(open(pathname + mirror + '/.trace/mirrors.neusoft.edu.cn').readline()[:-1])
-      elif mirror == 'archlinux':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/lastsync').readline()))
-      elif mirror == 'gentoo':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/distfiles/timestamp.mirmon').readline()))
-      elif mirror == 'gentoo-portage':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/metadata/timestamp.x').readline()[:-29]))
-      elif mirror == 'eclipse':
-         timestamp = timestamp_to_localtime(int(open(pathname + mirror + '/TIME').readline()))
-      else:
-         timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
+      timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
 
       results.append({'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp})
 
