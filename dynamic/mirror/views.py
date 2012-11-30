@@ -34,7 +34,11 @@ def index(request):
 
       count = open(pathname + '.' + mirror + '.count').readline()[:-1]
       size = open(pathname + '.' + mirror + '.size').readline()[:-1]
-      timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
+
+      if mirror == 'cpan':
+         timestamp = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
+      else:
+         timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
 
       results.append({'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp})
 
