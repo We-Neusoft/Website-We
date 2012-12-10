@@ -1,4 +1,4 @@
-{% extends "common/hero.weml" %}
+{% extends "common/sidenav_hero.weml" %}
 
 {% block title %}首页{% endblock %}
 
