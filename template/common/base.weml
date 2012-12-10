@@ -8,6 +8,8 @@
       <title>{% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
 {% include "common/include/css.weml" %}
 {% block extra_css %}
+{% block more_css %}
+{% endblock %}
 {% endblock %}
       <!--[if lt IE 9]>
          <script src="/js/html5shiv.js"></script>
@@ -41,6 +43,8 @@
 {% include "common/include/footer.weml" %}
 {% include "common/include/js.weml" %}
 {% block extra_js %}
+{% block more_js %}
+{% endblock %}
 {% endblock %}
    </body>
 </html>
