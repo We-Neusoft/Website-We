@@ -3,7 +3,7 @@
                      <h1>CentOS <small>The Community ENTerprise Operation System</small></h1>
                   </header>
                   <h2>配置文件</h2>
-<code class="prettyprint">
+<pre class="prettyprint">
 # CentOS-Base.repo
 #
 # The mirror system uses the connecting IP address of the client and the
@@ -56,5 +56,5 @@ baseurl=http://mirrors.neusoft.edu.cn/centos/$releasever/contrib/$basearch/
 gpgcheck=1
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
-</code>
+</pre>
                </section>
