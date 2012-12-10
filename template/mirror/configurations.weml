@@ -2,7 +2,7 @@
 
 {% block title %}配置说明 - 开源镜像站{% endblock %}
 
-{% block extra_css %}
+{% block more_css %}
       <link href="/css/prettify.css" rel="stylesheet" />
 {% endblock %}
 
@@ -23,6 +23,6 @@
 {% include "mirror/include/centos.weml" %}
 {% endblock %}
 
-{% block extra_js %}
+{% block more_js %}
       <script src="/js/prettify.js"></script>
 {% endblock %}

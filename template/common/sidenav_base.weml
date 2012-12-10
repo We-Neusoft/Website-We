@@ -2,6 +2,8 @@
 
 {% block extra_css %}
       <link href="/css/we-sidenav.css" rel="stylesheet" />
+{% block more_css %}
+{% endblock %}
 {% endblock %}
 
 {% block body_attributes %}data-spy="scroll" data-offset="30" data-target=".sidebar"{% endblock %}
@@ -21,4 +23,10 @@
             </div>
          </div>
       </div>
+{% endblock %}
+
+{% block extra_js %}
+      <link href="/css/we-sidenav.css" rel="stylesheet" />
+{% block more_js %}
+{% endblock %}
 {% endblock %}
