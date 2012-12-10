@@ -6,6 +6,8 @@
       <link href="/css/prettify.css" rel="stylesheet" />
 {% endblock %}
 
+{% block body_attributes %}onload="prettyPrint();"{% endblock %}
+
 {% block nav_more %}
 {% include "mirror/include/nav_more.weml" %}
 {% endblock %}
