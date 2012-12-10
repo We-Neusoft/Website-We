@@ -6,6 +6,10 @@
       <link href="/css/we-mirror.css" rel="stylesheet" />
 {% endblock %}
 
+{% block nav_more %}
+{% include "mirror/include/nav_more.weml" %}
+{% endblock %}
+
 {% block hero_title %}We - 开源镜像站{% endblock %}
 {% block hero_subtitle %}咱东软信息学院自己的开源镜像站！{% endblock %}
 
@@ -23,6 +27,7 @@
                   <td>{{ result.count }}</td>
                   <td>{{ result.size }}</td>
                   <td>{{ result.timestamp }}</td>
+                  <td><a href="configurations.we#{{ result.mirror }}">配置说明</a></td>
                </tr>
 {% endfor %}
             </tbody>
