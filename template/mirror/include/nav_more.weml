@@ -2,5 +2,6 @@
                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">配置说明&nbsp;<b class="caret"></b></a>
                      <ul class="dropdown-menu">
                         <li><a href="configurations.we#centos">CentOS</a></li>
+                        <li><a href="configurations.we#epel">EPEL</a></li>
                      </ul>
                   </li>
