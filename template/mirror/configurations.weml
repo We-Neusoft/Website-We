@@ -17,10 +17,12 @@
 
 {% block nav_list %}
                   <li class="active"><a href="#centos"><i class="icon-chevron-right"></i>CentOS</a></li>
+                  <li><a href="#epel"><i class="icon-chevron-right"></i>EPEL</a></li>
 {% endblock %}
 
 {% block content %}
 {% include "mirror/include/centos.weml" %}
+{% include "mirror/include/epel.weml" %}
 {% endblock %}
 
 {% block more_js %}
