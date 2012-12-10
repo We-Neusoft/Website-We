@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^www/more_services.we$', 'www.views.more_services'),
 
     url(r'^mirror/$', 'mirror.views.index'),
+    url(r'^mirror/configurations.we$', 'mirror.views.configurations'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -41,5 +41,6 @@
 {% include "common/include/footer.weml" %}
 {% include "common/include/js.weml" %}
 {% block extra_js %}
+{% endblock %}
    </body>
 </html>
