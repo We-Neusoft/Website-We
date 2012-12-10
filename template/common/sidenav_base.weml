@@ -26,7 +26,6 @@
 {% endblock %}
 
 {% block extra_js %}
-      <link href="/css/we-sidenav.css" rel="stylesheet" />
 {% block more_js %}
 {% endblock %}
 {% endblock %}
