@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block nav_more %}
-{% include "www/include/nav_more.weml" %}
+{% include "mirror/include/nav_more.weml" %}
 {% endblock %}
 
 {% block hero_title %}We - 开源镜像站{% endblock %}
