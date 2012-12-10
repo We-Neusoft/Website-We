@@ -1,0 +1,26 @@
+{% extends "common/sidenav_hero.weml" %}
+
+{% block title %}配置说明 - 开源镜像站{% endblock %}
+
+{% block extra_css %}
+      <link href="/css/prettify.css" rel="stylesheet" />
+{% endblock %}
+
+{% block nav_more %}
+{% include "www/include/nav_more.weml" %}
+{% endblock %}
+
+{% block hero_title %}We - 开源镜像站{% endblock %}
+{% block hero_subtitle %}咱东软信息学院自己的开源镜像站！{% endblock %}
+
+{% block nav_list %}
+                  <li class="active"><a href="#centos"><i class="icon-chevron-right"></i>CentOS</a></li>
+{% endblock %}
+
+{% block content %}
+{% include "mirror/include/centos.weml" %}
+{% endblock %}
+
+{% block extra_js %}
+      <script src="/js/prettify.js"></script>
+{% endblock %}
