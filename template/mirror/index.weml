@@ -27,7 +27,7 @@
                   <td>{{ result.count }}</td>
                   <td>{{ result.size }}</td>
                   <td>{{ result.timestamp }}</td>
-                  <td><a href="configurations.we#{{ result.mirror }}"><i class="icon-chevron-right"></i></a></td>
+                  <td><a href="configurations.we#{{ result.mirror }}"><i class="icon-arrow-right"></i></a></td>
                </tr>
 {% endfor %}
             </tbody>
