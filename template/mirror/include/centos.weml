@@ -2,8 +2,10 @@
                   <header class="page-header">
                      <h1>CentOS <small>The Community ENTerprise Operation System</small></h1>
                   </header>
-                  <h2>配置文件</h2>
-                     <h3>CentOS 6</h3>
+                  <h2>配置说明</h2>
+                  <p>
+                  <h3>配置文件</h3>
+                  <h4>CentOS 6</h4>
 <pre class="prettyprint">
 # CentOS-Base.repo
 #
@@ -58,7 +60,7 @@ gpgcheck=1
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 </pre>
-                     <h3>CentOS 5</h3>
+                  <h4>CentOS 5</h4>
 <pre class="prettyprint">
 # CentOS-Base.repo
 #
@@ -121,7 +123,7 @@ gpgcheck=1
 enabled=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 </pre>
-                  <h2>VI 脚本</h2>
+                  <h3 id="centos-vi">VI 脚本</h3>
 <pre class="prettyprint">
 :%s/^mirrorlist/#mirrorlist/g
 :%s/#baseurl/baseurl/g
