@@ -6,8 +6,8 @@
                      <h3>RHEL 6 / CentOS 6</h3>
 <pre class="prettyprint">
 [epel]
-name=Extra Packages for Enterprise Linux 6 - $basearch
-baseurl=file:///storage/mirror/epel/6/$basearch
+name=Extra Packages for Enterprise Linux 6 - $basearch - mirrors.neusoft.edu.cn
+baseurl=http://mirrors.neusoft.edu.cn/epel/6/$basearch
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-6&arch=$basearch
 failovermethod=priority
 enabled=1
@@ -15,8 +15,8 @@ gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 
 [epel-debuginfo]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Debug
-baseurl=file:///storage/mirror/epel/6/$basearch/debug
+name=Extra Packages for Enterprise Linux 6 - $basearch - Debug - mirrors.neusoft.edu.cn
+baseurl=http://mirrors.neusoft.edu.cn/epel/6/$basearch/debug
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-debug-6&arch=$basearch
 failovermethod=priority
 enabled=0
@@ -24,8 +24,8 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-6
 gpgcheck=1
 
 [epel-source]
-name=Extra Packages for Enterprise Linux 6 - $basearch - Source
-baseurl=file:///storage/mirror/epel/6/SRPMS
+name=Extra Packages for Enterprise Linux 6 - $basearch - Source - mirrors.neusoft.edu.cn
+baseurl=http://mirrors.neusoft.edu.cn/epel/6/SRPMS
 #mirrorlist=https://mirrors.fedoraproject.org/metalink?repo=epel-source-6&arch=$basearch
 failovermethod=priority
 enabled=0
@@ -35,7 +35,7 @@ gpgcheck=1
                      <h3>RHEL 5 / CentOS 5</h3>
 <pre class="prettyprint">
 [epel]
-name=Extra Packages for Enterprise Linux 5 - $basearch
+name=Extra Packages for Enterprise Linux 5 - $basearch - mirrors.neusoft.edu.cn
 baseurl=http://mirrors.neusoft.edu.cn/epel/5/$basearch
 #mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&arch=$basearch
 failovermethod=priority
@@ -44,7 +44,7 @@ gpgcheck=1
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL
 
 [epel-debuginfo]
-name=Extra Packages for Enterprise Linux 5 - $basearch - Debug
+name=Extra Packages for Enterprise Linux 5 - $basearch - Debug - mirrors.neusoft.edu.cn
 baseurl=http://mirrors.neusoft.edu.cn/epel/5/$basearch/debug
 #mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-debug-5&arch=$basearch
 failovermethod=priority
@@ -53,7 +53,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL
 gpgcheck=1
 
 [epel-source]
-name=Extra Packages for Enterprise Linux 5 - $basearch - Source
+name=Extra Packages for Enterprise Linux 5 - $basearch - Source - mirrors.neusoft.edu.cn
 baseurl=http://mirrors.neusoft.edu.cn/epel/5/SRPMS
 #mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-source-5&arch=$basearch
 failovermethod=priority
