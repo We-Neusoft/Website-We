@@ -6,8 +6,6 @@
       <link href="/css/prettify.css" rel="stylesheet" />
 {% endblock %}
 
-{% block body_attributes %}onload="pretty_print();"{% endblock %}
-
 {% block nav_more %}
 {% include "mirror/include/nav_more.weml" %}
 {% endblock %}
@@ -27,4 +25,7 @@
 
 {% block more_js %}
       <script src="/js/prettify.js"></script>
+      <script type="application/javascript">
+         pretty_print();
+      </script>
 {% endblock %}
