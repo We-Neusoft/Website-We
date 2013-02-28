@@ -13,7 +13,7 @@ def timestring_to_localtime(timestring):
 
 def index(request):
    pathname = '/storage/mirror/'
-   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty']
+   mirrors = ['centos', 'epel', 'repoforge', 'ubuntu', 'ubuntu-releases', 'archlinux', 'gentoo', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty', 'android']
    results = []
 
    for mirror in mirrors:
