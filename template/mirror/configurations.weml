@@ -21,6 +21,7 @@
 {% block content %}
 {% include "mirror/include/centos.weml" %}
 {% include "mirror/include/epel.weml" %}
+{% include "mirror/include/android.weml" %}
 {% endblock %}
 
 {% block more_js %}
