@@ -6,6 +6,7 @@ import memcache
 from django.shortcuts import render_to_response
 from common.unit import file_size
 
+pathname = '/storage/mirror/'
 memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 
 def timestamp_to_localtime(timestamp): 
@@ -24,7 +25,6 @@ def get_value(mirror, key, time=0):
    return value
 
 def index(request):
-   pathname = '/storage/mirror/'
    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty', 'android', 'qt']
    results = []
 
