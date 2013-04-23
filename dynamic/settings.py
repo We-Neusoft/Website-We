@@ -87,6 +87,7 @@ SECRET_KEY = '0&!7-jeq=)2r%qf-$yca$cjtey#@z&5-e*oe04!39(w5v8fs6c'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'django_linestripper.stripper.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -98,6 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_linestripper.stripper.StripperMiddleware',
 )
 
 ROOT_URLCONF = 'dynamic.urls'
@@ -144,3 +146,5 @@ LOGGING = {
         },
     }
 }
+
+STRIPPER_CLEAR_LINE = True
