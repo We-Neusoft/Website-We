@@ -13,11 +13,11 @@ def timestring_to_localtime(timestring):
 
 def index(request):
    pathname = '/storage/mirror/'
-   mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-images', 'kali-security', 'linuxmint', 'linuxmint-cd', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty', 'android', 'qt']
+   mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty', 'android', 'qt']
    results = []
 
    for mirror in mirrors:
-      if mirror == 'cpan':
+      if mirror in ['cpan', 'kali', 'kali-security']:
          status = '实时同步'
          style = 'success'
       else:
