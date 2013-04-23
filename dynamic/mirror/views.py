@@ -1,15 +1,27 @@
 #coding=utf-8
 import json
 import time
+import memcache
 
 from django.shortcuts import render_to_response
 from common.unit import file_size
 
+memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
+
 def timestamp_to_localtime(timestamp): 
    return time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(timestamp))
 
-def timestring_to_localtime(timestring): 
-   return time.strftime('%Y-%m-%d %H:%M:%S %Z', time.strptime(timestring, '%a %b %d %H:%M:%S %Z %Y'))
+def get_value(mirror, key, time=0):
+   value = memcached.get(mirror + '_' + key)
+   if not value:
+      if mirror == 'cpan' && key == 'timestamp':
+         value = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
+         time = 300
+      else:
+         value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
+      memcached.set(mirror + '_' + key, value, time)
+
+   return value
 
 def index(request):
    pathname = '/storage/mirror/'
@@ -21,7 +33,8 @@ def index(request):
          status = '实时同步'
          style = 'success'
       else:
-         status = open(pathname + '.' + mirror + '.status').readline()[:-1]
+         status = get_value(mirror, 'status')
+
          if status == '-1':
             status = '正在同步'
             style = 'info'
@@ -32,13 +45,9 @@ def index(request):
             status = '同步失败'
             style = 'error'
 
-      count = open(pathname + '.' + mirror + '.count').readline()[:-1]
-      size = open(pathname + '.' + mirror + '.size').readline()[:-1]
-
-      if mirror == 'cpan':
-         timestamp = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
-      else:
-         timestamp = open(pathname + '.' + mirror + '.timestamp').readline()[:-1]
+      count = get_value(mirror, 'count')
+      size = get_value(mirror, 'size')
+      timestamp = get_value(mirror, 'timestamp')
 
       results.append({'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp})
 
