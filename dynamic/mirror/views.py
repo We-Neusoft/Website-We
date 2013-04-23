@@ -15,7 +15,7 @@ def timestamp_to_localtime(timestamp):
 def get_value(mirror, key, time=0):
    value = memcached.get(mirror + '_' + key)
    if not value:
-      if mirror == 'cpan' and key == 'timestamp':
+      if (mirror == 'cpan' and key == 'timestamp'):
          value = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
          time = 300
       else:
