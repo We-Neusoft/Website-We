@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # 站点属性及本地化配置
 SITE_ID = 1
 ROOT_URLCONF = 'dynamic.urls'
@@ -43,3 +44,5 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+
+USE_ETAGS = True
