@@ -13,17 +13,17 @@ def timestamp_to_localtime(timestamp):
    return time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(timestamp))
 
 def get_value(mirror, key, time=0):
+   if (mirror == 'cpan' and key == 'timestamp'):
+      return timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
+
    value = memcached.get(mirror + '_' + key)
    if not value:
-      if (mirror == 'cpan' and key == 'timestamp'):
-         value = timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
-         time = 300
-      else:
-         value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
+      value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
       memcached.set(mirror + '_' + key, value, time)
 
    return value
 
+@cache_page(60 * 5, key_prefix="mirror")
 def index(request):
    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'cygwin', 'eclipse', 'putty', 'android', 'qt']
    results = []
