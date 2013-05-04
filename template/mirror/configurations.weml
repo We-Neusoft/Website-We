@@ -6,8 +6,6 @@
       <link href="/css/prettify.css" rel="stylesheet" />
 {% endblock %}
 
-{% block body_attributes %}onload="pretty_print();"{% endblock %}
-
 {% block nav_more %}
 {% include "mirror/include/nav_more.weml" %}
 {% endblock %}
@@ -18,13 +16,18 @@
 {% block nav_list %}
                   <li class="active"><a href="#centos"><i class="icon-chevron-right"></i>CentOS</a></li>
                   <li><a href="#epel"><i class="icon-chevron-right"></i>EPEL</a></li>
+                  <li><a href="#android"><i class="icon-chevron-right"></i>Android</a></li>
 {% endblock %}
 
 {% block content %}
 {% include "mirror/include/centos.weml" %}
 {% include "mirror/include/epel.weml" %}
+{% include "mirror/include/android.weml" %}
 {% endblock %}
 
 {% block more_js %}
       <script src="/js/prettify.js"></script>
+      <script type="application/javascript">
+         pretty_print();
+      </script>
 {% endblock %}
