@@ -3,5 +3,6 @@
                      <ul class="dropdown-menu">
                         <li><a href="configurations.we#centos">CentOS</a></li>
                         <li><a href="configurations.we#epel">EPEL</a></li>
+                        <li><a href="configurations.we#android">Android</a></li>
                      </ul>
                   </li>
