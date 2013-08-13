@@ -3,8 +3,8 @@
                      <h1>密钥管理服务 <small>Key Management Service</small></h1>
                   </header>
                   <h2>服务介绍</h2>
-                  <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 开始，微软将系统批量授权机制升级到了 VA 2.0  （ VA 1.0 只需要使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
-                  <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本。</p>
+                  <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 及 Office 2010 开始，微软将系统批量授权机制升级到了 VA 2.0  （ VA 1.0 只需要使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
+                  <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统或 Office 办公套件，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本，以及 Office 2010、Office 2013 办公套件。</p>
                   <h2>系统下载</h2>
                   <p>下表中列出了 We KMS 所支持的 Windows 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
                   <table class="table table-hover">
@@ -76,7 +76,7 @@
                      <dd>企业版其实就是“旗舰批量授权版”，两者除了授权方式不同以外，其他功能上完全一致。</dd>
                   </dl>
                   <dl>
-                     <dt>1. 我使用上面的光盘镜像安装了操作系统，要如何操作才能激活？我可不可以使用别的光盘镜像安装来从 We KMS 激活？</dt>
+                     <dt>1. 我使用上面的光盘镜像安装了操作系统和办公套件，要如何操作才能激活？我可不可以使用别的光盘镜像安装来从 We KMS 激活？</dt>
                      <dd>如果你使用 We 提供的光盘镜像安装，安装完成后无法做任何设置，连接校园网后便会自动激活。如果你是从其他地方下载的批量授权版本镜像，也一样可以从 We KMS 激活。</dd>
                   </dl>
                   <dl>
@@ -88,8 +88,8 @@
                      <dd>不能。 We KMS 服务器只对校园网内的用户提供激活支持，如果你要给校园网以外的计算机使用 We 提供的光盘镜像安装的话，是无法通过 We KMS 进行激活的。</dd>
                   </dl>
                   <dl>
-                     <dt>4. 我从 We 下载站下载安装了 Windows 8 / Server 2008 或 R2，为什么不能激活呢？</dt>
-                     <dd>因为授权原因，Windows Server 2008 或 R2 的 KMS 授权与 Windows 8 的授权不在同一组服务器上，如果提示你当前无法激活，你只需要稍等5分钟，待激活服务切换到你所需要的那组服务器时，便可以激活你的系统了。</dd>
+                     <dt>4. 我从 We 下载站下载安装了 Windows 8 / Server 2008 （或 R2）操作系统，还有 Office 办公套件，为什么不能激活呢？</dt>
+                     <dd>因为授权原因，Windows Server 2008 （含 R2）的 KMS 授权与 Windows 8 、 Office 的授权不在同一组服务器上，请在每小时的前 45 分钟激活 Windows 8 操作系统及 Office 办公套件，或在每小时的后 15 分钟激活 Windows 2008 （含 R2）操作系统。</dd>
                   </dl>
                   <dl>
                      <dt>5. 现在 We KMS 支持 Windows Server 2012 的激活了吗？</dt>
