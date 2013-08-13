@@ -6,7 +6,7 @@
 {% endblock %}
 {% endblock %}
 
-{% block body_attributes %}data-spy="scroll" data-offset="30" data-target=".sidebar"{% endblock %}
+{% block body_attributes %}data-spy="scroll" data-target=".sidebar"{% endblock %}
 
 {% block body %}
       <div class="container">
