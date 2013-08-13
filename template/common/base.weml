@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
    <head>
+      <meta name="description" content="{% block meta_desc %}We · Cloud云技术小组{% endblock %}" />
+      <meta name="keywords" content="大连东软信息学院, 网络中心, We · Cloud云技术小组{% block meta_keywords %}{% endblock %}" />
       <meta charset="UTF-8" />
       <!--[if IE]
          <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
