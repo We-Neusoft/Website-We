@@ -32,7 +32,7 @@
                   <ol start="0">
                      <li>启动 ESET 软件，打开主界面，按键盘上的<code>f5</code>键，弹出<strong>『高级设置』</strong>窗口；</li>
                      <li>在<strong>『高级设置』</strong>窗口的左侧窗格中，依次选择<strong>「更新」</strong>、<strong>「更新」</strong>，在右侧窗格中，先将<strong>「用户名」</strong>和<strong>「密码」</strong>输入框填入小写的<code>we</code>，再单击<strong>「高级更新设置」</strong>后面的<strong>「设置」</strong>按钮；</li>
-                     <li>在新弹出<strong>『高级设置』</strong>的窗口中，选择<strong>「 HTTP 代理」</strong>选项卡，在<strong>「 HTTP 代理」</strong>选项卡中，选择<strong>「通过代理服务器连接」</strong>，并在<strong>「代理服务器」</strong>和<strong>「端口」</strong>输入框内填入<code>proxy.we.neusoft.edu.cn</code>和<code>80</code>，<strong>「用户名」</strong>和<strong>「密码」</strong>输入框留空。设置完成后单击<strong>「确定」</strong>按钮关闭该弹出窗口；</li>
+                     <li>在新弹出<strong>『高级设置』</strong>的窗口中，选择<strong>「 HTTP 代理」</strong>选项卡，在<strong>「 HTTP 代理」</strong>选项卡中，选择<strong>「通过代理服务器连接」</strong>，并在<strong>「代理服务器」</strong>和<strong>「端口」</strong>输入框内填入<code>eset.we.neusoft.edu.cn</code>和<code>80</code>，<strong>「用户名」</strong>和<strong>「密码」</strong>输入框留空。设置完成后单击<strong>「确定」</strong>按钮关闭该弹出窗口；</li>
                      <li>再单击<strong>「确定」</strong>按钮，关闭<strong>『高级设置』</strong>窗口返回到主界面。</li>
                   </ol>
                   <p class="text-success">恭喜你，你已经成功设置你的 ESET 安全软件从 We 服务器来激活及更新病毒库啦！</p>
@@ -46,11 +46,11 @@
                      <dd>是的。只要你激活一次，这套安全软件就可以一直使用，直到你卸载掉为止。</dd>
                   </dl>
                   <dl>
-                     <dt>3. 我给家里的电脑也用上面的安装文件进行安装，是不是也可以激活和更新呢？</dt>
+                     <dt>2. 我给家里的电脑也用上面的安装文件进行安装，是不是也可以激活和更新呢？</dt>
                      <dd>不能。 We 服务器只对校园网内的用户提供激活及更新支持，如果你要给校园网以外的计算机使用 We 提供的安装文件进行安装的话，是无法通过 We 进行激活与更新的。</dd>
                   </dl>
                   <dl>
-                     <dt>4. 我已经正确设置从 We 更新病毒库，但是为什么显示的版本日期总是昨天的日期呢？</dt>
+                     <dt>3. 我已经正确设置从 We 更新病毒库，但是为什么显示的版本日期总是昨天的日期呢？</dt>
                      <dd>首先请放心，这是正常现象。造成这种现象的原因是时差问题，众所周知，中国大陆地区使用的东8区北京时间，要早于世界很多国家的时候，其中也包括 ESET 公司的时间，当北京时间已经到了“今天”时， ESET 公司所在国家还是处于“昨天”，所以你看到的版本日期也会显示成“昨天”的日期。等到傍晚以后，你将会更新到“今天”的第一个版本。</dd>
                   </dl>
                </section>
