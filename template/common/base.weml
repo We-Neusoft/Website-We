@@ -18,20 +18,18 @@
       <![endif]-->
    </head>
    <body {% block body_attributes %}{% endblock %}>
-      <nav class="navbar navbar-fixed-top">
-         <div class="navbar-inner">
-            <div class="container">
-               <a class="brand" href="http://we">http://we</a>
-               <ul class="nav">
-                  <li class="{{ nav_www }}"><a href="http://we.neusoft.edu.cn">首页</a></li>
-                  <li class="{{ nav_mirror }}"><a href="http://mirrors.neusoft.edu.cn">开源镜像</a></li>
-                  <li class="{{ nav_download }}"><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
-               </ul>
-               <ul class="nav pull-right">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+         <div class="container">
+            <a class="brand" href="http://we">http://we</a>
+            <ul class="nav">
+               <li class="{{ nav_www }}"><a href="http://we.neusoft.edu.cn">首页</a></li>
+               <li class="{{ nav_mirror }}"><a href="http://mirrors.neusoft.edu.cn">开源镜像</a></li>
+               <li class="{{ nav_download }}"><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
+            </ul>
+            <ul class="nav pull-right">
 {% block nav_more %}
 {% endblock %}
-               </ul>
-            </div>
+            </ul>
          </div>
       </nav>
 {% block main %}
