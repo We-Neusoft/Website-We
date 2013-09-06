@@ -12,11 +12,13 @@
 {% block nav_list %}
                   <li class="active"><a href="#wsus"><i class="glyphicon glyphicon-chevron-right"></i>Windows Server 更新服务</a></li>
                   <li><a href="#kms"><i class="glyphicon glyphicon-chevron-right"></i>密钥管理服务</a></li>
+                  <li><a href="#pxe"><i class="glyphicon glyphicon-chevron-right"></i>预启动执行环境</a></li>
                   <li><a href="#eset"><i class="glyphicon glyphicon-chevron-right"></i>ESET 病毒库更新</a></li>
 {% endblock %}
 
 {% block content %}
 {% include "www/include/wsus.weml" %}
 {% include "www/include/kms.weml" %}
+{% include "www/include/pxe.weml" %}
 {% include "www/include/eset.weml" %}
 {% endblock %}
