@@ -1,4 +1,5 @@
 body {
+   padding-top: 70px;
    text-shadow: 1px 1px 2px #CCC;
 }
 
@@ -14,6 +15,6 @@ section p {
    text-align: center;
 }
 
-.blocks div div.span4 h2 {
+.blocks div div.col-md-4 h2 {
    text-align: center;
 }
