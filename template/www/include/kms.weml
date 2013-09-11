@@ -6,7 +6,7 @@
                   <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 及 Office 2010 开始，微软将系统批量授权机制升级到了 VA 2.0  （ VA 1.0 只需要使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
                   <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统或 Office 办公套件，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及 Windows Server 2008 R2 和 Windows Server 2008 的所有版本，以及 Office 2010、Office 2013 办公套件。</p>
                   <h2>系统下载</h2>
-                  <p>下表中列出了 We KMS 所支持的 Windows 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
+                  <p>下表中列出了 We KMS 所支持的 Windows 及 Office 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
                   <table class="table table-hover">
                      <thead>
                         <tr><th>软件版本</th><th>32 位简体中文版</th><th>64 位简体中文版</th><th>32 位英文版</th><th>64 位英文版</th></tr>
