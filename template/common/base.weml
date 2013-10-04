@@ -24,6 +24,7 @@
             <ul class="nav navbar-nav">
                <li class="{{ nav_www }}"><a href="http://we.neusoft.edu.cn">首页</a></li>
                <li class="{{ nav_mirror }}"><a href="http://mirrors.neusoft.edu.cn">开源镜像</a></li>
+               <li class="{{ nav_dreamspark }}"><a href="http://dreamspark.we.neusoft.edu.cn">DreamSpark 镜像下载</a></li>
                <li class="{{ nav_download }}"><a href="http://download.we.neusoft.edu.cn">软件下载（临时）</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
