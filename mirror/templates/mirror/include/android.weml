@@ -1,0 +1,11 @@
+               <section id="android">
+                  <header class="page-header">
+                     <h1>Android <small>Android SDK</small></h1>
+                  </header>
+                  <h2>配置步骤</h2>
+                  <ol start="0">
+                     <li>启动 Android SDK Manager ，打开主界面，依次选择<strong>「Tools」</strong>、<strong>「Options...」</strong>，弹出<strong>『Android SDK Manager - Settings』</strong>窗口；</li>
+                     <li>在<strong>『Android SDK Manager - Settings』</strong>窗口中，在<strong>「HTTP Proxy Server」</strong>和<strong>「HTTP Proxy Port」</strong>输入框内填入<code>mirrors.neusoft.edu.cn</code>和<code>80</code>，并且选中<strong>「Force https://... sources to be fetched using http://...」</strong>复选框。设置完成后单击<strong>「Close」</strong>按钮关闭<strong>『Android SDK Manager - Settings』</strong>窗口返回到主界面；</li>
+                     <li>依次选择<strong>「Packages」</strong>、<strong>「Reload」</strong>。
+                  </ol>
+               </section>

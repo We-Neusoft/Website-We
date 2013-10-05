@@ -1,0 +1,42 @@
+{% extends "we/hero.weml" %}
+
+{% block title %}首页{% endblock %}
+
+{% block nav_more %}
+{% include "www/include/nav_more.weml" %}
+{% endblock %}
+
+{% block hero_title %}We · Cloud云技术小组{% endblock %}
+{% block hero_subtitle %}网站仍在开发中，敬请期待……{% endblock %}
+
+{% block content %}
+        <div class="container">
+            <form action="https://www.google.com/search" class="form-inline" role="form">
+                <input type="hidden" name="hl" value="en" />
+                <div class="form-group col-lg-offset-2 col-lg-6">
+                    <input type="text" name="q" class="form-control" placeholder="大连东软信息学院" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default">
+                        <span class="glyphicon glyphicon-search"></span> Google Search
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="container blocks">
+            <div class="row-fluid">
+                <div class="col-md-4">
+                    <h2>开源</h2>
+                    <p>We所采用的全部技术均为开源技术。同时，We所有的技术也完全开源，你可以随时从We的<a href="https://github.com/We-Neusoft/We">代码托管站</a>浏览及下载我们全部的文档及源码。
+                </div>
+                <div class="col-md-4">
+                    <h2>同等</h2>
+                    <p>We对所有人均提供完全同等的无偿服务。无论你是否加入We小组，只要是他人在We能得到的服务、技术与支持，你也同样可以无偿的得到。</p>
+                </div>
+                <div class="col-md-4">
+                    <h2>自由</h2>
+                    <p>We·Cloud云技术小组QQ群号为85949649，你可以在里面自由的说出任何想法，提出任何问题，只要在We的能力范围内都将会尽力解答。</p>
+                </div>
+            </div>
+        </div>
+{% endblock %}

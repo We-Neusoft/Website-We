@@ -1,0 +1,12 @@
+{% extends "we/sidenav_base.weml" %}
+
+{% block hero %}
+        <header class="container">
+            <div class="jumbotron">
+                <h1>{% block hero_title %}{% endblock %}</h1>
+                <p>{% block hero_subtitle %}{% endblock %}</p>
+            </div>
+        </header>
+{% endblock %}
+
+{% block data_offset_top %}280{% endblock %}

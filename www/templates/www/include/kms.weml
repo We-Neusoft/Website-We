@@ -1,0 +1,147 @@
+                    <section id="kms">
+                        <header class="page-header">
+                            <h1>密钥管理服务 <small>Key Management Service</small></h1>
+                        </header>
+                        <h2>服务介绍</h2>
+                        <p>密钥管理服务是微软针对企业内部提供的一套操作系统集中授权激活服务。自从 Windows Vista 及 Office 2010 开始，微软将系统批量授权机制升级（ 只有 VA 1.0 仅通过使用批量激活序列号安装操作系统即可永久使用），相对应的， KMS 服务器便是授权服务器。</p>
+                        <p>We 在校园网内安装了一台 KMS 服务器，只要你安装的是批量授权版的 Windows 操作系统或 Office 办公套件，在校园网内无需做任何设置，就可以直接通过 We KMS 服务器进行激活授权。目前 We KMS 支持激活的操作系统有 Windows 8 企业版、 Windows 8 专业版、 Windows 7 企业版、 Windows 7 专业版、 Windows Vista 企业版、 Windows Vista 商业版以及Windows Server 2012 、 Windows Server 2008 R2 、 Windows Server 2008 的所有版本，以及 Office 2010、Office 2013 办公套件。</p>
+                        <h2>镜像下载</h2>
+                        <p>下表中列出了 We KMS 所支持的 Windows 及 Office 安装光盘镜像下载，所有光盘镜像均为微软原版镜像，未经任何修改。</p>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr><th>软件版本</th><th>32 位简体中文版</th><th>64 位简体中文版</th><th>32 位英文版</th><th>64 位英文版</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Windows 8 企业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_enterprise_x86_dvd_917682.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_enterprise_x64_dvd_917570.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_enterprise_x86_dvd_917587.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_enterprise_x64_dvd_917522.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows 8 专业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_pro_vl_x86_dvd_917720.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_8_pro_vl_x64_dvd_917773.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_pro_vl_x86_dvd_917830.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_8_pro_vl_x64_dvd_917699.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows 7 企业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_enterprise_with_sp1_x86_dvd_u_677716.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_enterprise_with_sp1_x64_dvd_u_677685.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_enterprise_with_sp1_x86_dvd_u_677710.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_enterprise_with_sp1_x64_dvd_u_677651.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows 7 专业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677939.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677816.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_professional_with_sp1_vl_build_x86_dvd_u_677896.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_7_professional_with_sp1_vl_build_x64_dvd_u_677791.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Vista 企业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_vista_enterprise_with_sp2_x86_dvd_x15-40257.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_vista_enterprise_with_sp2_x64_dvd_x15-40402.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_enterprise_sp2_x86_dvd_342329.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_enterprise_sp2_x64_dvd_342332.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Vista 商业版</td>
+                                    <td class="muted">无此版本</td>
+                                    <td class="muted">无此版本</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_business_sp2_x86_dvd_342321.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_vista_business_sp2_x64_dvd_342327.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Server 2012</td>
+                                    <td class="muted">无此版本</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_2012_vl_x64_dvd_917962.iso">点此下载</a></td>
+                                    <td class="muted">无此版本</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2012_vl_x64_dvd_917758.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Server 2008 R2</td>
+                                    <td class="muted">无此版本</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_x64_dvd_617598.iso">点此下载</a></td>
+                                    <td class="muted">无此版本</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_r2_standard_enterprise_datacenter_and_web_with_sp1_vl_build_x64_dvd_617403.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Windows Server 2008</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_standard_enterprise_and_datacenter_with_sp2_x86_dvd_x15-41045.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/cn_windows_server_2008_standard_enterprise_and_datacenter_with_sp2_x64_dvd_x15-41319.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_datacenter_enterprise_standard_sp2_x86_dvd_342333.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Windows/en_windows_server_2008_datacenter_enterprise_standard_sp2_x64_dvd_342336.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 2013 专业增强版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2013_W32_ChnSimp_MLF_X18-55126.ISO">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2013_64Bit_ChnSimp_MLF_X18-55285.ISO">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2013_W32_English_MLF_X18-55138.ISO">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2013_64Bit_English_MLF_X18-55297.ISO">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 2010 专业增强版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2010_W32_ChnSimp_MLF_X16-52528.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2010_64Bit_ChnSimp_MLF_X16-52534.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2010_W32_English_MLF_X16-52536.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Office_Professional_Plus_2010_64Bit_English_MLF_X16-52545.iso">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Project 2013 专业版</td>
+                                    <td class="muted">暂无下载</td>
+                                    <td class="muted">暂无下载</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Project_Pro_2013_W32_English_MLF_X18-55020.ISO">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Project_Pro_2013_64Bit_English_MLF_X18-55133.ISO">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Project 2010 专业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Project_Pro_2010w_SP1_W32_ChnSimp_MLF_X17-76643.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Project_Pro_2010w_SP1_64Bit_ChnSimp_MLF_X17-76658.iso">点此下载</a></td>
+                                    <td class="muted">暂无下载</td>
+                                    <td class="muted">暂无下载</td>
+                                </tr>
+                                <tr>
+                                    <td>Visio 2013 专业版</td>
+                                    <td class="muted">暂无下载</td>
+                                    <td class="muted">暂无下载</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Visio_Pro_2013_W32_English_MLF_X18-60986.ISO">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Visio_Pro_2013_64Bit_English_MLF_X18-61014.ISO">点此下载</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Visio 2010 专业版</td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Visio_Premium_2010w_SP1_W32_ChnSimp_Std_Pro_Prem_MLF_X17-75847.iso">点此下载</a></td>
+                                    <td><a href="http://download.we.neusoft.edu.cn/MSDN/Office/SW_DVD5_Visio_Premium_2010w_SP1_64Bit_ChnSimp_Std_Pro_Prem_MLF_X17-75849.iso">点此下载</a></td>
+                                    <td class="muted">暂无下载</td>
+                                    <td class="muted">暂无下载</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h2>常见问题</h2>
+                        <dl>
+                            <dt>0. 企业版是什么版？为什么没有旗舰版呢？</dt>
+                            <dd>企业版其实就是“旗舰批量授权版”，两者除了授权方式不同以外，其他功能上完全一致。</dd>
+                        </dl>
+                        <dl>
+                            <dt>1. 我使用上面的光盘镜像安装了操作系统和办公套件，要如何操作才能激活？我可不可以使用别的光盘镜像安装来从 We KMS 激活？</dt>
+                            <dd>如果你使用 We 提供的光盘镜像安装，安装完成后无法做任何设置，连接校园网后便会自动激活。如果你是从其他地方下载的批量授权版本镜像，也一样可以从 We KMS 激活。</dd>
+                        </dl>
+                        <dl>
+                            <dt>2. 是不是激活以后就永远可以使用呢？</dt>
+                            <dd>不是的。按照微软的激活策略，激活后最多可以使用 180 天。不过不用担心，只要你在校园网内使用，系统每次连接到 We KMS 服务器时，都会将时间重置到 180 天，即使你放假回家， 180 天的激活期也足够使用到你返校的了。</dd>
+                        </dl>
+                        <dl>
+                            <dt>3. 我给家里的电脑也用上面的光盘镜像安装，是不是也可以激活呢？</dt>
+                            <dd>不能。 We KMS 服务器只对校园网内的用户提供激活支持，如果你要给校园网以外的计算机使用 We 提供的光盘镜像安装的话，是无法通过 We KMS 进行激活的。</dd>
+                        </dl>
+                        <dl>
+                            <dt>4. 我从 We 下载站下载安装了上面列表中的镜像，为什么不能激活呢？</dt>
+                            <dd>因为授权原因，Windows Server 的 KMS 授权与 Office 的授权不在同一组服务器上，请在每小时的前 45 分钟激活 Office 办公套件，或在每小时的后 15 分钟激活 Windows Server 操作系统。</dd>
+                        </dl>
+                        <dl>
+                            <dt>5. 现在 We KMS 支持 Windows 8.1 / Server 2012 R2 的激活了吗？</dt>
+                            <dd>抱歉， We KMS 暂时还不支持 Windows 8.1 / Server 2012 R2 操作系统的激活。你可以尝试从网络上寻找其他方式进行激活，或者等 We KMS 支持 Windows 8.1 / Server 2012 R2 时，你的系统也将自动激活。</dd>
+                        </dl>
+                    </section>

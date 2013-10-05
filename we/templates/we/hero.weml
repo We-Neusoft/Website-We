@@ -1,0 +1,10 @@
+{% extends "we/base.weml" %}
+
+{% block hero %}
+        <header class="container">
+            <div class="jumbotron">
+                <h1>{% block hero_title %}{% endblock %}</h1>
+                <p>{% block hero_subtitle %}{% endblock %}</p>
+            </div>
+        </header>
+{% endblock %}
