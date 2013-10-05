@@ -1,0 +1,42 @@
+{% extends "we/hero.weml" %}
+
+{% block meta_desc %}We - 开源镜像站由大连东软信息学院网络中心提供硬件及网络资源支持，We·Cloud云技术小组负责开发、运行及维护，面向校园网及互联网提供开源镜像服务。{% endblock %}
+{% block meta_keywords %}, 开源镜像站{% endblock %}
+
+{% block title %}开源镜像站{% endblock %}
+
+{% block extra_css %}
+      <link href="/css/we-mirror.css" rel="stylesheet" />
+{% endblock %}
+
+{% block nav_more %}
+{% include "mirror/include/nav_more.weml" %}
+{% endblock %}
+
+{% block hero_title %}We - 开源镜像站{% endblock %}
+{% block hero_subtitle %}咱东软信息学院自己的开源镜像站！{% endblock %}
+
+{% block content %}
+      <div class="container">
+         <table class="table table-hover">
+            <thead>
+               <tr><th>源名称</th><th>当前状态</th><th>文件总数量</th><th>文件总大小</th><th>上次同步成功时间</th><th>配置说明</th></tr>
+            </thead>
+            <tbody>
+{% for result in results %}
+               <tr>
+                  <td><a href="{{ result.mirror }}/">{{ result.mirror }}</a></td>
+                  <td class="we-mirror-{{ result.style }}">{{ result.status }}</td>
+                  <td>{{ result.count }}</td>
+                  <td>{{ result.size }}</td>
+                  <td>{{ result.timestamp }}</td>
+                  <td><a href="configurations.we#{{ result.mirror }}"><i class="glyphicon glyphicon-arrow-right"></i></a></td>
+               </tr>
+{% endfor %}
+            </tbody>
+         </table>
+      </div>
+      <div class="container">
+         <img src="traffic.png" />
+      </div>
+{% endblock %}
