@@ -11,6 +11,10 @@ section p {
    text-indent: 2em;
 }
 
+li p {
+   text-indent: 0em;
+}
+
 .table th, .table td {
    text-align: center;
 }
