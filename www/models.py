@@ -1,6 +1,7 @@
+#coding=utf-8
 from django.db import models
 
-# Create your models here.
+# 更多服务
 class MoreService(models.Model):
     key = models.CharField(max_length=16)
     order = models.IntegerField()

@@ -1,29 +1,17 @@
 #coding=utf-8
 import json
-import time
 import memcache
+import time
 
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
+
 from utils.unit import file_size
 
 pathname = '/storage/mirror/'
 memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 
-def timestamp_to_localtime(timestamp): 
-    return time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(timestamp))
-
-def get_value(mirror, key, time=0):
-    if (mirror == 'cpan' and key == 'timestamp'):
-        return timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
-
-    value = memcached.get(mirror + '_' + key)
-    if not value:
-        value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
-        memcached.set(mirror + '_' + key, value, time)
-
-    return value
-
+# 首页
 def index(request):
     mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp']
     results = []
@@ -53,6 +41,22 @@ def index(request):
 
     return render_to_response('mirror/index.weml', {'nav_mirror': 'active', 'results': results})
 
+# 配置说明
 def configurations(request):
     return render_to_response('mirror/configurations.weml', {'nav_mirror': 'active'})
 
+# 从memcache中获得数据
+def get_value(mirror, key, time=0):
+    if (mirror == 'cpan' and key == 'timestamp'):
+        return timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
+
+    value = memcached.get(mirror + '_' + key)
+    if not value:
+        value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
+        memcached.set(mirror + '_' + key, value, time)
+
+    return value
+
+# 将timestamp转换成本地时间
+def timestamp_to_localtime(timestamp): 
+    return time.strftime('%Y-%m-%d %H:%M:%S %Z', time.localtime(timestamp))
