@@ -1,17 +1,19 @@
-# Create your views here.
+#coding=utf-8
 from django.shortcuts import render_to_response
 
 from markdown import markdown
 
 from www.models import MoreService
 
+# 首页
 def index(request):
-    more_services = MoreService.objects.all()
     return render_to_response('www/index.weml', {'nav_www': 'active', 'services': get_services()})
 
+# 更多服务
 def more_services(request):
     return render_to_response('www/more_services.weml', {'nav_www': 'active', 'services': get_services()})
 
+# 获得更多服务列表
 def get_services():
     services = []
 
