@@ -17,7 +17,7 @@ def more_services(request):
 def get_services():
     services = []
 
-    more_services = MoreService.objects.all().order_by('order')
+    more_services = MoreService.objects.filter(intranet=True).order_by('order')
     for more_service in more_services:
         services.append({
             'key': more_service.key,

@@ -8,4 +8,6 @@ class MoreService(models.Model):
     title = models.CharField(max_length=64)
     subtitle = models.CharField(max_length=64)
     content = models.TextField()
+    intranet = models.BooleanField()
+    internet = models.BooleanField()
     modified = models.DateTimeField(auto_now=True)
