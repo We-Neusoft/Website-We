@@ -7,11 +7,11 @@ from www.models import MoreService
 
 # 首页
 def index(request):
-    return render_to_response('www/index.weml', {'nav_www': 'active', 'services': get_services()})
+    return render_to_response('www/index.html', {'nav_www': 'active', 'services': get_services()})
 
 # 更多服务
 def more_services(request):
-    return render_to_response('www/more_services.weml', {'nav_www': 'active', 'services': get_services()})
+    return render_to_response('www/more_services.html', {'nav_www': 'active', 'services': get_services()})
 
 # 获得更多服务列表
 def get_services():

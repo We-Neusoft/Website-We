@@ -39,11 +39,11 @@ def index(request):
 
         results.append({'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp})
 
-    return render_to_response('mirror/index.weml', {'nav_mirror': 'active', 'results': results})
+    return render_to_response('mirror/index.html', {'nav_mirror': 'active', 'results': results})
 
 # 配置说明
 def configurations(request):
-    return render_to_response('mirror/configurations.weml', {'nav_mirror': 'active'})
+    return render_to_response('mirror/configurations.html', {'nav_mirror': 'active'})
 
 # 从memcache中获得数据
 def get_value(mirror, key, time=0):
