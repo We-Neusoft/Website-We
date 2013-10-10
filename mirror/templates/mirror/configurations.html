@@ -1,4 +1,4 @@
-{% extends "we/sidenav_hero.weml" %}
+{% extends "we/sidenav_hero.html" %}
 
 {% block title %}配置说明 - 开源镜像站{% endblock %}
 
@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block nav_more %}
-{% include "mirror/include/nav_more.weml" %}
+{% include "mirror/include/nav_more.html" %}
 {% endblock %}
 
 {% block hero_title %}We - 开源镜像站{% endblock %}
@@ -20,9 +20,9 @@
 {% endblock %}
 
 {% block content %}
-{% include "mirror/include/centos.weml" %}
-{% include "mirror/include/epel.weml" %}
-{% include "mirror/include/android.weml" %}
+{% include "mirror/include/centos.html" %}
+{% include "mirror/include/epel.html" %}
+{% include "mirror/include/android.html" %}
 {% endblock %}
 
 {% block more_js %}
