@@ -6,7 +6,7 @@ import time
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
 
-from utils.unit import file_size
+from we.utils.unit import file_size
 
 pathname = '/storage/mirror/'
 memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
