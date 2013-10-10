@@ -3,12 +3,11 @@ from django.contrib import admin
 from www.models import MoreService
 
 class MoreServiceAdmin(admin.ModelAdmin):
-    list_display = ('order', 'key', 'title', 'subtitle', 'modified')
+    list_display = ('order', 'key', 'title', 'subtitle', 'intranet', 'internet', 'modified')
     fieldsets = [
-        ('标识', {'fields': ['key', 'order']}),
-        ('显示', {'fields': ['intranet', 'internet']}),
-        ('标题', {'fields': ['title', 'subtitle']}),
-        ('内容', {'fields': ['content']}),
+        ('属性', {'fields': ['key', 'order']}),
+        ('可见性', {'fields': ['intranet', 'internet']}),
+        ('内容', {'fields': ['title', 'subtitle', 'content']}),
     ]
 
 admin.site.register(MoreService, MoreServiceAdmin)
