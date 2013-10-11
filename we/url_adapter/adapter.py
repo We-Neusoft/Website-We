@@ -1,6 +1,6 @@
-from django.conf import settings
-
 import re
+
+from django.conf import settings
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
@@ -17,11 +17,12 @@ class AdapterMiddleware(object):
 
     def handle_href(self, match):
         target_app = match.group(1)
-        target_href = match.group(2)
+        target_url = match.group(2)
 
+        return '<a href="' + handle_url(target_app, target_url) + '">'
+
+    def handle_url(self, target_app, target_url):
         if target_app == self.app:
-            result_href = '/' + target_href
+            return '/' + target_url
         else:
-            result_href = '://' + target_app + '.we.neusoft.edu.cn/' + target_href
-
-        return '<a href="' + result_href + '">'
+            return '://' + target_app + '.we.neusoft.edu.cn/' + target_url
