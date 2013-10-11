@@ -1,7 +1,9 @@
-from django.conf.urls import patterns
+from django.conf.urls import patterns, url
+
+from www import views
 
 urlpatterns = patterns('',
-    (r'^$', 'www.views.index'),
-    (r'^index.we$', 'www.views.index'),
-    (r'^more_services.we$', 'www.views.more_services'),
+    (r'^$', views.index),
+    (r'^index.we$', views.index),
+    url(r'^more_services.we$', views.more_services, name='more_services'),
 )
