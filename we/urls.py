@@ -8,9 +8,8 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'we.views.home', name='home'),
     # url(r'^we/', include('we.foo.urls')),
-    (r'', include('www.urls')),
-    (r'^www/', include('www.urls')),
-    (r'^mirror/', include('mirror.urls')),
+    (r'^www/', include('www.urls', namespace='www')),
+    (r'^mirror/', include('mirror.urls', namespace='mirror')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

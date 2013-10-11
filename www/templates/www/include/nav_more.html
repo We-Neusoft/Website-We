@@ -2,7 +2,7 @@
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务&nbsp;<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         {% for service in services %}
-                            <li><a href="more_services.we#{{ service.key }}">{{ service.title }}</a></li>
+                            <li><a href="{% url 'www:more_services' %}#{{ service.key }}">{{ service.title }}</a></li>
                         {% endfor %}
                         </ul>
                     </li>

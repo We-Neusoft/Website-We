@@ -12,6 +12,9 @@ class MoreService(models.Model):
     internet = models.BooleanField('互联网')
     modified = models.DateTimeField('最后修改', auto_now=True)
 
+    def __unicode__(self):
+        return self.title
+
     class Meta:
         ordering = ['order']
         verbose_name = '更多服务'
