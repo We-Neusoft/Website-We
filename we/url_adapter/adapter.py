@@ -19,10 +19,10 @@ class AdapterMiddleware(object):
         target_app = match.group(1)
         target_url = match.group(2)
 
-        return '<a href="' + handle_url(target_app, target_url) + '">'
+        return '<a href="' + self.handle_url(target_app, target_url) + '">'
 
     def handle_url(self, target_app, target_url):
         if target_app == self.app:
             return '/' + target_url
         else:
-            return '://' + target_app + '.we.neusoft.edu.cn/' + target_url
+            return '//' + target_app + '.we.neusoft.edu.cn/' + target_url
