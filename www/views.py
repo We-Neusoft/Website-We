@@ -1,5 +1,6 @@
 #coding=utf-8
 from django.shortcuts import render_to_response
+from django.views import generic
 
 from markdown import markdown
 
@@ -10,8 +11,12 @@ def index(request):
     return render_to_response('www/index.html', {'nav_www': 'active', 'services': get_services()})
 
 # 更多服务
-def more_services(request):
-    return render_to_response('www/more_services.html', {'nav_www': 'active', 'services': get_services()})
+class MoreServicesView(generic.ListView):
+    template_name = 'www/more_services.html'
+    context_object_name = 'more_service_list'
+
+    def get_queryset(self):
+        return get_services()
 
 # 获得更多服务列表
 def get_services():
