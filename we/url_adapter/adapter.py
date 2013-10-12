@@ -11,7 +11,7 @@ class AdapterMiddleware(object):
         if DEBUG_ENABLED:
             return response
 
-        response.content = re.sub(r'<a href="/([^/]+)/([^"]+)">', self.handle_href, response.content)
+        response.content = re.sub(r'<a href="/([^/]+)/([^"]*)">', self.handle_href, response.content)
 
         return response
 
@@ -25,4 +25,12 @@ class AdapterMiddleware(object):
         if target_app == self.app:
             return '/' + target_url
         else:
-            return '//' + target_app + '.we.neusoft.edu.cn/' + target_url
+            return '//' + self.handle_domain(target_app) + '/' + target_url
+
+    def handle_domain(self, target_app):
+        if target_app == 'www':
+            return 'we.neusoft.edu.cn'
+        elif target_app == 'mirror':
+            return 'mirrors.neusoft.edu.cn'
+        else:
+            return target_app + '.we.neusoft.edu.cn'
