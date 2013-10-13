@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +15,7 @@
 {% endblock %}
 {% endblock %}
         <!--[if lt IE 9]>
-            <script src="/js/html5shiv.js"></script>
+            <script src="{% static 'js/html5shiv.js' %}"></script>
         <![endif]-->
     </head>
     <body {% block body_attributes %}{% endblock %}>
