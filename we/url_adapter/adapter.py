@@ -8,8 +8,8 @@ class AdapterMiddleware(object):
     def process_response(self, request, response):
         self.app = re.match(r'/([^/]+)/', request.path).group(1)
 
-#        if DEBUG_ENABLED:
-#            return response
+        if DEBUG_ENABLED:
+            return response
 
         response.content = re.sub(r'<a href="/([^/]+)/([^"]*)">', self.handle_a, response.content)
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)
