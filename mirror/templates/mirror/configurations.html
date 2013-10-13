@@ -1,9 +1,10 @@
+{% load staticfiles %}
 {% extends "we/sidenav_hero.html" %}
 
 {% block title %}配置说明 - 开源镜像站{% endblock %}
 
 {% block more_css %}
-      <link href="/css/prettify.css" rel="stylesheet" />
+      <link href="{% static 'css/prettify.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block nav_more %}
@@ -26,7 +27,7 @@
 {% endblock %}
 
 {% block more_js %}
-      <script src="/js/prettify.js"></script>
+      <script src="{% static 'js/prettify.js' %}"></script>
       <script type="application/javascript">
          pretty_print();
       </script>
