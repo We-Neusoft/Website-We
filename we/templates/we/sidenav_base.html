@@ -1,7 +1,8 @@
+{% load staticfiles %}
 {% extends "we/base.html" %}
 
 {% block extra_css %}
-        <link href="/css/we-sidenav.css" rel="stylesheet" />
+        <link href="{% static 'css/we-sidenav.css' %}" rel="stylesheet" />
 {% block more_css %}
 {% endblock %}
 {% endblock %}

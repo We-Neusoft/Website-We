@@ -1,3 +1,4 @@
+{% load staticfiles %}
 {% extends "we/hero.html" %}
 
 {% block meta_desc %}We - 开源镜像站由大连东软信息学院网络中心提供硬件及网络资源支持，We·Cloud云技术小组负责开发、运行及维护，面向校园网及互联网提供开源镜像服务。{% endblock %}
@@ -6,7 +7,7 @@
 {% block title %}开源镜像站{% endblock %}
 
 {% block extra_css %}
-      <link href="/css/we-mirror.css" rel="stylesheet" />
+      <link href="{% static 'css/we-mirror.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block nav_more %}
