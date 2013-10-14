@@ -1,9 +1,14 @@
 #coding=utf-8
+import uuid
+
 from django.db import models
+
+from django_uuid_pk.fields import UUIDField
 
 # 更多服务
 class MoreService(models.Model):
-    key = models.CharField('标识', max_length=16)
+    id = UUIDField(namespace=uuid.NAMESPACE_DNS, name='we.neusoft.edu.cn', primary_key=True)
+    key = models.CharField('标识', max_length=16, unique=True)
     order = models.IntegerField('排序')
     title = models.CharField('标题', max_length=64)
     subtitle = models.CharField('副标题', max_length=64)
@@ -16,6 +21,6 @@ class MoreService(models.Model):
         return self.title
 
     class Meta:
-        ordering = ['order']
+        ordering = ['order', 'key']
         verbose_name = '更多服务'
         verbose_name_plural = '更多服务'
