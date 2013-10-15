@@ -1,8 +1,8 @@
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">更多服务&nbsp;<b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                        {% for service in services %}
-                            <li><a href="{% url 'www:more_services' %}#{{ service.key }}">{{ service.title }}</a></li>
+                        {% for more_service in more_service_list %}
+                            <li><a href="{% url 'www:more_services' %}#{{ more_service.key }}">{{ more_service.title }}</a></li>
                         {% endfor %}
                         </ul>
                     </li>

@@ -8,7 +8,7 @@ from www.models import MoreService
 
 # 首页
 def index(request):
-    return render_to_response('www/index.html', {'nav_www': 'active', 'services': get_services()})
+    return render_to_response('www/index.html', {'nav_www': 'active', 'more_service_list': get_services()})
 
 # 更多服务
 class MoreServicesView(generic.ListView):
