@@ -18,6 +18,11 @@ class MoreServicesView(generic.ListView):
     def get_queryset(self):
         return get_services()
 
+    def get_context_data(self, **kwargs):
+        context = super(MoreServicesView, self).get_context_data(**kwargs)
+        context['nav_www'] = 'active'
+        return context
+
 # 获得更多服务列表
 def get_services():
     services = []
