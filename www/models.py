@@ -7,7 +7,7 @@ from django_uuid_pk.fields import UUIDField
 
 # 更多服务
 class MoreService(models.Model):
-    id = UUIDField(namespace=uuid.NAMESPACE_DNS, name='we.neusoft.edu.cn', primary_key=True)
+    id = UUIDField(primary_key=True)
     key = models.CharField('标识', max_length=16, unique=True)
     order = models.IntegerField('排序')
     title = models.CharField('标题', max_length=64)
