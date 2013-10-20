@@ -10,6 +10,8 @@ class AdapterMiddleware(object):
 
         if DEBUG_ENABLED:
             return response
+        if not hasattr(response, 'content'):
+            return response
 
         response.content = re.sub(r'<a href="/([^/]+)/([^"]*)">', self.handle_a, response.content)
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)

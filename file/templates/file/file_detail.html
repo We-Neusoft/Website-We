@@ -31,7 +31,7 @@
         <td rowspan="2">
           <a href="{% url 'file:download' file.id.encode %}">
             <button type="button" class="btn btn-primary">
-              <span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_set.all|length }} 次）
+              <span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_times }} 次）
             </button>
           </a>
         <td><strong>MD5</strong>

@@ -40,6 +40,9 @@ class File(models.Model):
 
         return encoded.decode('base64').encode('hex')
 
+    def download_times(self):
+        return self.download_set.count()
+
     class Meta:
         index_together = [
             ['md5sum', 'sha1sum'],
