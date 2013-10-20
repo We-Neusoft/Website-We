@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block extra_css %}
-        <link href="{% static 'css/we-sidenav.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/we-sidenav.css' %}" rel="stylesheet" />
 {% block more_css %}
 {% endblock %}
 {% endblock %}
@@ -10,20 +10,20 @@
 {% block body_attributes %}data-spy="scroll" data-target=".sidebar"{% endblock %}
 
 {% block body %}
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 sidebar">
-                    <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="{% block data_offset_top %}0{% endblock %}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <ul class="nav nav-list sidenav" data-spy="affix" data-offset-top="{% block data_offset_top %}0{% endblock %}">
 {% block nav_list %}
 {% endblock %}
-                    </ul>
-                </div>
-                <div class="col-md-9">
+        </ul>
+      </div>
+      <div class="col-md-9">
 {% block content %}
 {% endblock %}
-                </div>
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}
 
 {% block extra_js %}

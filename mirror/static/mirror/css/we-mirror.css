@@ -1,3 +1,6 @@
+.table th, .table td {
+   text-align: center;
+}
 .table-hover tbody tr td.we-mirror-success {
    background-color: #3C3;
 }

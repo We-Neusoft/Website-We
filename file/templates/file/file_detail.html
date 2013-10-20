@@ -1,3 +1,45 @@
-<!DOCTYPE html>
-<a href="http://file.we.neusoft.edu.cn/{{ file.crc32|slice:"-2:" }}/{{ file.md5sum|lower }}{{ file.sha1sum|lower }}{{ file.extension }}" download="{{ file.name }}">{{ file.name }}</a>
-<a href="{% url 'file:download' file.id %}" download="{{ file.name }}">{{ file.name }}</a>
+{% extends "we/base.html" %}
+
+{% block title %}下载 {{ file.name }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="page-header">
+      <h1>下载 {{ file.name }}</h1>
+    </div>
+    <table class="table table-bordered">
+      <tr>
+        <td><strong>文件名</strong>
+        <td>{{ file.name }}
+        <td><strong>文件类型</strong>
+        <td>{{ file.extension }}
+      <tr>
+        <td><strong>文件大小</strong>
+        <td>{{ file.size_unit }}</td>
+        <td><strong>MIME信息</strong>
+        <td>{{ file.mime }}</td>
+      <tr>
+        <td><strong>文件属性</strong>
+        <td colspan="3">{{ file.type|truncatechars:80 }}</td>
+      <tr>
+        <td><strong>上传日期</strong>
+        <td>{{ file.created|date:'Y 年 n 月 j 日' }}</td>
+        <td><strong>CRC32</strong>
+        <td>{{ file.crc32 }}</td>
+      <tr>
+        <td rowspan="2"><strong>下载地址</strong>
+        <td rowspan="2">
+          <a href="{% url 'file:download' file.id.encode %}">
+            <button type="button" class="btn btn-primary">
+              <span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_set.all|length }} 次）
+            </button>
+          </a>
+        <td><strong>MD5</strong>
+        <td>{{ file.md5 }}</td>
+      <tr>
+        <td><strong>SHA1</strong>
+        <td>{{ file.sha1 }}</td>
+      <tr>
+    </table>
+  </div>
+{% endblock %}

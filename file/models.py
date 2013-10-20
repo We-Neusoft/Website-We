@@ -5,6 +5,8 @@ from django.db import models
 
 from django_uuid_pk.fields import UUIDField
 
+from we.utils.unit import file_size
+
 class File(models.Model):
     id = UUIDField(primary_key=True)
     name = models.CharField('文件名', max_length=128)
@@ -20,6 +22,24 @@ class File(models.Model):
     def __unicode__(self):
         return self.name
 
+    def size_unit(self):
+        return file_size(self.size)
+
+    def md5(self):
+        return self.decode(self.md5sum)
+
+    def sha1(self):
+        return self.decode(self.sha1sum)
+
+    def decode(self, encoded):
+        encoded = encoded.replace('_', '/').replace('-', '+')
+        if len(encoded) == 22:
+            encoded += '=='
+        elif len(encoded) == 27:
+            encoded += '='
+
+        return encoded.decode('base64').encode('hex')
+
     class Meta:
         index_together = [
             ['md5sum', 'sha1sum'],
@@ -27,3 +47,17 @@ class File(models.Model):
         ordering = ['-created']
         verbose_name = '文件'
         verbose_name_plural = '文件'
+
+class Download(models.Model):
+    file = models.ForeignKey('File', verbose_name='文件', editable=False)
+    ip = models.GenericIPAddressField('用户IP', editable=False)
+    referer = models.URLField('访问来源', null=True, editable=False)
+    time = models.DateTimeField('下载时间', auto_now_add=True, editable=False)
+
+    def __unicode__(self):
+        return self.file.name
+
+    class Meta:
+        ordering = ['-time']
+        verbose_name = '下载记录'
+        verbose_name_plural = '下载记录'
