@@ -1,13 +1,46 @@
 from django.conf import settings
-from django.http import StreamingHttpResponse
+from django.db.models import Count, Sum
+from django.http import HttpResponse, StreamingHttpResponse
+from django.shortcuts import render_to_response
 from django.views import generic
 
+from datetime import date, timedelta
+
 from file.models import File, Download
+from we.utils.unit import file_size
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
+def index(request):
+    unique_files = File.objects.order_by('md5sum', 'sha1sum').distinct('md5sum', 'sha1sum')
+    total_sizes = 0
+    for unique_file in unique_files:
+        total_sizes += unique_file.size
+
+    file = dict()
+    file['total'] = File.objects.count()
+    file['unique'] = len(unique_files)
+    file['size'] = file_size(total_sizes)
+
+    download = dict()
+    download['today'] = len(Download.objects.filter(time__gte=date.today()))
+    download['week'] = len(Download.objects.filter(time__gt=date.today() - timedelta(days=6)))
+    download['total'] = Download.objects.count()
+
+    result = dict()
+    result['nav_file'] = 'active'
+    result['file'] = file
+    result['download'] = download
+
+    return render_to_response('file/index.html', result)
+
 class FileView(generic.DetailView):
     model = File
+
+    def get_context_data(self, **kwargs):
+        context = super(FileView, self).get_context_data(**kwargs)
+        context['nav_file'] = 'active'
+        return context
 
 def download(request, id):
     file = File.objects.get(pk=id)
