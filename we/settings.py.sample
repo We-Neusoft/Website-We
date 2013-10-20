@@ -88,7 +88,6 @@ SECRET_KEY = 'WE_CLOUD'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django_linestripper.stripper.Loader',
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -103,7 +102,6 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'we.url_adapter.adapter.AdapterMiddleware',
-    'django_linestripper.stripper.StripperMiddleware',
 )
 
 ROOT_URLCONF = 'we.urls'
@@ -131,6 +129,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'www',
     'mirror',
+    # 'download',
+    'file',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

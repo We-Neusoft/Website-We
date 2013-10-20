@@ -10,18 +10,18 @@
 {% block hero_subtitle %}网站仍在开发中，敬请期待……{% endblock %}
 
 {% block nav_list %}
-                    {% for more_service in more_service_list %}
-                        <li><a href="#{{ more_service.key }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ more_service.title }}</a></li>
-                    {% endfor %}
+        {% for more_service in more_service_list %}
+          <li><a href="#{{ more_service.key }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ more_service.title }}</a></li>
+        {% endfor %}
 {% endblock %}
 
 {% block content %}
-                {% for more_service in more_service_list %}
-                    <section id="{{ more_service.key }}">
-                        <header class="page-header">
-                            <h1>{{ more_service.title }} <small>{{ more_service.subtitle }}</small></h1>
-                        </header>
+      {% for more_service in more_service_list %}
+        <section id="{{ more_service.key }}">
+          <header class="page-header">
+            <h1>{{ more_service.title }} <small>{{ more_service.subtitle }}</small></h1>
+          </header>
 {% autoescape off %}{{ more_service.content }}{% endautoescape %}
-                    </section>
-                {% endfor %}
+        </section>
+      {% endfor %}
 {% endblock %}

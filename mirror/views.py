@@ -13,7 +13,7 @@ memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 
 # 首页
 def index(request):
-    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp']
+    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp', 'lfs', 'blfs']
     results = []
 
     for mirror in mirrors:
