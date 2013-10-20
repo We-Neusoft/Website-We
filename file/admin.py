@@ -4,7 +4,7 @@ from django.contrib import admin
 from file.models import File, Download
 
 class FileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'extension', 'size', 'type', 'mime', 'crc32', 'md5sum', 'sha1sum', 'created')
+    list_display = ('name', 'extension', 'size', 'type', 'mime', 'crc32', 'md5sum', 'sha1sum', 'created', 'download_times')
 
     def has_add_permission(self, request):
         return False
