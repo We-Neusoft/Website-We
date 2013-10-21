@@ -12,6 +12,8 @@ from we.utils.unit import file_size
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
 def index(request):
+    result = {'nav_file': 'active'}
+
     unique_files = File.objects.order_by('md5sum', 'sha1sum').distinct('md5sum', 'sha1sum')
     total_sizes = 0
     for unique_file in unique_files:
@@ -22,14 +24,13 @@ def index(request):
     file['unique'] = len(unique_files)
     file['size'] = file_size(total_sizes)
 
+    result['file'] = file
+
     download = dict()
     download['today'] = len(Download.objects.filter(time__gte=date.today()))
     download['week'] = len(Download.objects.filter(time__gt=date.today() - timedelta(days=6)))
     download['total'] = Download.objects.count()
 
-    result = dict()
-    result['nav_file'] = 'active'
-    result['file'] = file
     result['download'] = download
 
     return render_to_response('file/index.html', result)
