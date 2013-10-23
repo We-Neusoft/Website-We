@@ -5,14 +5,14 @@
 {% block content %}
   <div class="container">
     <div class="page-header">
-      <h1>下载 {{ file.name }}</h1>
+      <h1 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">关于 {{ file.name }}</h1>
     </div>
     <table class="table table-bordered">
       <tr>
-        <td><strong>文件名</strong>
-        <td>{{ file.name }}
-        <td><strong>文件类型</strong>
-        <td>{{ file.extension }}
+        <td style="width: 10%;"><strong>文件名</strong>
+        <td style="width: 40%;">{{ file.name }}
+        <td style="width: 10%;"><strong>文件类型</strong>
+        <td style="width: 40%;">{{ file.extension }}
       <tr>
         <td><strong>文件大小</strong>
         <td>{{ file.size_unit }}</td>
@@ -20,7 +20,7 @@
         <td>{{ file.mime }}</td>
       <tr>
         <td><strong>文件属性</strong>
-        <td colspan="3">{{ file.type|truncatechars:80 }}</td>
+        <td colspan="3">{{ file.type }}</td>
       <tr>
         <td><strong>上传日期</strong>
         <td>{{ file.created|date:'Y 年 n 月 j 日' }}</td>
@@ -29,11 +29,7 @@
       <tr>
         <td rowspan="2"><strong>下载地址</strong>
         <td rowspan="2">
-          <a href="{% url 'file:download' file.id.encode %}">
-            <button type="button" class="btn btn-primary">
-              <span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_times }} 次）
-            </button>
-          </a>
+          <a href="{% url 'file:download' file.id.encode %}" class="btn btn-primary"><span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_times }} 次）</a>
         <td><strong>MD5</strong>
         <td>{{ file.md5 }}</td>
       <tr>

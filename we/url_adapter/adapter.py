@@ -13,7 +13,7 @@ class AdapterMiddleware(object):
         if not hasattr(response, 'content'):
             return response
 
-        response.content = re.sub(r'<a href="/([^/]+)/([^"]*)">', self.handle_a, response.content)
+        response.content = re.sub(r'<a([^>]*)href="/([^/]+)/([^"]*)"([^>]*)>', self.handle_a, response.content)
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
@@ -21,10 +21,12 @@ class AdapterMiddleware(object):
         return response
 
     def handle_a(self, match):
-        target_app = match.group(1)
-        target_url = match.group(2)
+        target_app = match.group(2)
+        target_url = match.group(3)
+        property_pre = match.group(1)
+        property_suf = match.group(4)
 
-        return '<a href="' + self.handle_url(target_app, target_url) + '">'
+        return '<a' + property_pre + 'href="' + self.handle_url(target_app, target_url) + '"' + property_suf + '>'
 
     def handle_form(self, match):
         target_app = match.group(2)
