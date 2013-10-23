@@ -9,20 +9,28 @@
   <div class="container blocks">
     <div class="row-fluid">
       <div class="col-md-6">
-        <h2>文件统计</h2>
-        <p>
-          <strong>全部文件：</strong>{{ file.total }} 个<br>
-          <strong>物理文件：</strong>{{ file.unique }} 个<br>
-          <strong>占用空间：</strong>{{ file.size }}
-        </p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">文件统计</h3>
+          </div>
+          <div class="panel-body">
+            <strong>全部文件：</strong>{{ file.total }} 个<br>
+            <strong>物理文件：</strong>{{ file.unique }} 个<br>
+            <strong>占用空间：</strong>{{ file.size }}
+          </div>
+        </div>
       </div>
       <div class="col-md-6">
-        <h2>下载统计</h2>
-        <p>
-          <strong>今日下载：</strong>{{ download.today }} 次<br>
-          <strong>一周下载：</strong>{{ download.week }} 次<br>
-          <strong>总共下载：</strong>{{ download.total }} 次
-        </p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">下载统计</h3>
+          </div>
+          <div class="panel-body">
+            <strong>今日下载：</strong>{{ download.today }} 次<br>
+            <strong>一周下载：</strong>{{ download.week }} 次<br>
+            <strong>总共下载：</strong>{{ download.total }} 次
+          </div>
+        </div>
       </div>
     </div>
   </div>

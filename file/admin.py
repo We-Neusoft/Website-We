@@ -4,7 +4,13 @@ from django.contrib import admin
 from file.models import File, Download
 
 class FileAdmin(admin.ModelAdmin):
-    list_display = ('name', 'extension', 'size', 'type', 'mime', 'crc32', 'md5sum', 'sha1sum', 'created', 'download_times')
+    list_display = ('name', 'extension', 'size', 'mime', 'created', 'encoded_id', 'file_path', 'download_times')
+
+    def encoded_id(self, obj):
+        return obj.id.encode()
+
+    def file_path(self, obj):
+        return str(obj.crc32)[-2:] + '/' + obj.md5sum + obj.sha1sum
 
     def has_add_permission(self, request):
         return False
@@ -16,6 +22,6 @@ class DownloadAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return False
 
-    def has_delete_permission(self, request):
+    def has_delete_permission(self, request, obj):
         return False
 admin.site.register(Download, DownloadAdmin)
