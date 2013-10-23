@@ -1,13 +1,10 @@
-{% extends "we/sidenav_hero.html" %}
+{% extends "we/sidenav_base.html" %}
 
 {% block title %}更多服务 - 首页{% endblock %}
 
 {% block nav_more %}
 {% include "www/include/nav_more.html" %}
 {% endblock %}
-
-{% block hero_title %}We · Cloud云技术小组{% endblock %}
-{% block hero_subtitle %}网站仍在开发中，敬请期待……{% endblock %}
 
 {% block nav_list %}
         {% for more_service in more_service_list %}
