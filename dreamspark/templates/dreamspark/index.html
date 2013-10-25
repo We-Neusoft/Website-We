@@ -1,0 +1,49 @@
+{% extends "we/hero.html" %}
+{% load staticfiles %}
+
+{% block title %}DreamSpark镜像{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'dreamspark/css/we-dreamspark.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block hero_title %}We - DreamSpark镜像{% endblock %}
+{% block hero_subtitle %}使用微软软件正版授权——安全、稳定、声誉！{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h3>Windows</h3>
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'dreamspark:download' %}#windows_8_1">Windows 8.1</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_8">Windows 8</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_7">Windows 7</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_vista">Windows Vista</a>
+    </ul>
+    <h3>Windows Server</h3>
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'dreamspark:download' %}#windows_server_2012_r2">Windows Server 2012 R2</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_server_2012">Windows Server 2012</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_server_2008_r2">Windows Server 2008 R2</a>
+      <li><a href="{% url 'dreamspark:download' %}#windows_server_2008">Windows Server 2008</a>
+    </ul>
+    <h3>Visual Studio</h3>
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'dreamspark:download' %}#visual_studio_2013">Visual Studio 2013</a>
+      <li><a href="{% url 'dreamspark:download' %}#visual_studio_2012">Visual Studio 2012</a>
+      <li><a href="{% url 'dreamspark:download' %}#visual_studio_2010">Visual Studio 2010</a>
+      <li><a href="{% url 'dreamspark:download' %}#visual_studio_2008">Visual Studio 2008</a>
+    </ul>
+    <h3>SQL Server</h3>
+    <ul class="nav nav-pills">
+      <li><a href="{% url 'dreamspark:download' %}#sql_server_2012">SQL Server 2012</a>
+      <li><a href="{% url 'dreamspark:download' %}#sql_server_2008_r2">SQL Server 2008 R2</a>
+      <li><a href="{% url 'dreamspark:download' %}#sql_server_2008">SQL Server 2008</a>
+      <li><a href="{% url 'dreamspark:download' %}#sql_server_2005">SQL Server 2005</a>
+    </ul>
+    <h3>其他资源</h3>
+    <ul class="nav nav-pills">
+      <li><a href="//msdn.we.neusoft.edu.cn/microsoft_project/">Microsoft Project</a>
+      <li><a href="//msdn.we.neusoft.edu.cn/microsoft_visio/">Microsoft Visio</a>
+    </ul>
+  </div>
+{% endblock %}
