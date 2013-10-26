@@ -11,9 +11,9 @@ from we.utils.unit import file_size
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
-def index(request):
-    result = {'nav_file': 'active'}
+result = {'nav_file': 'active'}
 
+def index(request):
     unique_files = File.objects.order_by('md5sum', 'sha1sum').distinct('md5sum', 'sha1sum')
     total_sizes = 0
     for unique_file in unique_files:

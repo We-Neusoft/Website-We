@@ -1,0 +1,40 @@
+{% extends "we/base.html" %}
+
+{% block content %}
+  <div class="container">
+    <form method="post" class="form-horizontal" role="form">
+      {% csrf_token %}
+      <div class="col-md-offset-2 col-md-8">
+        <div class="panel panel-default">
+          <div class="panel-heading">登录 DreamSpark</div>
+          <div class="panel-body">
+            <div class="form-group">
+              <label for="username" class="col-md-2 control-label">邮箱地址</label>
+              <div class="col-md-4">
+                <input name="username" type="text" class="form-control" id="username" placeholder="姓名的全拼+13">
+              </div>
+              <div class="col-md-6">
+                <select name="domain" class="form-control">
+                  <option>@nou.com.cn</option>
+                  <option>@neusoft.edu.cn</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="col-md-2 control-label">邮箱密码</label>
+              <div class="col-md-10">
+                <input name="password" type="password" class="form-control" id="password" placeholder="身份证后6位+手机号码的后4位">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-md-offset-2 col-md-10">
+                {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
+                <button type="submit" class="btn btn-primary">登录</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
