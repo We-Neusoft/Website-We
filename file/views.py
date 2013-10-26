@@ -63,7 +63,7 @@ def download(request, id):
     else:
         file.download_set.create(ip=ip, referer=referer)
 
-    response = StreamingHttpResponse(download_generator(file, int(start), int(stop), ip, referer), file.mime, 200 if not range else 206)
+    response = StreamingHttpResponse(download_generator(file, int(start), int(stop), ip, referer), 'application/octet-stream', 200 if not range else 206)
     response['Content-Disposition'] = 'attachment; filename="' + file.name + '"'
     response['Content-Length'] = str(int(stop) - int(start) + 1)
     if range:
