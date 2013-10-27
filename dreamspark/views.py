@@ -38,13 +38,16 @@ def signin(request):
             user = authenticate(username=username, domain=domain, password=password)
 
             if user:
-                onthehub = HTTPSConnection('e5.onthehub.com')
-                onthehub.request('GET', '/WebStore/Security/AuthenticateUser.aspx?account=' + DREAMSPARK_ACCOUNT + '&username=' + user.username + '&key=' + DREAMSPARK_KEY + '&academic_statuses=' + ('students' if domain == '@nou.com.cn' else 'staff') + '&email=' + user.email + '&last_name=' + user.last_name + '&first_name=' + user.first_name)
-                response = onthehub.getresponse()
-                if response.status == 200:
-                    return HttpResponseRedirect(response.read())
-                else:
-                    result['error'] = '与DreamSpark通信错误，请稍后重试'
+                try:
+                    onthehub = HTTPSConnection('e5.onthehub.com')
+                    onthehub.request('GET', '/WebStore/Security/AuthenticateUser.aspx?account=' + DREAMSPARK_ACCOUNT + '&username=' + user.username + '&key=' + DREAMSPARK_KEY + '&academic_statuses=' + ('students' if domain == '@nou.com.cn' else 'staff') + '&email=' + user.email + '&last_name=' + user.last_name + '&first_name=' + user.first_name)
+                    response = onthehub.getresponse()
+                    if response.status == 200:
+                        return HttpResponseRedirect(response.read())
+                    else:
+                        result['error'] = '与DreamSpark通信异常，请稍后重试'
+                except:
+                    result['error'] = '与DreamSpark通信超时，请稍后重试'
             else:
                 result['error'] = '邮箱地址或密码错误，请重新输入'
 
