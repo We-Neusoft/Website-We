@@ -40,7 +40,7 @@ def signin(request):
             if user:
                 try:
                     onthehub = HTTPSConnection('e5.onthehub.com')
-                    onthehub.request('GET', '/WebStore/Security/AuthenticateUser.aspx?account=' + DREAMSPARK_ACCOUNT + '&username=' + user.username + '&key=' + DREAMSPARK_KEY + '&academic_statuses=' + ('students' if domain == '@nou.com.cn' else 'staff') + '&email=' + user.email + '&last_name=' + user.last_name + '&first_name=' + user.first_name)
+                    onthehub.request('GET', '/WebStore/Security/AuthenticateUser.aspx?account=' + DREAMSPARK_ACCOUNT + '&username=' + user.username + '&key=' + DREAMSPARK_KEY + '&academic_statuses=' + ('students' if domain == '@nou.com.cn' else 'faculty,staff') + '&email=' + user.email + '&last_name=' + user.last_name + '&first_name=' + user.first_name)
                     response = onthehub.getresponse()
                     if response.status == 200:
                         return HttpResponseRedirect(response.read())
