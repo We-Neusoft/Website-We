@@ -10,6 +10,7 @@ from file.models import File, Download
 from we.utils.unit import file_size
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
+FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 
 result = {'nav_file': 'active'}
 
@@ -73,7 +74,7 @@ def download(request, id):
 def download_generator(file, start, stop, ip, referer):
     file_path = file.crc32[-2:] + '/' + file.md5sum + file.sha1sum
 
-    with open('/storage/file/' + file_path, 'rb') as f:
+    with open(FILE_ROOT + file_path, 'rb') as f:
         f.seek(start)
         while True:
             buffer = f.read(4096)
