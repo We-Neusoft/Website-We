@@ -104,6 +104,11 @@ MIDDLEWARE_CLASSES = (
     'we.url_adapter.adapter.AdapterMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'we.auth.mailbox.MailboxAuth',
+)
+
 ROOT_URLCONF = 'we.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -129,6 +134,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'www',
     'mirror',
+    'dreamspark',
     # 'download',
     'file',
 )
@@ -163,3 +169,8 @@ LOGGING = {
         },
     }
 }
+
+DREAMSPARK_ACCOUNT = 'WE_CLOUD'
+DREAMSPARK_KEY = 'WE_CLOUD'
+
+FILE_ROOT = 'WE_CLOUD'
