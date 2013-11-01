@@ -15,7 +15,7 @@ memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 def index(request):
     results = {'nav_mirror': 'active', 'results': []}
 
-    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'linuxmint', 'linuxmint-releases', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp', 'lfs', 'blfs']
+    mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp', 'lfs', 'blfs']
     for mirror in mirrors:
         if mirror in ['cpan', 'kali', 'kali-security']:
             status = '实时同步'
