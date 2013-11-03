@@ -29,6 +29,7 @@
       <tr>
         <td rowspan="2"><strong>下载地址</strong>
         <td rowspan="2">
+          <p class="text-warning">We 还在测试存储性能，下载速度可能受影响。</p>
           <a href="{% url 'file:download' file.id.encode %}" class="btn btn-primary"><span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_times }} 次）</a>
         <td><strong>MD5</strong>
         <td>{{ file.md5 }}</td>
