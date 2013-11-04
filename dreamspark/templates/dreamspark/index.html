@@ -1,56 +1,37 @@
 {% extends "we/hero.html" %}
 {% load staticfiles %}
 
-{% block title %}DreamSpark镜像{% endblock %}
+{% block title %}DreamSpark{% endblock %}
 
 {% block extra_css %}
   <link href="{% static 'dreamspark/css/we-dreamspark.css' %}" rel="stylesheet" />
 {% endblock %}
 
-{% block hero_title %}We - DreamSpark镜像{% endblock %}
-{% block hero_subtitle %}使用微软软件正版授权——安全、稳定、声誉！{% endblock %}
+{% block hero_title %}We - DreamSpark{% endblock %}
+{% block hero_subtitle %}体验面向学生、教师和学术机构的 DreamSpark{% endblock %}
 
 {% block content %}
   <div class="container">
-    <h3>Windows</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#windows">Windows 8.1</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows">Windows 8</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows">Windows 7</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows_vista">Windows Vista</a>
-    </ul>
-    <h3>Windows Server</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#windows_server">Windows Server 2012 R2</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows_server">Windows Server 2012</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows_server">Windows Server 2008 R2</a>
-      <li><a href="{% url 'dreamspark:download' %}#windows_server_2008">Windows Server 2008</a>
-    </ul>
-    <h3>Visual Studio</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#visual_studio">Visual Studio 2013</a>
-      <li><a href="{% url 'dreamspark:download' %}#visual_studio">Visual Studio 2012</a>
-      <li><a href="{% url 'dreamspark:download' %}#visual_studio">Visual Studio 2010</a>
-      <li><a href="{% url 'dreamspark:download' %}#visual_studio">Visual Studio 2008</a>
-    </ul>
-    <h3>SQL Server</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#sql_server">SQL Server 2012</a>
-      <li><a href="{% url 'dreamspark:download' %}#sql_server">SQL Server 2008 R2</a>
-      <li><a href="{% url 'dreamspark:download' %}#sql_server">SQL Server 2008</a>
-      <li><a href="{% url 'dreamspark:download' %}#sql_server">SQL Server 2005</a>
-    </ul>
-    <h3>Microsoft Project</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_project">Microsoft Project 2013</a>
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_project">Microsoft Project 2010</a>
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_project">Microsoft Project 2007</a>
-    </ul>
-    <h3>Microsoft Visio</h3>
-    <ul class="nav nav-pills">
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_visio">Microsoft Visio 2013</a>
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_visio">Microsoft Visio 2010</a>
-      <li><a href="{% url 'dreamspark:download' %}#microsoft_visio">Microsoft Visio 2007</a>
-    </ul>
+    <section>
+      <header class="page-header">
+        <h3>什么是 DreamSpark ？</h3>
+      </header>
+      <p>DreamSpark 是一项 Microsoft 计划，通过允许出于学习、教学和研究的目的来访问 Microsoft 软件，从而为技术教育提供支持。
+      <p><strong>DreamSpark 很简单：就是为学生免费提供 Microsoft 专业级开发人员和设计人员工具，</strong>让学生可以追逐自己的梦想并实现技术上的新突破，或者为其职业开创一个良好的开端。
+      <p><strong>DreamSpark 帮助教师讲授最新技术和研究实验。</strong> Microsoft 深知，要让学习更能激发现在的学生的积极性、与学生的联系更密切且更能吸引学生的注意，需要借助不同类型的资源。 DreamSpark 为教师提供了一些资源，以确保其课堂总是有最新的技术来迎接挑战、激发学生的积极性并通过新的方式保持学生的注意力。
+      <p><strong>DreamSpark 也是面向学术机构的订阅：</strong>它提供了一种具有成本效益的方式来在实验室和教室以及学生和教工的计算机上配备 Microsoft 开发人员工具、平台和服务器，用于学习和研究的目的。它减少了实验室成本和教学预算。
+    </section>
+    <section>
+      <header class="page-header">
+        <h3>如何获取 DreamSpark 软件？</h3>
+      </header>
+      <ol>
+        <li>有互联网访问权限的用户，点击<a href="http://e5.onthehub.com/d.ashx?s=jlg1p270bi">这里</a>访问 DreamSpark 商店（境外服务器，访问速度很慢）；
+        <li>点击<strong>「开始购物」</strong>链接后，进入登录页面；
+        <li>使用学院开设的邮箱进行登录；
+        <li>选择需要的产品，加入购物车进行结算（免费）；
+        <li>接受许可协议后，即可获得相应产品的密钥。
+        <li><em>你还可以点击<a href="{% url 'dreamspark:download' %}">这里</a>从校园网高速下载 DreamSpark 软件。</em>
+    </section>
   </div>
 {% endblock %}

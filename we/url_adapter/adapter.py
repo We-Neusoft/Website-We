@@ -2,6 +2,8 @@ import re
 
 from django.conf import settings
 
+from we.utils.ipgeo import ipgeo
+
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
 class AdapterMiddleware(object):
@@ -17,6 +19,9 @@ class AdapterMiddleware(object):
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
+
+        if ipgeo(request.META['REMOTE_ADDR']):
+            response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
 
         return response
 
