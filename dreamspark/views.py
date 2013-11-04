@@ -45,9 +45,9 @@ def signin(request):
                     if response.status == 200:
                         return HttpResponseRedirect(response.read())
                     else:
-                        result['error'] = '与DreamSpark通信异常，请稍后重试'
+                        result['error'] = '与 DreamSpark 通信异常，请稍后重试'
                 except:
-                    result['error'] = '与DreamSpark通信超时，请稍后重试'
+                    result['error'] = '与 DreamSpark 通信超时，请稍后重试'
             else:
                 result['error'] = '邮箱地址或密码错误，请重新输入'
 

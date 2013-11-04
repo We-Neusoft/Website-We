@@ -1,4 +1,4 @@
-{% extends "we/sidenav_hero.html" %}
+{% extends "we/sidenav_base.html" %}
 {% load staticfiles %}
 
 {% block title %}配置说明 - 开源镜像站{% endblock %}
@@ -10,9 +10,6 @@
 {% block nav_more %}
 {% include "mirror/include/nav_more.html" %}
 {% endblock %}
-
-{% block hero_title %}We - 开源镜像站{% endblock %}
-{% block hero_subtitle %}咱东软信息学院自己的开源镜像站！{% endblock %}
 
 {% block nav_list %}
           <li class="active"><a href="#centos"><i class="glyphicon glyphicon-chevron-right"></i>CentOS</a></li>
