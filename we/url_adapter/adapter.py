@@ -56,7 +56,9 @@ class AdapterMiddleware(object):
         return '<script' + property_pre + 'src="' + '/' + target_url + '"' + property_suf + '>'
 
     def handle_url(self, target_app, target_url):
-        if target_app == self.app:
+        if target_app == 'admin':
+            return '/' + target_app + '/' + target_url
+        elif target_app == self.app:
             return '/' + target_url
         else:
             return '//' + self.handle_domain(target_app) + '/' + target_url

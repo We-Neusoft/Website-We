@@ -1,11 +1,11 @@
 body {
-   padding-top: 70px;
+   padding-top: 50px;
    text-shadow: 1px 1px 2px #CCC;
    overflow-y: scroll
 }
 
-section {
-   padding-top: 30px;
+.navbar-inverse {
+    text-shadow: 1px 1px 2px #666;
 }
 
 section p {
