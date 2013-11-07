@@ -5,6 +5,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
+from we.utils.auth import get_username
 from dreamspark.forms import SigninForm
 
 from httplib import HTTPSConnection
@@ -14,19 +15,22 @@ DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
 
 # 首页
 def index(request):
-    result = {'nav_dreamspark': 'active'}
+    result = get_username(request)
+    result.update({'nav_dreamspark': 'active'})
 
     return render_to_response('dreamspark/index.html', result)
 
 # 下载
 def download(request):
-    result = {'nav_dreamspark': 'active'}
+    result = get_username(request)
+    result.update({'nav_dreamspark': 'active'})
 
     return render_to_response('dreamspark/download.html', result)
 
 # 登录
 def signin(request):
-    result = {'nav_dreamspark': 'active'}
+    result = get_username(request)
+    result.update({'nav_dreamspark': 'active'})
 
     if request.method == 'POST':
         form = SigninForm(request.POST)
@@ -45,11 +49,11 @@ def signin(request):
                     if response.status == 200:
                         return HttpResponseRedirect(response.read())
                     else:
-                        result['error'] = '与 DreamSpark 通信异常，请稍后重试'
+                        result.update({'error': '与 DreamSpark 通信异常，请稍后重试'})
                 except:
-                    result['error'] = '与 DreamSpark 通信超时，请稍后重试'
+                    result.update({'error': '与 DreamSpark 通信超时，请稍后重试'})
             else:
-                result['error'] = '邮箱地址或密码错误，请重新输入'
+                result.update({'error': '邮箱地址或密码错误，请重新输入'})
 
     result.update(csrf(request))
 

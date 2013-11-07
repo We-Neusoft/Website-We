@@ -6,33 +6,34 @@ from django.views import generic
 
 from datetime import date, timedelta
 
-from file.models import File, Download
+from we.utils.auth import get_username
 from we.utils.unit import file_size
+from file.models import File, Download
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 
-result = {'nav_file': 'active'}
-
 def index(request):
+    result = get_username(request)
+    result.update({'nav_file': 'active'})
+
     unique_files = File.objects.order_by('md5sum', 'sha1sum').distinct('md5sum', 'sha1sum')
     total_sizes = 0
     for unique_file in unique_files:
         total_sizes += unique_file.size
 
-    file = dict()
-    file['total'] = File.objects.count()
-    file['unique'] = len(unique_files)
-    file['size'] = file_size(total_sizes)
-
-    result['file'] = file
-
-    download = dict()
-    download['today'] = len(Download.objects.filter(time__gte=date.today()))
-    download['week'] = len(Download.objects.filter(time__gt=date.today() - timedelta(days=6)))
-    download['total'] = Download.objects.count()
-
-    result['download'] = download
+    result.update({
+        'file': {
+            'total': File.objects.count(),
+            'unique': len(unique_files),
+            'size': file_size(total_sizes),
+        },
+        'download': {
+            'today': len(Download.objects.filter(time__gte=date.today())),
+            'week': len(Download.objects.filter(time__gt=date.today() - timedelta(days=6))),
+            'total': Download.objects.count(),
+        },
+    })
 
     return render_to_response('file/index.html', result)
 
@@ -41,7 +42,8 @@ class FileView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(FileView, self).get_context_data(**kwargs)
-        context['nav_file'] = 'active'
+        context.update(get_username(self.request))
+        context.update({'nav_file': 'active'})
         return context
 
 def download(request, id):
