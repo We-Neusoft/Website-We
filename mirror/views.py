@@ -6,6 +6,7 @@ import time
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
 
+from we.utils.auth import get_username
 from we.utils.unit import file_size
 
 pathname = '/storage/mirror/'
@@ -13,8 +14,10 @@ memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 
 # 首页
 def index(request):
-    results = {'nav_mirror': 'active', 'results': []}
+    result = get_username(request)
+    result.update({'nav_mirror': 'active'})
 
+    results = []
     mirrors = ['centos', 'epel', 'repoforge', 'kali', 'kali-security', 'kali-images', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp', 'lfs', 'blfs']
     for mirror in mirrors:
         if mirror in ['cpan', 'kali', 'kali-security']:
@@ -37,15 +40,18 @@ def index(request):
         size = get_value(mirror, 'size')
         timestamp = get_value(mirror, 'timestamp')
 
-        results['results'].append({
+        results.append({
             'mirror': mirror, 'status': status, 'style': style, 'count': count, 'size': file_size(int(size)), 'timestamp': timestamp
         })
+    result.update({'results': results})
 
-    return render_to_response('mirror/index.html', results)
+    return render_to_response('mirror/index.html', result)
 
 # 配置说明
 def configurations(request):
-    return render_to_response('mirror/configurations.html', {'nav_mirror': 'active'})
+    result = get_username(request)
+    result.update({'nav_mirror': 'active'})
+    return render_to_response('mirror/configurations.html', result)
 
 # 从memcache中获得数据
 def get_value(mirror, key, time=0):
