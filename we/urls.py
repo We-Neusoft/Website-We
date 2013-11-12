@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^mirror/', include('mirror.urls', namespace='mirror')),
     (r'^dreamspark/', include('dreamspark.urls', namespace='dreamspark')),
     (r'^file/', include('file.urls', namespace='file')),
+    (r'^me/', include('me.urls', namespace='me')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

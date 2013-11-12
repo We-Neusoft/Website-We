@@ -5,7 +5,7 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-from we.utils.auth import get_username
+from we.utils.navbar import get_navbar
 from dreamspark.forms import SigninForm
 
 from httplib import HTTPSConnection
@@ -15,21 +15,21 @@ DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
 
 # 首页
 def index(request):
-    result = get_username(request)
-    result.update({'nav_dreamspark': 'active'})
+    result = get_navbar(request)
+    result.update({'active_item': 'dreamspark'})
 
     return render_to_response('dreamspark/index.html', result)
 
 # 下载
 def download(request):
-    result = get_username(request)
+    result = get_navbar(request)
     result.update({'nav_dreamspark': 'active'})
 
     return render_to_response('dreamspark/download.html', result)
 
 # 登录
 def signin(request):
-    result = get_username(request)
+    result = get_navbar(request)
     result.update({'nav_dreamspark': 'active'})
 
     if request.method == 'POST':

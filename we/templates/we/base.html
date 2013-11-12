@@ -22,15 +22,14 @@
     <div class="container">
       <a class="navbar-brand" href="http://we.neusoft.edu.cn">We · Cloud</a>
       <ul class="nav navbar-nav">
-        <li class="{{ nav_www }}"><a href="{% url 'www:index' %}">首页</a>
-        <li class="{{ nav_mirror }}"><a href="{% url 'mirror:index' %}">开源镜像站</a>
-        <li class="{{ nav_dreamspark }}"><a href="{% url 'dreamspark:index' %}">DreamSpark</a>
-        <li class="{{ nav_file }}"><a href="{% url 'file:index' %}">云盘</a>
+{% for navbar_item in navbar_items %}
+        <li{% if active_item == navbar_item.key %} class="active"{% endif %}><a href="{{ navbar_item.url }}">{{ navbar_item.title }}</a>
+{% endfor %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
 {% block nav_more %}
 {% endblock %}
-        <li><a href="#">{{ username|default:"同学" }}，你好！ <span class="badge">{{ message_count }}</span></a>
+        <li><a href="{% if is_logged %}{% url 'me:index' %}{% else %}#{% endif %}">{{ username|default:"同学" }}，你好！ <span class="badge">{{ message_count }}</span></a>
       </ul>
     </div>
   </nav>

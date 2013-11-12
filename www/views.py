@@ -2,15 +2,15 @@
 from django.shortcuts import render_to_response
 from django.views import generic
 
-from we.utils.auth import get_username
+from we.utils.navbar import get_navbar
 from www.models import MoreService
 
 from markdown import markdown
 
 # 首页
 def index(request):
-    result = get_username(request)
-    result.update({'nav_www': 'active'})
+    result = get_navbar(request)
+    result.update({'active_item': 'www'})
     result.update({'more_service_list': get_services()})
 
     return render_to_response('www/index.html', result)
@@ -25,7 +25,7 @@ class MoreServicesView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super(MoreServicesView, self).get_context_data(**kwargs)
-        context.update(get_username(self.request))
+        context.update(get_navbar(self.request))
         context.update({'nav_www': 'active'})
         return context
 
