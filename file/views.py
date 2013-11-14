@@ -15,7 +15,6 @@ FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 
 def index(request):
     result = get_navbar(request)
-    result.update({'active_item': 'file'})
 
     unique_files = File.objects.order_by('md5sum', 'sha1sum').distinct('md5sum', 'sha1sum')
     total_sizes = 0
@@ -43,7 +42,6 @@ class FileView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(FileView, self).get_context_data(**kwargs)
         context.update(get_navbar(self.request))
-        context.update({'nav_file': 'active'})
         return context
 
 def download(request, id):

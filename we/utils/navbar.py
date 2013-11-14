@@ -1,5 +1,5 @@
 #coding=utf-8
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import resolve, reverse
 
 from common.models import NavbarItem
 from we.utils.ipgeo import ipgeo
@@ -16,6 +16,7 @@ def get_navbar(request):
 
     result = dict()
     result.update({'navbar_items': navbar_items})
+    result.update({'active_item': resolve(request.path).namespace})
     result.update(get_username(request))
 
     return result

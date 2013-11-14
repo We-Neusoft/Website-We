@@ -41,7 +41,7 @@ class File(models.Model):
         return encoded.decode('base64').encode('hex')
 
     def download_times(self):
-        return self.download_set.count()
+        return self.download_set.order_by('file', 'ip', 'time').distinct('file', 'ip', 'time').count()
 
     class Meta:
         index_together = [

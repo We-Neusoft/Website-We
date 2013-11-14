@@ -1,6 +1,7 @@
 import re
 
 from django.conf import settings
+from django.core.urlresolvers import resolve
 
 from we.utils.ipgeo import ipgeo
 
@@ -8,7 +9,7 @@ DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
 class AdapterMiddleware(object):
     def process_response(self, request, response):
-        self.app = re.match(r'/([^/]+)/', request.path).group(1)
+        self.app = resolve(request.path).namespace
 
         if DEBUG_ENABLED:
             return response

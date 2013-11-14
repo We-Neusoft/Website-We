@@ -16,21 +16,18 @@ DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
 # 首页
 def index(request):
     result = get_navbar(request)
-    result.update({'active_item': 'dreamspark'})
 
     return render_to_response('dreamspark/index.html', result)
 
 # 下载
 def download(request):
     result = get_navbar(request)
-    result.update({'nav_dreamspark': 'active'})
 
     return render_to_response('dreamspark/download.html', result)
 
 # 登录
 def signin(request):
     result = get_navbar(request)
-    result.update({'nav_dreamspark': 'active'})
 
     if request.method == 'POST':
         form = SigninForm(request.POST)
