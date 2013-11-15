@@ -1,14 +1,21 @@
 #coding=utf-8
+from django.core.cache import cache
 from django.core.urlresolvers import resolve, reverse
 
 from common.models import NavbarItem
 from we.utils.ipgeo import ipgeo
 
 def get_navbar(request):
-    if not ipgeo(request.META['REMOTE_ADDR']):
-        items = NavbarItem.objects.filter(internet=True).order_by('order')
+    if ipgeo(request):
+        items = cache.get('navbar_items__intranet')
+        if not items:
+            items = NavbarItem.objects.filter(intranet=True).order_by('order')
+            cache.set('navbar_items__intranet', items, 600)
     else:
-        items = NavbarItem.objects.filter(intranet=True).order_by('order')
+        items = cache.get('navbar_items__internet')
+        if not items:
+            items = NavbarItem.objects.filter(internet=True).order_by('order')
+            cache.set('navbar_items__internet', items, 600)
 
     navbar_items = []
     for item in items:
@@ -31,7 +38,7 @@ def get_name(request):
         except:
             return request.user.username
     else:
-        address = ipgeo(request.META['REMOTE_ADDR'])
+        address = ipgeo(request)
         if not address:
             return '访客'
         elif address == 'faculty':

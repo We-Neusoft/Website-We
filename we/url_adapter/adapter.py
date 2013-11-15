@@ -21,7 +21,7 @@ class AdapterMiddleware(object):
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
 
-        if ipgeo(request.META['REMOTE_ADDR']):
+        if ipgeo(request):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
 
         return response

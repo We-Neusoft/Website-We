@@ -17,8 +17,8 @@ ip_name = [
     'server_128', 'server_129',
 ]
 
-def ipgeo(ip):
-    address = IPAddress(ip)
+def ipgeo(request):
+    address = IPAddress(request.META['REMOTE_ADDR'])
 
     for network, name in zip(ip_network, ip_name):
         if address in network:
