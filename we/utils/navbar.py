@@ -24,7 +24,6 @@ def get_navbar(request):
     result = dict()
     result.update({'navbar_items': navbar_items})
     result.update({'active_item': resolve(request.path).namespace})
-    result.update(get_username(request))
 
     return result
 
@@ -41,7 +40,7 @@ def get_name(request):
         address = ipgeo(request)
         if not address:
             return '访客'
-        elif address == 'faculty':
+        elif address in ['faculty', 'administration']:
             return '老师'
         elif address[:6] == 'server':
             return '朋友'

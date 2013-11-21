@@ -29,7 +29,7 @@
       <ul class="nav navbar-nav navbar-right">
 {% block nav_more %}
 {% endblock %}
-        <li><a href="{% if is_logged %}{% url 'me:index' %}{% else %}#{% endif %}">{{ username|default:"同学" }}，你好！ <span class="badge">{{ message_count }}</span></a>
+        <li><a id="me" href="javascript:;"></a>
       </ul>
     </div>
   </nav>

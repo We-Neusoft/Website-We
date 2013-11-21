@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'we.views.home', name='home'),
     # url(r'^we/', include('we.foo.urls')),
+    (r'^([^/]+/)?common/', include('common.urls')),
     (r'^www/', include('www.urls', namespace='www')),
     (r'^mirror/', include('mirror.urls', namespace='mirror')),
     (r'^dreamspark/', include('dreamspark.urls', namespace='dreamspark')),
