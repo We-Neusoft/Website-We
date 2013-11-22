@@ -19,3 +19,7 @@ li p {
 .blocks div div.col-md-4 h2 {
    text-align: center;
 }
+
+.dropdown {
+   visibility: hidden;
+}
