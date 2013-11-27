@@ -4,7 +4,7 @@ body {
    overflow-y: scroll
 }
 
-.navbar-inverse {
+.navbar-fixed-top-we {
     text-shadow: 1px 1px 2px #555;
     opacity: 0.95;
 }
@@ -21,6 +21,6 @@ li p {
    text-align: center;
 }
 
-.dropdown {
+.dropdown-we {
    visibility: hidden;
 }
