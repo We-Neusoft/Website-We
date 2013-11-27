@@ -14,6 +14,5 @@ urlpatterns = patterns('',
     (r'^file/', include('file.urls', namespace='file')),
     (r'^me/', include('me.urls', namespace='me')),
 
-    url(r'^jsreverse/$', 'django_js_reverse.views.urls_js', name='js_reverse'),
     (r'^admin/', include(admin.site.urls)),
 )
