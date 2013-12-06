@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     (r'^index.we$', views.index),
     url(r'^more_services.we$', views.MoreServicesView.as_view(), name='more_services'),
+    (r'^test.we$', views.test),
 )

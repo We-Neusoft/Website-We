@@ -1,5 +1,6 @@
 #coding=utf-8
 from django.core.cache import cache
+from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views import generic
 
@@ -8,6 +9,12 @@ from we.utils.navbar import get_navbar
 from www.models import MoreService
 
 from markdown import markdown
+
+def test(request):
+    robots = ['We Cloud']
+    ua = request.META['HTTP_USER_AGENT']
+
+    return HttpResponse(ua not in robots)
 
 # 首页
 def index(request):
