@@ -7,6 +7,7 @@
 本目录即为 Django 项目根目录，各子目录说明如下：
 
 * `we`：项目配置文件及一些通用lib
+* `common`：一些通用调用
 * `dreamspark`：DreamSpark站点
 * `file`：云盘站点
 * `mirror`：开源镜像站站点
