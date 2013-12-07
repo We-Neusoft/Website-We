@@ -10,12 +10,6 @@ from www.models import MoreService
 
 from markdown import markdown
 
-def test(request):
-    robots = ['We Cloud']
-    ua = request.META['HTTP_USER_AGENT']
-
-    return HttpResponse(ua not in robots)
-
 # 首页
 def index(request):
     result = get_navbar(request)
