@@ -30,7 +30,7 @@ def index(request):
         'download': {
             'today': len(Download.objects.filter(time__gte=date.today())),
             'week': len(Download.objects.filter(time__gt=date.today() - timedelta(days=6))),
-            'total': Download.objects.count(),
+            'month': len(Download.objects.filter(time__gt=date.today() - timedelta(days=29))),
         },
     })
 
