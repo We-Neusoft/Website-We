@@ -1,8 +1,8 @@
 #coding=utf-8
 import json
-import memcache
 import time
 
+from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
 
@@ -10,7 +10,6 @@ from we.utils.navbar import get_navbar
 from we.utils.unit import file_size
 
 pathname = '/storage/mirror/'
-memcached = memcache.Client(['127.0.0.1:11211'], debug=0)
 
 # 首页
 def index(request):
@@ -51,15 +50,15 @@ def configurations(request):
     result = get_navbar(request)
     return render_to_response('mirror/configurations.html', result)
 
-# 从memcache中获得数据
+# 从cache中获得数据
 def get_value(mirror, key, time=0):
     if (mirror == 'cpan' and key == 'timestamp'):
         return timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
 
-    value = memcached.get(mirror + '_' + key)
+    value = cache.get(mirror + '_' + key)
     if not value:
         value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
-        memcached.set(mirror + '_' + key, value, time)
+        cache.set(mirror + '_' + key, value, time)
 
     return value
 
