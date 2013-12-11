@@ -36,7 +36,7 @@ def signin(request):
             domain = form.cleaned_data['domain']
             password = form.cleaned_data['password']
 
-            user = authenticate(username=username, domain=domain, password=password)
+            user = authenticate(email=username + '@' + domain, password=password)
 
             if user:
                 try:
