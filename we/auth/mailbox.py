@@ -10,7 +10,8 @@ class MailboxAuth(object):
             return None
 
         email = email.lower()
-        if not email.split('@')[1] in ALLOWED_DOMAIN:
+        domain = email.split('@')[1]
+        if not domain in ALLOWED_DOMAIN:
             return None
 
         try:
@@ -18,9 +19,9 @@ class MailboxAuth(object):
             mailbox.login(email, password)
 
             try:
-                user = User.objects.get(username=email)
+                user = User.objects.get(username=email[:30])
             except User.DoesNotExist:
-                user = User(username=email, email=email)
+                user = User.objects.create_user(email[:30], email)
                 user.save()
 
             return user
