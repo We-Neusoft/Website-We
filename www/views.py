@@ -6,7 +6,7 @@ from django.views import generic
 
 from we.utils.ipgeo import ipgeo
 from we.utils.navbar import get_navbar
-from www.models import MoreService
+from common.models import NavbarMore
 
 from markdown import markdown
 
@@ -37,12 +37,12 @@ def get_services(request):
     if ipgeo(request):
         more_services = cache.get('more_services__intranet')
         if not more_services:
-            more_services = MoreService.objects.filter(intranet=True).order_by('order')
+            more_services = NavbarMore.objects.filter(app='www').filter(intranet=True).order_by('order')
             cache.set('more_services__intranet', more_services, 600)
     else:
         more_services = cache.get('more_services__internet')
         if not more_services:
-            more_services = MoreService.objects.filter(internet=True).order_by('order')
+            more_services = NavbarMore.objects.filter(app='www').filter(internet=True).order_by('order')
             cache.set('more_services__internet', more_services, 600)
 
     for more_service in more_services:

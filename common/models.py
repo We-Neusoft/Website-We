@@ -18,3 +18,24 @@ class NavbarItem(models.Model):
         ordering = ['order', 'key']
         verbose_name = '导航项'
         verbose_name_plural = '导航项'
+
+class NavbarMore(models.Model):
+    id = UUIDField(primary_key=True)
+    app = models.CharField('应用', max_length=16)
+    key = models.CharField('标识', max_length=16)
+    order = models.IntegerField('排序')
+    title = models.CharField('标题', max_length=64)
+    subtitle = models.CharField('副标题', max_length=64)
+    content = models.TextField('正文')
+    intranet = models.BooleanField('校园网')
+    internet = models.BooleanField('互联网')
+    modified = models.DateTimeField('最后修改', auto_now=True)
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        unique_together = ('app', 'key')
+        ordering = ['app', 'order', 'key']
+        verbose_name = '导航更多'
+        verbose_name_plural = '导航更多'
