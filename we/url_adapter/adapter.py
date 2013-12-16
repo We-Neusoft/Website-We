@@ -13,6 +13,9 @@ class AdapterMiddleware(object):
 
         if DEBUG_ENABLED:
             return response
+        if response.has_header('location'):
+            response['location'] = re.sub(r'/([^/]+)/(.*)', self.handle_location, response['location'])
+            return response
         if not hasattr(response, 'content'):
             return response
 
@@ -25,6 +28,12 @@ class AdapterMiddleware(object):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
 
         return response
+
+    def handle_location(self, match):
+        target_app = match.group(1)
+        target_url = match.group(2)
+
+        return self.handle_url(target_app, target_url)
 
     def handle_a(self, match):
         target_app = match.group(2)
