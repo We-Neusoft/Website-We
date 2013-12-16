@@ -12,16 +12,16 @@ class FileAdmin(admin.ModelAdmin):
     def file_path(self, obj):
         return str(obj.crc32)[-2:] + '/' + obj.md5sum + obj.sha1sum
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, obj=None):
         return False
 admin.site.register(File, FileAdmin)
 
 class DownloadAdmin(admin.ModelAdmin):
     list_display = ('file', 'ip', 'referer', 'time')
 
-    def has_add_permission(self, request):
+    def has_add_permission(self, request, obj=None):
         return False
 
-    def has_delete_permission(self, request):
+    def has_delete_permission(self, request, obj=None):
         return False
 admin.site.register(Download, DownloadAdmin)
