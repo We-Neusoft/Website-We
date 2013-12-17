@@ -1,6 +1,11 @@
 #coding=utf-8
+from django.conf import settings
+
+from zlib import crc32
 
 from netaddr import IPAddress, IPNetwork
+
+DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
 ip_network = [
     IPNetwork('127.0.0.1/32'),
@@ -18,8 +23,17 @@ ip_name = [
 ]
 
 def ipgeo(request):
-    address = IPAddress(request.META['REMOTE_ADDR'])
+    address = get_ip(request)
 
     for network, name in zip(ip_network, ip_name):
         if address in network:
             return name
+
+def get_ip(request):
+    if DEBUG_ENABLED:
+        return IPAddress(request.META['HTTP_X_REAL_IP'])
+    else:
+        return IPAddress(request.META['REMOTE_ADDR'])
+
+def get_ip_encoded(request):
+    return format(crc32(hex(get_ip(request))[2:].zfill(8)) & 0xffffffff, '08x')

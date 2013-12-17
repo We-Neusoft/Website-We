@@ -3,7 +3,7 @@ from django.core.cache import cache
 from django.core.urlresolvers import resolve, reverse
 
 from common.models import NavbarItem
-from we.utils.ipgeo import ipgeo
+from we.utils.ip_address import ipgeo
 
 def get_navbar(request):
     if ipgeo(request):

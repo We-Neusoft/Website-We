@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views import generic
 
-from we.utils.ipgeo import ipgeo
+from we.utils.ip_address import ipgeo
 from we.utils.navbar import get_navbar
 from common.models import NavbarMore
 

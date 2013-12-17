@@ -1,9 +1,9 @@
-import re
-
 from django.conf import settings
 from django.core.urlresolvers import resolve
 
-from we.utils.ipgeo import ipgeo
+import re
+
+from we.utils.ip_address import ipgeo
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
