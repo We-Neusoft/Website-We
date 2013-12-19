@@ -14,6 +14,8 @@ from we.utils.navbar import get_navbar
 from we.utils.unit import file_size
 from file.models import File, Download
 
+from we.utils import backdoors
+
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 
 def index(request):
@@ -54,7 +56,8 @@ def download(request, id, ip_encoded=None):
     stop = file.size - 1
 
     if ip_encoded is None or str(ip_encoded) != get_ip_encoded(request):
-        return HttpResponseRedirect(reverse('file:detail', args=(id,)))
+        if not backdoors.validate_referer(request):
+            return HttpResponseRedirect(reverse('file:detail', args=(id,)))
 
     referer = request.META.get('HTTP_REFERER')
 
