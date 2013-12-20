@@ -10,7 +10,7 @@ def validate_referer(request):
     url = urlparse(referer)
 
     try:
-        Url.objects.get(url=(url.scheme + '://' + url.netloc + url.path))
+        Url.objects.filter(enable=True).get(url=(url.scheme + '://' + url.netloc + url.path))
         return True
     except Url.DoesNotExist:
         return False
