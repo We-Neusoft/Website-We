@@ -14,7 +14,8 @@ class AdapterMiddleware(object):
         if DEBUG_ENABLED:
             return response
         if response.has_header('location'):
-            response['location'] = re.sub(r'/([^/]+)/(.*)', self.handle_location, response['location'])
+            if response['location'].startswith('/'):
+                response['location'] = re.sub(r'/([^/]+)/(.*)', self.handle_location, response['location'])
             return response
         if not hasattr(response, 'content'):
             return response
