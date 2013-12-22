@@ -24,3 +24,7 @@ li p {
 .dropdown-we {
    visibility: hidden;
 }
+
+.qr-footer {
+   float: right;
+}
