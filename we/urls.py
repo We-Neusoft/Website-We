@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^mirror/', include('mirror.urls', namespace='mirror')),
     (r'^dreamspark/', include('dreamspark.urls', namespace='dreamspark')),
     (r'^file/', include('file.urls', namespace='file')),
+    (r'^api/', include('api.urls', namespace='api')),
     (r'^me/', include('me.urls', namespace='me')),
 
     (r'^admin/', include(admin.site.urls)),

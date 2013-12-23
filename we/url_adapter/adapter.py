@@ -24,6 +24,7 @@ class AdapterMiddleware(object):
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
+        response.content = re.sub(r'<img([^>]*)src="/([^/]+)/([^"]*)"([^>]*)>', self.handle_img, response.content)
 
         if ipgeo(request):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
@@ -65,6 +66,14 @@ class AdapterMiddleware(object):
         property_suf = match.group(3)
 
         return '<script' + property_pre + 'src="' + '/' + target_url + '"' + property_suf + '>'
+
+    def handle_img(self, match):
+        target_app = match.group(2)
+        target_url = match.group(3)
+        property_pre = match.group(1)
+        property_suf = match.group(4)
+
+        return '<img' + property_pre + 'src="' + self.handle_url(target_app, target_url) + '"' + property_suf + '>'
 
     def handle_url(self, target_app, target_url):
         if target_app == 'admin':
