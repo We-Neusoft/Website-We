@@ -4,6 +4,15 @@ body {
    overflow-y: scroll
 }
 
+.dropdown-we {
+   visibility: hidden;
+}
+
+.jumbotron-we {
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
 .navbar-fixed-top-we {
     text-shadow: 1px 1px 2px #555;
     opacity: 0.95;
@@ -19,10 +28,6 @@ li p {
 
 .blocks div div.col-md-4 h2 {
    text-align: center;
-}
-
-.dropdown-we {
-   visibility: hidden;
 }
 
 .qr-footer {

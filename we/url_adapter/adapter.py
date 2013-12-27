@@ -20,6 +20,7 @@ class AdapterMiddleware(object):
         if not hasattr(response, 'content'):
             return response
 
+        response.content = re.sub(r'/api/([^/]+)(/.+).we', self.handle_api, response.content)
         response.content = re.sub(r'<a([^>]*)href="/([^/]+)/([^"]*)"([^>]*)>', self.handle_a, response.content)
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)/([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
@@ -30,6 +31,12 @@ class AdapterMiddleware(object):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
 
         return response
+
+    def handle_api(self, match):
+        target_app = match.group(1)
+        target_url = match.group(2)
+
+        return '//' + target_app + '.dongruanyun.com' + target_url
 
     def handle_location(self, match):
         target_app = match.group(1)
@@ -78,6 +85,8 @@ class AdapterMiddleware(object):
     def handle_url(self, target_app, target_url):
         if target_app == 'admin':
             return '/' + target_app + '/' + target_url
+        elif target_app == 'static':
+            return '/' + target_app + '/' + target_url
         elif target_app == self.app:
             return '/' + target_url
         else:
@@ -88,5 +97,7 @@ class AdapterMiddleware(object):
             return 'we.neusoft.edu.cn'
         elif target_app == 'mirror':
             return 'mirrors.neusoft.edu.cn'
+        elif target_app == 'api':
+            return 'dongruanyun.com'
         else:
             return target_app + '.we.neusoft.edu.cn'
