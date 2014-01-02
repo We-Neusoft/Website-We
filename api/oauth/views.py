@@ -5,55 +5,74 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from api.oauth.models import RedirectionUri
-from api.oauth.forms import AuthorizeForm
+from api.oauth.forms import AuthenticationForm, InitializationForm
 
 def authorize(request):
-    if 'username' not in request.POST or 'password' not in request.POST:
-        try:
-            response_type = request.REQUEST['response_type']
-            client_id = request.REQUEST['client_id']
-        except KeyError:
-            return HttpResponse('Invalid_request')
+    form = AuthenticationForm(request.POST)
 
-        try:
-            client = User.objects.get(username=client_id)
-            client.groups.get(name='oauth')
-        except (User.DoesNotExist, Group.DoesNotExist):
-            return HttpResponse('Invalid client id.')
+    if not form.is_valid():
+        form = verify_client(request.REQUEST)
+        if issubclass(form.__class__, HttpResponse):
+             return form
 
-        redirect_uri = request.REQUEST.get('redirect_uri', '')
-        try:
-            RedirectionUri.objects.filter(client=client).get(uri=redirect_uri)
-        except RedirectionUri.DoesNotExist:
-            return HttpResponse('Mismatching redirection URI.')
-
-        scope = request.REQUEST.get('scope', '')
-        state = request.REQUEST.get('state', '')
+        scope = form.cleaned_data['scope']
+        state = form.cleaned_data['state']
 
         request.session.set_expiry(0)
-        request.session['client_id'] = client_id
-        request.session['redirect_uri'] = redirect_uri
-        request.session['scope'] = scope
-        request.session['state'] = state
+        request.session.update(form.cleaned_data)
 
         return render_to_response('api/oauth/authorize.html', csrf(request))
     else:
-        client_id = request.session['client_id']
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+
+        form = verify_client(request.REQUEST)
+        if issubclass(form.__class__, HttpResponse):
+             return form
+
+        response_type = form.cleaned_data['response_type']
+        client_id = form.cleaned_data['client_id']
         redirect_uri = request.session['redirect_uri']
         scope = request.session['scope']
         state = request.session['state']
 
-        form = AuthorizeForm(request.POST)
-        if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
+        user = authenticate(email=username, password=password)
 
-            if authenticate(email=username, password=password):
-                code = '123'
-                uri = redirect_uri + '?code=' + code
-                if state:
-                    uri += '&state=' + state
+        if user:
+            code = '123'
 
-                return HttpResponseRedirect(uri)
+            return callback_client(redirect_uri + '?code=' + code, state)
 
         return HttpResponse('Failure')
+
+def verify_client(form):
+    form = InitializationForm(form)
+    if not form.is_valid():
+        return HttpResponse('Invalid_request')
+
+    state = form.cleaned_data['state']
+
+    client_id = form.cleaned_data['client_id']
+    try:
+        client = User.objects.get(username=client_id)
+        client.groups.get(name='oauth')
+    except (User.DoesNotExist, Group.DoesNotExist):
+        return HttpResponse('Invalid client id.')
+
+    redirect_uri = form.cleaned_data['redirect_uri']
+    try:
+        RedirectionUri.objects.filter(client=client).get(uri=redirect_uri)
+    except RedirectionUri.DoesNotExist:
+        return HttpResponse('Mismatching redirection URI.')
+
+    response_type = form.cleaned_data['response_type']
+    if not response_type in ['code']:
+        return callback_client(redirect_uri + '?error=unsupported_response_type', state)
+
+    return form
+
+def callback_client(uri, state):
+    if state:
+        uri += '&state=' + state
+
+    return HttpResponseRedirect(uri)
