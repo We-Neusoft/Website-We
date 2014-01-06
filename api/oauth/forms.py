@@ -8,5 +8,6 @@ class InitializationForm(forms.Form):
     state = forms.SlugField(required=False)
 
 class AuthenticationForm(forms.Form):
-    username = forms.EmailField()
-    password = forms.CharField()
+    action = forms.SlugField()
+    username = forms.EmailField(required=False)
+    password = forms.CharField(required=False)

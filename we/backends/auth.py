@@ -33,7 +33,3 @@ class MailboxAuth(object):
             return User.objects.get(username=username)
         except User.DoesNotExist:
             return None
-
-class RemoteUserAuth(object):
-    def authenticate(self):
-        return None

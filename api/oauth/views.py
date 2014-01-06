@@ -25,12 +25,13 @@ def authorize(request):
 
         return render_to_response('api/oauth/authorize.html', csrf(request))
     else:
+        action = form.cleaned_data['action']
         username = form.cleaned_data['username']
         password = form.cleaned_data['password']
 
         form, client = verify_client(request.REQUEST)
         if issubclass(form.__class__, HttpResponse):
-             return form
+            return form
 
         response_type = form.cleaned_data['response_type']
         client_id = form.cleaned_data['client_id']
@@ -38,21 +39,32 @@ def authorize(request):
         scope = request.session['scope']
         state = request.session['state']
 
-        user = authenticate(email=username, password=password)
-        if user:
-            code = AuthorizationCode(client=client, user=user, redirect_uri=redirect_uri, expire_time=datetime.datetime.now() + datetime.timedelta(minutes=10))
-            code.save()
+        if response_type == 'code':
+            if not action == 'Submit':
+                return callback_client(redirect_uri + '?error=access_denied', state)
 
-            return callback_client(redirect_uri + '?code=' + code.code.encode(), state)
+            user = authenticate(email=username, password=password)
+            if user:
+                code = AuthorizationCode(client=client, user=user, redirect_uri=redirect_uri, expire_time=datetime.datetime.now() + datetime.timedelta(minutes=10))
+                code.save()
 
-        return HttpResponse('Failure')
+                return callback_client(redirect_uri + '?code=' + code.code.encode(), state)
+
+            return HttpResponse('Failure')
+        else:
+            return callback_client(redirect_uri + '?error=unsupported_response_type', state), None
 
 def token(request):
-    if not 'REMOTE_USER' in request.META:
-        #response = HttpResponse('401 Unauthorized', status=401)
-        response = HttpResponse(request.META.items(), status=401)
+    basic = request.META.get('HTTP_AUTHORIZATION')
+    if not basic:
+        response = HttpResponse('401 Unauthorized', status=401)
         response['WWW-Authenticate'] = 'Basic realm="Please provide your client_id and client_secret."'
         return response
+
+    client_id, client_secret = basic[6:].decode('base64').split(':')
+    client = Client.objects.get(client_id=client_id, client_secret=client_secret)
+
+    return HttpResponse(client_id + '-' + client_secret)
 
 def verify_client(form):
     form = InitializationForm(form)
@@ -72,10 +84,6 @@ def verify_client(form):
         RedirectionUri.objects.filter(client=client).get(redirect_uri=redirect_uri)
     except RedirectionUri.DoesNotExist:
         return HttpResponse('Mismatching redirection URI.'), client
-
-    response_type = form.cleaned_data['response_type']
-    if not response_type in ['code']:
-        return callback_client(redirect_uri + '?error=unsupported_response_type', state), None
 
     return form, client
 
