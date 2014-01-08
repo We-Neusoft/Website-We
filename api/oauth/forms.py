@@ -11,3 +11,8 @@ class AuthenticationForm(forms.Form):
     action = forms.SlugField()
     username = forms.EmailField(required=False)
     password = forms.CharField(required=False)
+
+class TokenForm(forms.Form):
+    grant_type = forms.SlugField()
+    code = forms.SlugField()
+    redirect_uri = forms.URLField()

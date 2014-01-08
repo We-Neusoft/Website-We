@@ -5,10 +5,11 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-import datetime
+import datetime, json
 
 from api.oauth.models import AuthorizationCode, Client, RedirectionUri
-from api.oauth.forms import AuthenticationForm, InitializationForm
+from api.oauth.forms import AuthenticationForm, InitializationForm, TokenForm
+from we.utils.uuid_codec import decode, encode
 
 def authorize(request):
     # 验证是否为登录表单
@@ -20,7 +21,7 @@ def authorize(request):
         # 验证应用端身份
         form, client = verify_client(request.REQUEST)
         if issubclass(form.__class__, HttpResponse):
-             return form
+            return form
 
         scope = form.cleaned_data['scope']
         state = form.cleaned_data['state']
@@ -65,24 +66,29 @@ def authorize(request):
             code = AuthorizationCode(client=client, user=user, redirect_uri=redirect_uri, expire_time=datetime.datetime.now() + datetime.timedelta(minutes=10))
             code.save()
 
-            return callback_client(redirect_uri + '?code=' + code.code.encode(), state)
-
+            return callback_client(redirect_uri + '?code=' + encode(code.code), state)
         else:
             return callback_client(redirect_uri + '?error=unsupported_response_type', state), None
 
 def token(request):
-    # 获得应用端验证信息
-    basic = request.META.get('HTTP_AUTHORIZATION')
-    if not basic:
+    # 验证应用端合法性
+    client = authorize_client(request.META.get('HTTP_AUTHORIZATION'))
+    if not client:
         response = HttpResponse('401 Unauthorized', status=401)
         response['WWW-Authenticate'] = 'Basic realm="Please provide your client_id and client_secret."'
         return response
 
-    # 验证应用端合法性
-    client_id, client_secret = basic[6:].decode('base64').split(':')
-    client = Client.objects.get(client_id=client_id, client_secret=client_secret)
+    # 验证是否为令牌表单
+    form = TokenForm(request.REQUEST)
+    if not form.is_valid():
+        return bad_request('invalid_request')
 
-    return HttpResponse(client_id + '-' + client_secret)
+    if grant_type == 'authorization_code':
+        pass
+    else:
+        return bad_request('unsupported_grant_type')
+
+    return HttpResponse(client.client_id)
 
 def verify_client(form):
     # 验证请求合法性
@@ -96,7 +102,7 @@ def verify_client(form):
     client_id = form.cleaned_data['client_id']
     try:
         client = Client.objects.get(client_id=client_id)
-    except (Client.DoesNotExist):
+    except Client.DoesNotExist:
         return HttpResponse('Invalid client id.'), None
 
     # 验证重定向URI合法性
@@ -108,8 +114,23 @@ def verify_client(form):
 
     return form, client
 
+def authorize_client(basic):
+    if not basic:
+        return None
+
+    client_id, client_secret = basic[6:].decode('base64').split(':')
+    try:
+        return Client.objects.get(client_id=client_id, client_secret=decode(client_secret))
+    except (ValueError, Client.DoesNotExist):
+        return None
+
 def callback_client(uri, state):
     if state:
         uri += '&state=' + state
 
     return HttpResponseRedirect(uri)
+
+def bad_request(error):
+    result = {'error': error}
+
+    return HttpResponse(json.dumps(result), content_type='application/json;charset=UTF-8', status=400)
