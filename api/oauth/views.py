@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 
 import datetime, json
 
-from api.oauth.models import AuthorizationCode, Client, RedirectionUri
+from api.oauth.models import AccessToken, AuthorizationCode, Client, RedirectionUri
 from api.oauth.forms import AuthenticationForm, InitializationForm, TokenForm
 from we.utils.uuid_codec import decode, encode
 
@@ -16,7 +16,7 @@ def authorize(request):
     # TODO 当系统有初始化、登录以外的入口时，此处需要改进（SunFulong@2014-1-7）
     form = AuthenticationForm(request.POST)
 
-    # 不是登录表单，返回登录画面
+    # 非登录表单，返回登录画面
     if not form.is_valid():
         # 验证应用端身份
         form, client = verify_client(request.REQUEST)
@@ -81,14 +81,24 @@ def token(request):
     # 验证是否为令牌表单
     form = TokenForm(request.REQUEST)
     if not form.is_valid():
-        return bad_request('invalid_request')
+        return error_response('invalid_request')
+
+    grant_type = form.cleaned_data['grant_type']
+    code = form.cleaned_data['code']
+    redirect_uri = form.cleaned_data['redirect_uri']
 
     if grant_type == 'authorization_code':
-        pass
-    else:
-        return bad_request('unsupported_grant_type')
+        try:
+            code = AuthorizationCode.objects.filter(expire_time__gte=datetime.datetime.now()).get(client=client, code=decode(code), redirect_uri=redirect_uri)
+        except AuthorizationCode.DoesNotExist:
+            return error_response('invalid_grant')
 
-    return HttpResponse(client.client_id)
+        token = AccessToken(client=client, user=code.user, code=code.code, expire_time=datetime.datetime.now() + datetime.timedelta(hours=1))
+        token.save()
+
+        return success_response(encode(token.token))
+    else:
+        return error_response('unsupported_grant_type')
 
 def verify_client(form):
     # 验证请求合法性
@@ -130,7 +140,18 @@ def callback_client(uri, state):
 
     return HttpResponseRedirect(uri)
 
-def bad_request(error):
+def success_response(token):
+    result = {'access_token': token, 'token_type': 'bearer', 'expires_in': 3600}
+
+    response = HttpResponse(json.dumps(result), content_type='application/json;charset=UTF-8')
+    response['Cache-Control'] = 'no-store'
+    response['Pragma'] = 'no-store'
+    return response
+
+def error_response(error):
     result = {'error': error}
 
-    return HttpResponse(json.dumps(result), content_type='application/json;charset=UTF-8', status=400)
+    response = HttpResponse(json.dumps(result), content_type='application/json;charset=UTF-8', status=400)
+    response['Cache-Control'] = 'no-store'
+    response['Pragma'] = 'no-store'
+    return response
