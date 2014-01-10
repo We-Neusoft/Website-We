@@ -2,6 +2,7 @@
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.core.context_processors import csrf
+from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
@@ -93,8 +94,13 @@ def token(request):
         except AuthorizationCode.DoesNotExist:
             return error_response('invalid_grant')
 
-        token = AccessToken(client=client, user=code.user, code=code.code, expire_time=datetime.datetime.now() + datetime.timedelta(hours=1))
-        token.save()
+        try:
+            token = AccessToken(client=client, user=code.user, code=code.code, expire_time=datetime.datetime.now() + datetime.timedelta(hours=1))
+            token.save()
+        except IntegrityError:
+            AccessToken.objects.get(code=code.code).delete()
+            code.delete()
+            return error_response('invalid_grant')
 
         return success_response(encode(token.token))
     else:
@@ -141,7 +147,7 @@ def callback_client(uri, state):
     return HttpResponseRedirect(uri)
 
 def success_response(token):
-    result = {'access_token': token, 'token_type': 'bearer', 'expires_in': 3600}
+    result = {'access_token': token, 'token_type': 'Bearer', 'expires_in': 3600}
 
     response = HttpResponse(json.dumps(result), content_type='application/json;charset=UTF-8')
     response['Cache-Control'] = 'no-store'

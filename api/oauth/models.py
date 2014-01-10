@@ -39,7 +39,7 @@ class AuthorizationCode(models.Model):
 class AccessToken(models.Model):
     client = models.ForeignKey(Client, verbose_name='应用端')
     user = models.ForeignKey(User, verbose_name='鉴权用户')
-    code = UUIDField(verbose_name='鉴权码')
+    code = UUIDField(unique=True, verbose_name='鉴权码')
     token = UUIDField(auto=True, verbose_name='访问令牌')
     expire_time = models.DateTimeField('过期时间')
 
