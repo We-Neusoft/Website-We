@@ -12,7 +12,7 @@ from zlib import crc32
 from we.utils.ip_address import get_ip, get_ip_encoded
 from we.utils.navbar import get_navbar
 from we.utils.unit import file_size
-from file.models import File, Download
+from apps.file.models import File, Download
 
 from we.utils import backdoors
 

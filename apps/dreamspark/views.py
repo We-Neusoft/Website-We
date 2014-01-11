@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from we.utils.navbar import get_navbar
-from dreamspark.forms import SigninForm
+from apps.dreamspark.forms import SigninForm
 
 from httplib import HTTPSConnection
 

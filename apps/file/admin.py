@@ -1,7 +1,7 @@
 #coding=utf-8
 from django.contrib import admin
 
-from file.models import File, Download
+from apps.file.models import File, Download
 
 class FileAdmin(admin.ModelAdmin):
     list_display = ('name', 'extension', 'size', 'mime', 'created', 'encoded_id', 'file_path', 'download_times')

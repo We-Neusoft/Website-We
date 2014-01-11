@@ -1,9 +1,10 @@
 from django.conf.urls import patterns, url
 
-from www import views
+from apps.dreamspark import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     (r'^index.we$', views.index),
-    url(r'^more_services.we$', views.MoreServicesView.as_view(), name='more_services'),
+    url(r'^download.we$', views.download, name='download'),
+    url(r'^signin.we$', views.signin, name='signin'),
 )
