@@ -1,10 +1,10 @@
 #coding=utf-8
-import json
-import time
-
 from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.views.decorators.cache import cache_page
+
+import json
+import time
 
 from we.utils.navbar import get_navbar
 from we.utils.unit import file_size

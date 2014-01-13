@@ -4,11 +4,11 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.views import generic
 
+from markdown import markdown
+
 from we.utils.ip_address import ipgeo
 from we.utils.navbar import get_navbar
 from common.models import NavbarMore
-
-from markdown import markdown
 
 # 首页
 def index(request):

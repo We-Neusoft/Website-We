@@ -5,10 +5,10 @@ from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-from we.utils.navbar import get_navbar
-from apps.dreamspark.forms import SigninForm
-
 from httplib import HTTPSConnection
+
+from forms import SigninForm
+from we.utils.navbar import get_navbar
 
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
