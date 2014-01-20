@@ -10,11 +10,10 @@ from netaddr import IPAddress
 from zlib import crc32
 
 from models import File, Download
+from backdoors import backdoors
 from we.utils.ip_address import get_ip, get_ip_encoded
 from we.utils.navbar import get_navbar
 from we.utils.unit import file_size
-
-from we.utils import backdoors
 
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 

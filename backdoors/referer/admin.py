@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from backdoor.models import Url
+from models import Url
 
 class UrlAdmin(admin.ModelAdmin):
-    list_display = ('url', 'enable')
+    list_display = ('url', )
 
 admin.site.register(Url, UrlAdmin)

@@ -1,4 +1,4 @@
-from backdoor.models import Url
+from referer.models import Url
 
 from urlparse import urlparse
 
