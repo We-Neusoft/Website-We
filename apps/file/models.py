@@ -1,8 +1,7 @@
 #coding=utf-8
-import uuid
-
 from django.db import models
 
+from base64 import urlsafe_b64decode
 from django_uuid_pk.fields import UUIDField
 
 from we.utils.unit import file_size
@@ -32,13 +31,8 @@ class File(models.Model):
         return self.decode(self.sha1sum)
 
     def decode(self, encoded):
-        encoded = encoded.replace('_', '/').replace('-', '+')
-        if len(encoded) == 22:
-            encoded += '=='
-        elif len(encoded) == 27:
-            encoded += '='
-
-        return encoded.decode('base64').encode('hex')
+        usb64 = (encoded + '=' * (4 - len(encoded) % 4)).encode('utf-8')
+        return urlsafe_b64decode(usb64).encode('hex')
 
     def download_times(self):
         return self.download_set.order_by('file', 'ip', 'time').distinct('file', 'ip', 'time').count()
