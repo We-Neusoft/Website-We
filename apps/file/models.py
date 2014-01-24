@@ -48,12 +48,15 @@ class Download(models.Model):
     file = models.ForeignKey('File', verbose_name='文件', editable=False)
     ip = models.GenericIPAddressField('用户IP', editable=False)
     referer = models.URLField('访问来源', null=True, editable=False)
-    time = models.DateTimeField('下载时间', auto_now_add=True, editable=False)
+    time = models.DateTimeField('下载时间', editable=False)
 
     def __unicode__(self):
         return self.file.name
 
     class Meta:
+        unique_together = [
+            ['file', 'ip', 'time'],
+        ]
         ordering = ['-time']
         verbose_name = '下载记录'
         verbose_name_plural = '下载记录'

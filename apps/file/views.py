@@ -1,21 +1,27 @@
 from django.conf import settings
+from django.core.signing import TimestampSigner, BadSignature
 from django.core.urlresolvers import reverse
+from django.db import IntegrityError
 from django.db.models import Count, Sum
 from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
 from django.shortcuts import render_to_response
+from django.utils.baseconv import base62
+from django.utils.http import urlsafe_base64_encode
 from django.views import generic
 
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta
 from netaddr import IPAddress
+from uuid import UUID
 from zlib import crc32
 
 from models import File, Download
 from backdoors import backdoors
-from we.utils.ip_address import get_ip, get_ip_encoded
+from we.utils.ip_address import get_ip
 from we.utils.navbar import get_navbar
 from we.utils.unit import file_size
 
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
+signer = TimestampSigner()
 
 def index(request):
     result = get_navbar(request)
@@ -46,16 +52,29 @@ class FileView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(FileView, self).get_context_data(**kwargs)
         context.update(get_navbar(self.request))
-        context.update({'ip_encode': get_ip_encoded(self.request) })
+        context.update({'key': signer.sign(get_value(self.request, self.get_object().id)).replace(':', '')[-33:]})
         return context
 
-def download(request, id, ip_encoded=None):
+def download(request, id):
+    key = request.GET.get('key')
     file = File.objects.get(pk=id)
     start = 0
     stop = file.size - 1
 
-    if ip_encoded is None or str(ip_encoded) != get_ip_encoded(request):
-        if not backdoors.validate_referer(request):
+    time = None
+    valid = False
+    if key:
+        time = datetime.fromtimestamp(base62.decode(key[:6]))
+        try:
+            signer.unsign('%s:%s:%s' % (get_value(request, id), key[:6], key[6:]))
+            valid = True
+        except BadSignature:
+            pass
+
+    if not valid:
+        if backdoors.validate_referer(request):
+            time = datetime.now().replace(mintute=0, second=0, microsecond=0)
+        else:
             return HttpResponseRedirect(reverse('file:detail', args=(id,)))
 
     referer = request.META.get('HTTP_REFERER')
@@ -66,7 +85,10 @@ def download(request, id, ip_encoded=None):
         if not stop:
             stop = file.size - 1
     else:
-        file.download_set.create(ip=str(get_ip(request)), referer=referer)
+        try:
+            file.download_set.create(ip=str(get_ip(request)), referer=referer, time=time)
+        except IntegrityError:
+            pass
 
     response = StreamingHttpResponse(download_generator(file, int(start), int(stop)), 'application/octet-stream', 200 if not range else 206)
     response['Content-Disposition'] = 'attachment; filename="' + file.name + '"'
@@ -86,3 +108,9 @@ def download_generator(file, start, stop):
                 yield buffer
             else:
                 break
+
+def get_value(request, id):
+    if issubclass(id.__class__, UUID):
+        return '%s|%s' % (urlsafe_base64_encode(id.bytes), str(get_ip(request)))
+    else:
+        return '%s|%s' % (id, str(get_ip(request)))
