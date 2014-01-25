@@ -34,6 +34,3 @@ def get_ip(request):
         return IPAddress(request.META['HTTP_X_REAL_IP'])
     else:
         return IPAddress(request.META['REMOTE_ADDR'])
-
-def get_ip_encoded(request):
-    return format(crc32(hex(get_ip(request))[2:].zfill(8)) & 0xffffffff, '08x')

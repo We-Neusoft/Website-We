@@ -8,15 +8,15 @@ from we.utils.unit import file_size
 
 class File(models.Model):
     id = UUIDField(primary_key=True)
-    name = models.CharField('文件名', max_length=128)
-    extension = models.CharField('扩展名', max_length=16)
-    size = models.BigIntegerField('大小', editable=False)
-    type = models.TextField('属性', editable=False)
-    mime = models.CharField('MIME类型', max_length=64, editable=False)
-    crc32 = models.CharField('CRC32值', max_length=8, editable=False)
-    md5sum = models.CharField('MD5值', max_length=22, editable=False)
-    sha1sum = models.CharField('SHA1值', max_length=27, editable=False)
-    created = models.DateTimeField('上传时间', auto_now_add=True, editable=False)
+    name = models.CharField(u'文件名', max_length=128)
+    extension = models.CharField(u'扩展名', max_length=16)
+    size = models.BigIntegerField(u'大小', editable=False)
+    type = models.TextField(u'属性', editable=False)
+    mime = models.CharField(u'MIME类型', max_length=64, editable=False)
+    crc32 = models.CharField(u'CRC32值', max_length=8, editable=False)
+    md5sum = models.CharField(u'MD5值', max_length=22, editable=False)
+    sha1sum = models.CharField(u'SHA1值', max_length=27, editable=False)
+    created = models.DateTimeField(u'上传时间', auto_now_add=True, editable=False)
 
     def __unicode__(self):
         return self.name
@@ -41,14 +41,14 @@ class File(models.Model):
             ['md5sum', 'sha1sum'],
         ]
         ordering = ['-created']
-        verbose_name = '文件'
-        verbose_name_plural = '文件'
+        verbose_name = u'文件'
+        verbose_name_plural = u'文件'
 
 class Download(models.Model):
     file = models.ForeignKey('File', verbose_name='文件', editable=False)
-    ip = models.GenericIPAddressField('用户IP', editable=False)
-    referer = models.URLField('访问来源', null=True, editable=False)
-    time = models.DateTimeField('下载时间', editable=False)
+    ip = models.GenericIPAddressField(u'用户IP', editable=False)
+    referer = models.URLField(u'访问来源', null=True, editable=False)
+    time = models.DateTimeField(u'下载时间', editable=False)
 
     def __unicode__(self):
         return self.file.name
@@ -58,5 +58,5 @@ class Download(models.Model):
             ['file', 'ip', 'time'],
         ]
         ordering = ['-time']
-        verbose_name = '下载记录'
-        verbose_name_plural = '下载记录'
+        verbose_name = u'下载记录'
+        verbose_name_plural = u'下载记录'

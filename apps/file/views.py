@@ -6,7 +6,7 @@ from django.db.models import Count, Sum
 from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
 from django.shortcuts import render_to_response
 from django.utils.baseconv import base62
-from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views import generic
 
 from datetime import date, datetime, timedelta
@@ -49,10 +49,14 @@ def index(request):
 class FileView(generic.DetailView):
     model = File
 
+    def get_object(self):
+        self.kwargs[self.pk_url_kwarg] = urlsafe_base64_decode(self.kwargs[self.pk_url_kwarg]).encode('hex')
+        return super(FileView, self).get_object()
+
     def get_context_data(self, **kwargs):
         context = super(FileView, self).get_context_data(**kwargs)
         context.update(get_navbar(self.request))
-        context.update({'key': signer.sign(get_value(self.request, self.get_object().id)).replace(':', '')[-33:]})
+        context.update({'key': signer.sign(get_value(self.request, kwargs['object'].id)).replace(':', '')[-33:]})
         return context
 
 def download(request, id):
