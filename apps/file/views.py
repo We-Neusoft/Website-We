@@ -3,10 +3,10 @@ from django.core.signing import TimestampSigner, BadSignature
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.db.models import Count, Sum
-from django.http import HttpResponse, HttpResponseRedirect, StreamingHttpResponse
-from django.shortcuts import render_to_response
+from django.http import Http404, HttpResponse, HttpResponseRedirect, StreamingHttpResponse
+from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.utils.baseconv import base62
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views import generic
 
 from datetime import date, datetime, timedelta
@@ -50,7 +50,12 @@ class FileView(generic.DetailView):
     model = File
 
     def get_object(self):
-        self.kwargs[self.pk_url_kwarg] = urlsafe_base64_decode(self.kwargs[self.pk_url_kwarg]).encode('hex')
+        try:
+            id = UUID(bytes=urlsafe_base64_decode(self.kwargs[self.pk_url_kwarg]))
+        except ValueError:
+            raise Http404
+
+        self.kwargs[self.pk_url_kwarg] = id
         return super(FileView, self).get_object()
 
     def get_context_data(self, **kwargs):
@@ -61,7 +66,11 @@ class FileView(generic.DetailView):
 
 def download(request, id):
     key = request.GET.get('key')
-    file = File.objects.get(pk=id)
+    try:
+        id = UUID(bytes=urlsafe_base64_decode(id))
+    except ValueError:
+        raise Http404
+    file = get_object_or_404(File, pk=id)
     start = 0
     stop = file.size - 1
 
@@ -79,7 +88,7 @@ def download(request, id):
         if backdoors.validate_referer(request):
             time = datetime.now().replace(mintute=0, second=0, microsecond=0)
         else:
-            return HttpResponseRedirect(reverse('file:detail', args=(id,)))
+            return redirect(file)
 
     referer = request.META.get('HTTP_REFERER')
 
@@ -114,7 +123,4 @@ def download_generator(file, start, stop):
                 break
 
 def get_value(request, id):
-    if issubclass(id.__class__, UUID):
-        return '%s|%s' % (urlsafe_base64_encode(id.bytes), str(get_ip(request)))
-    else:
-        return '%s|%s' % (id, str(get_ip(request)))
+    return '%s|%s' % (urlsafe_base64_encode(id.bytes), str(get_ip(request)))

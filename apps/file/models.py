@@ -1,6 +1,7 @@
 #coding=utf-8
+from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.http import urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from django_uuid_pk.fields import UUIDField
 
@@ -20,6 +21,9 @@ class File(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('file:detail', args=[urlsafe_base64_encode(self.id.bytes)])
 
     def size_unit(self):
         return file_size(self.size)
