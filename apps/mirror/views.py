@@ -6,8 +6,8 @@ from django.views.decorators.cache import cache_page
 import json
 import time
 
-from we.utils.navbar import get_navbar
-from we.utils.unit import file_size
+from libs.navigation import get_navbar
+from libs.converter import file_size
 
 pathname = '/storage/mirror/'
 

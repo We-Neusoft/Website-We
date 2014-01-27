@@ -3,7 +3,7 @@ from django.core.urlresolvers import resolve
 
 import re
 
-from we.utils.ip_address import ipgeo
+from libs.ip import ipgeo
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 

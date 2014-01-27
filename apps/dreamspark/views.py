@@ -8,7 +8,7 @@ from django.shortcuts import render_to_response
 from httplib import HTTPSConnection
 
 from forms import SigninForm
-from we.utils.navbar import get_navbar
+from libs.navigation import get_navbar
 
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')

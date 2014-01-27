@@ -16,9 +16,9 @@ from zlib import crc32
 
 from models import File, Download
 from backdoors import backdoors
-from we.utils.ip_address import get_ip
-from we.utils.navbar import get_navbar
-from we.utils.unit import file_size
+from libs.ip import get_ip
+from libs.navigation import get_navbar
+from libs.converter import file_size
 
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 signer = TimestampSigner()
@@ -54,8 +54,8 @@ class FileView(generic.DetailView):
             id = UUID(bytes=urlsafe_base64_decode(self.kwargs[self.pk_url_kwarg]))
         except ValueError:
             raise Http404
-
         self.kwargs[self.pk_url_kwarg] = id
+
         return super(FileView, self).get_object()
 
     def get_context_data(self, **kwargs):

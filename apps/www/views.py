@@ -6,8 +6,8 @@ from django.views import generic
 
 from markdown import markdown
 
-from we.utils.ip_address import ipgeo
-from we.utils.navbar import get_navbar
+from libs.ip import ipgeo
+from libs.navigation import get_navbar
 from common.models import NavbarMore
 
 # 首页
