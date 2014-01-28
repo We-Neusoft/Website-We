@@ -1,5 +1,9 @@
 {% load staticfiles %}
-  <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+{% if html5 %}
+  <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+{% else %}
+  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+{% endif %}
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
   <script src="{% static 'js/we.js' %}"></script>
