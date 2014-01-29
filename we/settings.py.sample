@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn']
+ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn', '.dongruanyun.com']
 
 
 # Application definition
@@ -37,17 +37,24 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'apis.qrcode',
+    'apis.oauth',
+
+    'apps.www',
+    'apps.mirror',
+    'apps.dreamspark',
+    'apps.file',
+    'apps.open',
+
+    'backdoors.referer',
+
     'common',
-    'www',
-    'mirror',
-    'dreamspark',
-    'file',
 
     # 'auth',
     # 'download',
     # 'me',
 
-    'south',
+    #'south',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
-    'we.url_adapter.adapter.AdapterMiddleware',
+    'we.middleware.adapter.AdapterMiddleware',
 )
 
 ROOT_URLCONF = 'we.urls'
@@ -145,7 +152,7 @@ EMAIL_SUBJECT_PREFIX = '[We] '
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
-    'we.auth.mailbox.MailboxAuth',
+    'we.backends.auth.MailboxAuth',
 )
 
 
