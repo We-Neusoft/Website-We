@@ -5,7 +5,7 @@
 {% block content %}
   <div class="container">
     <div class="page-header">
-      <h1 style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">关于 {{ file.name }}</h1>
+      <h3>文件信息</h1>
     </div>
     <table class="table table-bordered">
       <tr>
@@ -37,5 +37,12 @@
         <td>{{ file.sha1 }}</td>
       <tr>
     </table>
+    <div class="page-header">
+      <h3>下载说明</h3>
+    </div>
+    <ol>
+      <li>本文件仅限在<strong>当前 IP 地址（{{ ip }}）</strong>进行无限次数多线程及断点下载；
+      <li>在校园有线网环境下载，最高可达到<strong> 100Mbps（约 11.92MB/s）</strong>下载速度；
+      <li>下载完成后，请计算文件 CRC32 、 MD5 及 SHA1 值确认文件完整性。
   </div>
 {% endblock %}

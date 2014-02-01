@@ -62,6 +62,7 @@ class FileView(generic.DetailView):
         context = super(FileView, self).get_context_data(**kwargs)
         context.update(get_navbar(self.request))
         context.update({'key': signer.sign(get_value(self.request, kwargs['object'].id)).replace(':', '')[-33:]})
+        context.update({'ip': str(get_ip(self.request))})
         return context
 
 def download(request, id):
