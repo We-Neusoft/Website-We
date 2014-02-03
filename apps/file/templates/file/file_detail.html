@@ -5,7 +5,7 @@
 {% block content %}
   <div class="container">
     <div class="page-header">
-      <h3>文件信息</h1>
+      <h3>文件信息</h3>
     </div>
     <table class="table table-bordered">
       <tr>
@@ -15,27 +15,26 @@
         <td style="width: 40%;">{{ file.extension }}
       <tr>
         <td><strong>文件大小</strong>
-        <td>{{ file.size_unit }}</td>
+        <td>{{ file.size_unit }}
         <td><strong>MIME信息</strong>
-        <td>{{ file.mime }}</td>
+        <td>{{ file.mime }}
       <tr>
         <td><strong>文件属性</strong>
-        <td colspan="3">{{ file.type }}</td>
+        <td colspan="3">{{ file.type }}
       <tr>
         <td><strong>上传日期</strong>
-        <td>{{ file.created|date:'Y 年 n 月 j 日' }}</td>
+        <td>{{ file.created|date:'Y 年 n 月 j 日' }}
         <td><strong>CRC32</strong>
-        <td>{{ file.crc32 }}</td>
+        <td>{{ file.crc32 }}
       <tr>
         <td rowspan="2"><strong>下载地址</strong>
         <td rowspan="2">
           <a href="{% url 'file:download' file.id.encode %}?key={{ key }}" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> 从 We 下载（{{ file.download_times }} 次）</a>
         <td><strong>MD5</strong>
-        <td>{{ file.md5 }}</td>
+        <td>{{ file.md5 }}
       <tr>
         <td><strong>SHA1</strong>
-        <td>{{ file.sha1 }}</td>
-      <tr>
+        <td>{{ file.sha1 }}
     </table>
     <div class="page-header">
       <h3>下载说明</h3>
@@ -43,6 +42,7 @@
     <ol>
       <li>本文件仅限在<strong>当前 IP 地址（{{ ip }}）</strong>进行无限次数多线程及断点下载；
       <li>在校园有线网环境下载，最高可达到<strong> 100Mbps（约 11.92MB/s）</strong>下载速度；
-      <li>下载完成后，请计算文件 CRC32 、 MD5 及 SHA1 值确认文件完整性。
+      <li><em>下载完成后，请计算文件 CRC32 、 MD5 及 SHA1 值确认文件完整性。</em>
+    </ol>
   </div>
 {% endblock %}
