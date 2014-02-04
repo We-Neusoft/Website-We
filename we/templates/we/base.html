@@ -4,11 +4,11 @@
   <meta name="description" content="{% block meta_desc %}We · Cloud云技术小组{% endblock %}">
   <meta name="keywords" content="大连东软信息学院, 网络中心, We · Cloud云技术小组{% block meta_keywords %}{% endblock %}">
   <meta charset="UTF-8">
-  <!--[if IE]
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <![endif]-->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
-{% include "we/include/css.html" %}
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/we.css' %}" rel="stylesheet" />
 {% block extra_css %}
 {% block more_css %}
 {% endblock %}
@@ -18,7 +18,8 @@
     <script src="{% static 'js/respond.min.js' %}"></script>
   <![endif]-->
 </head>
-<body {% block body_attributes %}{% endblock %}>
+<body{% block body_attributes %}{% endblock %}>
+<div id="wrap">
   <nav class="navbar navbar-inverse navbar-fixed-top navbar-fixed-top-we" role="navigation">
     <div class="container">
       <a class="navbar-brand" href="http://we.neusoft.edu.cn">We · Cloud</a>
@@ -42,8 +43,25 @@
 {% endblock %}
 {% endblock %}
 {% endblock %}
-{% include "we/include/footer.html" %}
-{% include "we/include/js.html" %}
+</div>
+  <footer id="footer">
+    <div class="container">
+    <!--[if lte IE 8]><span style="filter: FlipH; -ms-filter: "FlipH"; display: inline-block;"><![endif]-->
+      <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">&copy;</span>
+    <!--[if lte IE 8]></span><![endif]-->
+    Copyleft 2008-2014 <a href="mailto:we@nou.com.cn"><span class="glyphicon glyphicon-envelope"></span>We · Cloud 云技术小组</a> All rights reversed.<br />
+    感谢大连东软信息学院网络中心提供本小组所有硬件及网络资源。
+    </div>
+  </footer>
+  <img src="{% url 'api:qrcode:small' %}" class="qrcode">
+{% if html5 %}
+  <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+{% else %}
+  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+{% endif %}
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+  <script src="{% static 'js/we.js' %}"></script>
 {% block extra_js %}
 {% block more_js %}
 {% endblock %}
