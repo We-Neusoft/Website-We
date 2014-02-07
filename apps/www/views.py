@@ -6,7 +6,7 @@ from django.views import generic
 
 from markdown import markdown
 
-from libs.ip import ipgeo
+from libs.ip import get_geo
 from libs.navigation import get_navbar
 from common.models import NavbarMore
 
@@ -34,7 +34,7 @@ class MoreServicesView(generic.ListView):
 def get_services(request):
     services = []
 
-    if ipgeo(request):
+    if ipgeo(request=request):
         more_services = cache.get('more_services__intranet')
         if not more_services:
             more_services = NavbarMore.objects.filter(app='www').filter(intranet=True).order_by('order')

@@ -3,7 +3,7 @@ from django.core.urlresolvers import resolve
 
 import re
 
-from libs.ip import ipgeo
+from libs.ip import get_geo
 
 DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
@@ -27,7 +27,7 @@ class AdapterMiddleware(object):
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
         response.content = re.sub(r'<img([^>]*)src="/([^/]+)/([^"]*)"([^>]*)>', self.handle_img, response.content)
 
-        if ipgeo(request):
+        if get_geo(request):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
 
         return response
