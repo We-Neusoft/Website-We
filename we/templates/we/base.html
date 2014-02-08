@@ -7,7 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
+{% if intranet %}
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+{% else %}
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
+{% endif %}
   <link href="{% static 'css/we.css' %}" rel="stylesheet" />
 {% block extra_css %}
 {% block more_css %}
@@ -55,11 +59,23 @@
   </footer>
   <img src="{% url 'api:qrcode:small' %}" class="qrcode">
 {% if html5 %}
+{% if intranet %}
   <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
 {% else %}
-  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+  <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 {% endif %}
+{% else %}
+{% if intranet %}
+  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+{% else %}
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+{% endif %}
+{% endif %}
+{% if intranet %}
   <script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% else %}
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+{% endif %}
 
   <script src="{% static 'js/we.js' %}"></script>
 {% block extra_js %}
