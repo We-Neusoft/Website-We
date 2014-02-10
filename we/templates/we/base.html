@@ -60,13 +60,13 @@
   <img src="{% url 'api:qrcode:small' %}" class="qrcode">
 {% if html5 %}
 {% if intranet %}
-  <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+  <script src="//lib.dongruanyun.com/jquery/jquery2.min.js"></script>
 {% else %}
   <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
 {% endif %}
 {% else %}
 {% if intranet %}
-  <script src="{% static 'js/jquery-1.11.0.min.js' %}"></script>
+  <script src="//lib.dongruanyun.com/jquery/jquery1.min.js"></script>
 {% else %}
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 {% endif %}
