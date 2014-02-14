@@ -34,7 +34,7 @@ class MoreServicesView(generic.ListView):
 def get_services(request):
     services = []
 
-    if ipgeo(request=request):
+    if get_geo(request=request):
         more_services = cache.get('more_services__intranet')
         if not more_services:
             more_services = NavbarMore.objects.filter(app='www').filter(intranet=True).order_by('order')
