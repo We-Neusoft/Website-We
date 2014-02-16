@@ -117,7 +117,7 @@ def download_generator(file, start, stop):
     with open(FILE_ROOT + file_path, 'rb') as f:
         f.seek(start)
         while True:
-            buffer = f.read(4096)
+            buffer = f.read(65536)
             if buffer:
                 yield buffer
             else:
