@@ -87,7 +87,7 @@ def download(request, id):
 
     if not valid:
         if backdoors.validate_referer(request):
-            time = datetime.now().replace(mintute=0, second=0, microsecond=0)
+            time = datetime.now().replace(minute=0, second=0, microsecond=0)
         else:
             return redirect(file)
 
