@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 {% load staticfiles %}
 <head>
-  <meta name="description" content="{% block meta_desc %}We · Cloud云技术小组{% endblock %}">
-  <meta name="keywords" content="大连东软信息学院, 网络中心, We · Cloud云技术小组{% block meta_keywords %}{% endblock %}">
+  <meta name="description" content="{% block meta_desc %}We-Cloud 维云技术小组{% endblock %}">
+  <meta name="keywords" content="大连东软信息学院, 网络中心, We-Cloud 维云技术小组{% block meta_keywords %}{% endblock %}">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{% endblock %} | We · Cloud云技术小组 - 东软校园内的云服务平台</title>
+  <title>{% block title %}{% endblock %} | We-Cloud 维云技术小组 - 东软校园内的云服务平台</title>
 {% if intranet %}
   <link href="//lib.dongruanyun.com/bootstrap/3/css/bootstrap.min.css" rel="stylesheet" />
 {% else %}
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
 {% endif %}
   <link href="{% static 'css/we.css' %}" rel="stylesheet" />
 {% block extra_css %}
@@ -74,7 +74,7 @@
 {% if intranet %}
   <script src="//lib.dongruanyun.com/bootstrap/3/js/bootstrap.min.js"></script>
 {% else %}
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 {% endif %}
 
   <script src="{% static 'js/we.js' %}"></script>
