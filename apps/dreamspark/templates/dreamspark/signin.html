@@ -11,14 +11,15 @@
   <div class="container">
     <form method="post" class="form-horizontal" role="form">
       {% csrf_token %}
-      <div class="col-md-offset-2 col-md-8">
+      <div class="col-xs-offset-1 col-xs-6 col-sm-offset-2 col-xs-6 col-md-offset-1 col-md-5 col-lg-offset-1 col-lg-4">
         <div class="panel panel-default panel-login">
           <div class="panel-heading">登录 DreamSpark</div>
           <div class="panel-body">
             <div class="form-group">
-              <label for="username" class="col-md-2 control-label">邮箱地址</label>
-              <div class="input-group col-md-9">
-                <input name="username" type="text" class="form-control" id="username" placeholder="姓名的全拼+13" required>
+              <div class="input-group col-xs-offset-1 col-xs-10">
+                <input name="username" type="text" class="form-control" id="username" placeholder="邮箱地址" required>
+              </div>
+              <div class="input-group col-xs-offset-1 col-xs-10">
                 <span class="input-group-addon">@</span>
                 <select name="domain" class="form-control">
                   <option value="nou.com.cn">nou.com.cn</option>
@@ -27,15 +28,15 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="password" class="col-md-2 control-label">邮箱密码</label>
-              <div class="input-group col-md-9">
-                <input name="password" type="password" class="form-control" id="password" placeholder="身份证后6位+手机号码的后4位" required>
+              <div class="input-group col-xs-offset-1 col-xs-10">
+                <input name="password" type="password" class="form-control" id="password" placeholder="邮箱密码" required>
               </div>
             </div>
             <div class="form-group">
-              <div class="input-group col-md-offset-2 col-md-9">
+              <div class="input-group col-xs-offset-1 col-xs-10">
                 {% if error %}<p class="text-danger">{{ error }}</p>{% endif %}
-                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
+                <button type="submit" name="action" value="login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span> 登录</button>
+                <button type="submit" name="action" value="cancel" class="btn btn-default">取消</button>
                 <a href="http://mail.nou.com.cn/check.html" target="_blank"><button class="btn btn-link"><span class="glyphicon glyphicon-new-window"></span> 找回邮箱地址</button></a>
               </div>
             </div>

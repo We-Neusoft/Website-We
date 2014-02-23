@@ -2,13 +2,16 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
 from django.core.context_processors import csrf
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from httplib import HTTPSConnection
+from json import loads
+from urllib import urlencode
 
-from forms import SigninForm
+from forms import SigninForm, CodeForm
 from libs.navigation import get_navbar
+from libs import oauth_client
 
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
@@ -24,6 +27,23 @@ def download(request):
     result = get_navbar(request)
 
     return render_to_response('dreamspark/download.html', result)
+
+# 登录
+def login(request):
+    redirect_uri = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we'
+
+    form = CodeForm(request.GET)
+    if not form.is_valid():
+        response = oauth_client.login(request, redirect_uri)
+        if issubclass(response.__class__, HttpResponse):
+            return response
+    else:
+        code = form.cleaned_data['code']
+        
+        if not oauth_client.get_token(request, redirect_uri, code):
+            return HttpResponse('Error')
+
+    return HttpResponse(request.session['token'])
 
 # 登录
 def signin(request):
