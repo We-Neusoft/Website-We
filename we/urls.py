@@ -14,7 +14,6 @@ urlpatterns = patterns('',
     (r'^file/', include('apps.file.urls', namespace='file')),
     (r'^open/', include('apps.open.urls', namespace='open')),
 
-    (r'^api/', include('apis.urls', namespace='api')),
     (r'^me/', include('apps.me.urls', namespace='me')),
 
     (r'^admin/', include(admin.site.urls)),
