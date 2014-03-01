@@ -10,8 +10,8 @@ from json import loads
 from urllib import urlencode
 
 from forms import SigninForm, CodeForm
-from libs.navigation import get_navbar
-from libs import oauth_client
+from navigation import get_navbar
+import oauth_client
 
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')

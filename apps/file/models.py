@@ -5,7 +5,7 @@ from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 from django_uuid_pk.fields import UUIDField
 
-from libs.converter import file_size
+from converter import file_size
 
 class File(models.Model):
     id = UUIDField(primary_key=True)

@@ -16,9 +16,9 @@ from zlib import crc32
 
 from models import File, Download
 from backdoors import backdoors
-from libs.ip import get_ip
-from libs.navigation import get_navbar
-from libs.converter import file_size
+from ip import get_ip
+from navigation import get_navbar
+from converter import file_size
 
 FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
 signer = TimestampSigner()
