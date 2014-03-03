@@ -11,7 +11,7 @@ from urllib import urlencode
 
 from forms import SigninForm, CodeForm
 from navigation import get_navbar
-import oauth_client
+from libs import oauth_client
 
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
@@ -43,7 +43,9 @@ def login(request):
         if not oauth_client.get_token(request, redirect_uri, code):
             return HttpResponse('Error')
 
-    return HttpResponse(request.session['token'])
+        token = request.session['token']
+
+    return HttpResponse('OK')
 
 # 登录
 def signin(request):
