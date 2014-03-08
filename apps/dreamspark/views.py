@@ -43,9 +43,9 @@ def login(request):
         if not oauth_client.get_token(request, redirect_uri, code):
             return HttpResponse('Error')
 
-        token = request.session['token']
+    token = request.session['token']
 
-    return HttpResponse('OK')
+    return HttpResponse(oauth_client.get_user_info(request, token))
 
 # 登录
 def signin(request):

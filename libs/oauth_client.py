@@ -2,8 +2,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 
-import urllib2
-from urllib import urlencode
+import urllib, urllib2
 from json import loads
 
 from oauth_forms import TokenForm
@@ -12,6 +11,7 @@ CLIENT_ID = getattr(settings, 'OPEN_CLIENT_ID')
 CLIENT_SECRET = getattr(settings, 'OPEN_CLIENT_SECRET')
 OPEN_AUTHORIZE_URL = getattr(settings, 'OPEN_SERVER_AUTHORIZE')
 OPEN_TOKEN_URL = getattr(settings, 'OPEN_SERVER_TOKEN')
+OPEN_GET_USER_INFO_URL = getattr(settings, 'OPEN_SERVER_USER_GET_INFO')
 
 def login(request, redirect_uri):
     form = TokenForm(request.session)
@@ -26,7 +26,7 @@ def login(request, redirect_uri):
             'state': 'wecloud',
         }
 
-        return HttpResponseRedirect(OPEN_AUTHORIZE_URL + '?%s' % urlencode(params))
+        return HttpResponseRedirect(OPEN_AUTHORIZE_URL + '?%s' % urllib.urlencode(params))
 
 def get_token(request, redirect_uri, code):
     params = {
@@ -41,7 +41,7 @@ def get_token(request, redirect_uri, code):
     urllib2.install_opener(urllib2.build_opener(basic_auth))
 
     auth_request = urllib2.Request(url)
-    auth_request.add_data(urlencode(params))
+    auth_request.add_data(urllib.urlencode(params))
 
     try:
         token = loads(urllib2.urlopen(auth_request).read())
@@ -52,3 +52,10 @@ def get_token(request, redirect_uri, code):
         return True
     except urllib2.HTTPError:
         return False
+
+def get_user_info(request, token):
+    url = OPEN_GET_USER_INFO_URL
+
+    request = urllib2.Request(url)
+    request.add_header('Authorization', 'Bearer: ' + token)
+    return token + ' ' + urllib2.urlopen(request).read()
