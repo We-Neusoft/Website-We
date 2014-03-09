@@ -5,9 +5,8 @@ from django.core.context_processors import csrf
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 
-from httplib import HTTPSConnection
-from json import loads
-from urllib import urlencode
+import json
+import urllib, urllib2
 
 from forms import SigninForm, CodeForm
 from navigation import get_navbar
@@ -45,35 +44,26 @@ def login(request):
 
     token = request.session['token']
 
-    return HttpResponse(oauth_client.get_user_info(request, token))
+    user = oauth_client.get_user_privacy(request, token)
+    if user is None:
+        request.session.clear()
+        return HttpResponseRedirect(redirect_uri)
+    else:
+        email = json.loads(user)['email']
+        domain = email.split('@')[1]
+        if domain.lower() == 'nou.com.cn':
+            statuses = 'students'
+        elif domain.lower() == 'neusoft.edu.cn':
+            statuses = 'faculty,staff'
 
-# 登录
-def signin(request):
-    result = get_navbar(request)
-
-    if request.method == 'POST':
-        form = SigninForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            domain = form.cleaned_data['domain']
-            password = form.cleaned_data['password']
-
-            user = authenticate(email=username + '@' + domain, password=password)
-
-            if user:
-                try:
-                    onthehub = HTTPSConnection('e5.onthehub.com')
-                    onthehub.request('GET', '/WebStore/Security/AuthenticateUser.aspx?account=' + DREAMSPARK_ACCOUNT + '&username=' + user.username + '&key=' + DREAMSPARK_KEY + '&academic_statuses=' + ('students' if domain == '@nou.com.cn' else 'faculty,staff') + '&email=' + user.email + '&last_name=' + user.last_name + '&first_name=' + user.first_name)
-                    response = onthehub.getresponse()
-                    if response.status == 200:
-                        return HttpResponseRedirect(response.read())
-                    else:
-                        result.update({'error': '与 DreamSpark 通信异常，请稍后重试'})
-                except:
-                    result.update({'error': '与 DreamSpark 通信超时，请稍后重试'})
-            else:
-                result.update({'error': '邮箱地址或密码错误，请重新输入'})
-
-    result.update(csrf(request))
-
-    return render_to_response('dreamspark/signin.html', result)
+        result = urllib2.urlopen(
+            'https://e5.onthehub.com/WebStore/Security/AuthenticateUser.aspx' +
+            '?%s' % urllib.urlencode({
+                'account': DREAMSPARK_ACCOUNT,
+                'key': DREAMSPARK_KEY,
+                'username': email,
+                'academic_statuses': statuses,
+                'email': email,
+            }),
+        ).read()
+        return HttpResponseRedirect(result)

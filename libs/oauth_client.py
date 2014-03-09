@@ -12,6 +12,7 @@ CLIENT_SECRET = getattr(settings, 'OPEN_CLIENT_SECRET')
 OPEN_AUTHORIZE_URL = getattr(settings, 'OPEN_SERVER_AUTHORIZE')
 OPEN_TOKEN_URL = getattr(settings, 'OPEN_SERVER_TOKEN')
 OPEN_GET_USER_INFO_URL = getattr(settings, 'OPEN_SERVER_USER_GET_INFO')
+OPEN_GET_USER_PRIVACY_URL = getattr(settings, 'OPEN_SERVER_USER_GET_PRIVACY')
 
 def login(request, redirect_uri):
     form = TokenForm(request.session)
@@ -57,5 +58,22 @@ def get_user_info(request, token):
     url = OPEN_GET_USER_INFO_URL
 
     request = urllib2.Request(url)
-    request.add_header('Authorization', 'Bearer: ' + token)
-    return token + ' ' + urllib2.urlopen(request).read()
+    request.add_header('Authorization', 'Bearer ' + token)
+
+    result = urllib2.urlopen(request).read()
+    if result.lower() == 'none':
+        return None
+    else:
+        return result
+
+def get_user_privacy(request, token):
+    url = OPEN_GET_USER_PRIVACY_URL
+
+    request = urllib2.Request(url)
+    request.add_header('Authorization', 'Bearer ' + token)
+
+    result = urllib2.urlopen(request).read()
+    if result.lower() == 'none':
+        return None
+    else:
+        return result
