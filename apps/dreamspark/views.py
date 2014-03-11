@@ -15,6 +15,8 @@ from libs import oauth_client
 DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
 DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
 
+OPEN_LOGIN_REDIRECT_URI = getattr(settings, 'DREAMSPARK_OPEN_REDIRECT_URI')
+
 # 首页
 def index(request):
     result = get_navbar(request)
@@ -29,7 +31,7 @@ def download(request):
 
 # 登录
 def login(request):
-    redirect_uri = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we'
+    redirect_uri = OPEN_LOGIN_REDIRECT_URI
 
     form = CodeForm(request.GET)
     if not form.is_valid():
@@ -56,14 +58,17 @@ def login(request):
         elif domain.lower() == 'neusoft.edu.cn':
             statuses = 'faculty,staff'
 
-        result = urllib2.urlopen(
-            'https://e5.onthehub.com/WebStore/Security/AuthenticateUser.aspx' +
-            '?%s' % urllib.urlencode({
-                'account': DREAMSPARK_ACCOUNT,
-                'key': DREAMSPARK_KEY,
-                'username': email,
-                'academic_statuses': statuses,
-                'email': email,
-            }),
-        ).read()
+        try:
+            result = urllib2.urlopen(
+                'https://e5.onthehub.com/WebStore/Security/AuthenticateUser.aspx' +
+                '?%s' % urllib.urlencode({
+                    'account': DREAMSPARK_ACCOUNT,
+                    'key': DREAMSPARK_KEY,
+                    'username': email,
+                    'academic_statuses': statuses,
+                    'email': email,
+                }),
+            ).read()
+        except urllib2.URLError:
+            result = '与 DreamSpark 服务器通信超时，请稍后重试。'
         return HttpResponseRedirect(result)
