@@ -42,6 +42,10 @@ def index(request):
             'week': len(Download.objects.filter(time__gt=date.today() - timedelta(days=6))),
             'month': len(Download.objects.filter(time__gt=date.today() - timedelta(days=29))),
         },
+        'date': {
+            'week': date.today() - timedelta(days=6),
+            'month': date.today() - timedelta(days=29),
+        },
     })
 
     return render_to_response('file/index.html', result)

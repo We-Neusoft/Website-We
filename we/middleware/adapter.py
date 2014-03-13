@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.core.urlresolvers import resolve
+from django.core.urlresolvers import resolve, Resolver404
+from django.http import HttpResponseNotFound
 
 import re
 
@@ -9,7 +10,10 @@ DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
 
 class AdapterMiddleware(object):
     def process_response(self, request, response):
-        self.app = resolve(request.path).namespace
+        try:
+            self.app = resolve(request.path).namespace
+        except Resolver404:
+            return response
 
         if DEBUG_ENABLED:
             return response

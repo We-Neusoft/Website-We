@@ -3,10 +3,10 @@
 {% block title %}云盘{% endblock %}
 
 {% block hero_title %}We - 云盘{% endblock %}
-{% block hero_subtitle %}东软校园网极速文件下载体验！{% endblock %}
+{% block hero_subtitle %}体验校园网极速文件共享下载！{% endblock %}
 
 {% block content %}
-  <div class="container blocks">
+  <div class="container">
     <div class="row-fluid">
       <div class="col-md-6">
         <div class="panel panel-default">
@@ -33,5 +33,22 @@
         </div>
       </div>
     </div>
+    <section>
+      <header class="page-header">
+        <h3>说明：</h3>
+      </header>
+      <strong>文件统计：</strong>
+      <ul>
+	<li><strong>全部文件：</strong>云盘系统中记录的文件总数量；
+	<li><strong>物理文件：</strong>云盘存储中存放的文件总数量（相同内容文件只存放一次）；
+	<li><strong>占用空间：</strong>云盘存储中存放的文件总大小；
+      </ul>
+      <strong>下载统计：</strong>
+      <ul>
+	<li><strong>日统计：</strong>从今天 0 点到现在总下载次数；
+	<li><strong>周统计：</strong>从 {{ date.week|date:'n 月 j 日' }}到现在总下载次数；
+	<li><strong>月统计：</strong>从 {{ date.month|date:'n 月 j 日' }}到现在总下载次数；
+      </ul>
+    </section>
   </div>
 {% endblock %}
