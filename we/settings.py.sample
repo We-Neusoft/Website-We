@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn', '.dongruanyun.com']
+ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn']
 
 
 # Application definition
@@ -36,9 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'apis.qrcode',
-    'apis.oauth',
 
     'apps.www',
     'apps.mirror',
@@ -63,6 +60,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'we.middleware.adapter.AdapterMiddleware',
 )
@@ -91,7 +89,7 @@ CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         'LOCATION': 'memcache:11211',
-        'KEY_PREFIX': 'dev',
+        'KEY_PREFIX': 'we_dev',
     }
 }
 
@@ -116,10 +114,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/data/www/dev/'
+STATIC_ROOT = '/data/www/we/'
 
 STATICFILES_DIRS = (
-    '/data/git/we/static',
+    '/data/git/we/we/static',
 )
 
 
@@ -150,20 +148,24 @@ SERVER_EMAIL = 'we@nou.com.cn'
 EMAIL_SUBJECT_PREFIX = '[We] '
 
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'we.backends.auth.MailboxAuth',
-)
-
-
 TEMPLATE_DIRS = (
-    '/data/git/we/templates',
+    '/data/git/we/we/templates',
 )
 
 
 DREAMSPARK_ACCOUNT = 'WE_CLOUD'
-
 DREAMSPARK_KEY = 'WE_CLOUD'
+DREAMSPARK_OPEN_REDIRECT_URI = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we'
 
 
 FILE_ROOT = '/storage/file/'
+
+
+OPEN_CLIENT_ID = 'wecloud'
+OPEN_CLIENT_SECRET = 'vH4aD7H3Q0q4UrlpHVmvag'
+
+OPEN_SERVER_DOMAIN = 'http://dev.api.neusoft.edu.cn'
+OPEN_SERVER_AUTHORIZE = OPEN_SERVER_DOMAIN + '/oauth/authorize'
+OPEN_SERVER_TOKEN = OPEN_SERVER_DOMAIN + '/oauth/token'
+OPEN_SERVER_USER_GET_INFO = OPEN_SERVER_DOMAIN + '/user/get_info'
+OPEN_SERVER_USER_GET_PRIVACY = OPEN_SERVER_DOMAIN + '/user/get_privacy'
