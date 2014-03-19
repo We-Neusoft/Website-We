@@ -18,3 +18,5 @@ urlpatterns = patterns('',
 
     (r'^admin/', include(admin.site.urls)),
 )
+
+handler404 = 'we.views.http_404_view'
