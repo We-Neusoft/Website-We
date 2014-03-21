@@ -20,3 +20,4 @@ urlpatterns = patterns('',
 )
 
 handler404 = 'we.views.http_404_view'
+handler500 = 'we.views.http_500_view'
