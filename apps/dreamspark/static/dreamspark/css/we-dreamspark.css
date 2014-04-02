@@ -1,3 +1,7 @@
-.panel-login {
-   margin-top: 20px;
+table {
+  text-align: center;
+}
+
+th {
+  text-align: inherit;
 }
