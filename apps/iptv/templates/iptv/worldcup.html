@@ -1,0 +1,159 @@
+{% extends "we/base.html" %}
+{% load staticfiles %}
+
+{% block title %}世界杯专版 - 网络电视{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'iptv/css/we-iptv.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'iptv:index' %}">网络电视</a>
+      <li class="active">世界杯专版
+    </ol>
+    <p class="alert alert-warning"><strong>版权声明：</strong>本页面所有录像版权归中央电视台所有，仅供个人学习研究使用，请于下载后 24 小时内删除。不得用于商业用途，不得进行任何形式的复制、剪辑、转码、发布，如需获得使用权利，请与中央电视台联系。
+    <section>
+      <header class="page-header">
+        <h3>直播频道</h3>
+      </header>
+      <div class="channel">
+        <dl>
+          <dt><img src="http://drop.we.neusoft.edu.cn/CCTV-5-HD.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/CCTV-5" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> CCTV-5 高清</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="http://drop.we.neusoft.edu.cn/hdtest.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/CCTV-5-HD" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> CCTV-5 准高清</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="http://drop.we.neusoft.edu.cn/cctv5.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/CCTV-5-SD" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> CCTV-5 标清</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="http://drop.we.neusoft.edu.cn/CCTV-5plus-HD.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/CCTV-5+" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> CCTV-5+ 高清</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="http://drop.we.neusoft.edu.cn/CCTV-1-HD.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/CCTV-1" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> CCTV-1 高清</a>
+          </dd>
+        </dl>
+      </div>
+      <div class="clearfix"></div>
+      <header class="page-header">
+        <h3>录像下载及回放</h3>
+      </header>
+      <div>
+{% for item in items %}
+  {% if forloop.counter0 <= 0 %}
+    {% if forloop.counter0 == 0 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>开幕式
+          <tbody>
+    {% endif %}
+            <tr>
+              <td>
+  {% elif forloop.counter0 <= 48 %}
+    {% if forloop.counter0 == 1 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="4">小组赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|add:"5"|divisibleby:"6" %}
+            <tr{% cycle '' ' class="active"' %}>
+              <td rowspan="2">{% cycle 'A' 'B' 'C' 'D' 'E' 'F' 'G' 'H' %} 组
+              <td>
+    {% elif forloop.counter0|add:"5"|divisibleby:"3" %}
+            <tr{% cycle '' ' class="active"' %}>
+              <td>
+    {% else %}
+              <td>
+    {% endif %}
+  {% elif forloop.counter0 <= 56 %}
+    {% if forloop.counter0 == 49 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="4">1/8 决赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|add:"3"|divisibleby:"4" %}
+            <tr{% cycle '' ' class="active"' %}>
+              <td>
+    {% else %}
+              <td>
+    {% endif %}
+  {% elif forloop.counter0 <= 60 %}
+    {% if forloop.counter0 == 57 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">1/4 决赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|add:"1"|divisibleby:"2" %}
+            <tr{% cycle '' ' class="active"' %}>
+              <td>
+    {% else %}
+              <td>
+    {% endif %}
+  {% elif forloop.counter0 <= 62 %}
+    {% if forloop.counter0 == 61 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">半决赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|add:"1"|divisibleby:"2" %}
+            <tr>
+              <td>
+    {% else %}
+              <td>
+    {% endif %}
+  {% elif forloop.counter0 <= 63 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>三四名决赛
+          <tbody>
+            <tr>
+              <td>
+  {% elif forloop.counter0 <= 64 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>决赛
+          <tbody>
+            <tr>
+              <td>
+  {% endif %}
+  {% if item.id %}
+                <a href="{% url 'file:detail' item.id %}">{{ item.name }}</a>
+  {% else %}
+                {{ item.name }}
+  {% endif %}
+  {% if forloop.counter0 == 0 or forloop.counter0 == 48 or forloop.counter0 == 56 or forloop.counter0 == 60 or forloop.counter0 == 62 or forloop.counter0 == 63 or forloop.last %}
+        </table>
+  {% endif %}
+{% endfor %}
+        <p class="alert alert-info"><strong>说明：</strong>(A1) 为 A 组第一名，(A1|B2) 为 A 组第一名或 B 组第二名，依上轮成绩而定。其余依次类推。
+      </div>
+    </section>
+  </div>
+{% endblock %}

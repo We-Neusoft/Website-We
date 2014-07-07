@@ -69,6 +69,25 @@ class FileView(generic.DetailView):
         context.update({'ip': str(get_ip(self.request))})
         return context
 
+class PlayView(generic.DetailView):
+    model = File
+    template_name = 'file/file_play.html'
+
+    def get_object(self):
+        try:
+            id = UUID(bytes=urlsafe_base64_decode(self.kwargs[self.pk_url_kwarg]))
+        except ValueError:
+            raise Http404
+        self.kwargs[self.pk_url_kwarg] = id
+
+        return super(PlayView, self).get_object()
+
+    def get_context_data(self, **kwargs):
+        context = super(PlayView, self).get_context_data(**kwargs)
+        context.update(get_navbar(self.request))
+        context.update({'path': kwargs['object'].crc32[-2:] + '/' + kwargs['object'].md5sum + kwargs['object'].sha1sum})
+        return context
+
 def download(request, id):
     key = request.GET.get('key')
     try:

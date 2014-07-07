@@ -1,0 +1,8 @@
+.table-iptv > thead > tr > th, .table-iptv > tbody > tr > td {
+   text-align: center;
+   vertical-align: middle;
+}
+
+.channel dl {
+   float: left;
+}

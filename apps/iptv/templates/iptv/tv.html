@@ -1,0 +1,54 @@
+{% extends "we/base.html" %}
+{% load staticfiles %}
+
+{% block title %}网络电视{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'iptv/css/we-iptv.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <section>
+      <div id="channels" class="panel-group col-md-3">
+{% for group in channels %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#channels" href="#{{ group.group }}">{{ group.name }}</a></h4>
+          </div>
+          <div id="{{ group.group }}" class="panel-collapse collapse{% if group.active %} in{% endif %}">
+            <div class="panel-body">
+{% for channel in group.channels %}
+              <a href="?channel={{ channel.channel }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ channel.name }}</a><br>
+{% endfor %}
+            </div>
+          </div>
+        </div>
+{% endfor %}
+      </div>
+      <div class="col-md-9">
+        <header class="page-header">
+          <h1>
+            {{ channel.name }}
+            <a id="play" href="mms://mms.we.neusoft.edu.cn/{{ channel.point }}" class="btn btn-primary" title="如果点击后无法播放，请右键点击复制链接地址，然后手动打开 Windows Media Player 播放器，再按键盘组合键 Ctrl + U 粘贴本地址即可播放。"><span class="glyphicon glyphicon-play"></span> 本地播放</a>
+{% if channel.channel == "cctv5" %}
+            <a id="play" href="mms://mms.we.neusoft.edu.cn/CCTV-5-SD" class="btn btn-link" title="由于东北大学接收到的高清信号有时不稳定，当转播信号有严重卡顿时，请使用此备用源播放。">备用播放</a>
+{% endif %}
+          </h1>
+        </header>
+        <div class="row">
+          <div class="col-md-6">
+{% for item in items.am %}
+            <p>{{ item.time }}&nbsp;&nbsp;{{ item.name }}<br>
+{% endfor %}
+          </div>
+          <div class="col-md-6">
+{% for item in items.pm %}
+            <p>{{ item.time }}&nbsp;&nbsp;{{ item.name }}<br>
+{% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}

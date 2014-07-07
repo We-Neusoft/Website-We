@@ -1,0 +1,55 @@
+{% extends "we/hero.html" %}
+{% load staticfiles %}
+
+{% block title %}网络电视{% endblock %}
+
+{% block hero_title %}We - 网络电视{% endblock %}
+{% block hero_subtitle %}校园网络电视现在开播！{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <p class="alert alert-warning"><strong>免责声明：</strong>We 没有在任何其他位置发布链接到网络电视的脚本、软件及页面，本页面为惟一发布方式。如使用第三方方式导致的不良后果，We 不承担任何责任。
+    <section>
+      <header class="page-header">
+        <h3>说明</h3>
+      </header>
+      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，We 经过与其协商，现将部分节目引入到校园网以利于大家更方便的进行学习与研究。由于能力原因，We 在校园网内转播了其中高清频道 12 套，标清频道 30 套。
+    </section>
+    <section>
+      <header class="page-header">
+        <h3>频道列表 <a href="{% url 'iptv:worldcup' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> 世界杯专版</a></h3>
+      </header>
+      <ul>
+{% for group in channels %}
+        <li>
+          <strong>{{ group.name }}：</strong>
+{% for channel in group.channels %}
+          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel }}"><span class="glyphicon glyphicon-{{ group.type }}-video"></span>{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
+{% endfor %}
+{% endfor %}
+      </ul>
+    </section>
+    <section>
+      <header class="page-header">
+        <h3>常见问题</h3>
+      </header>
+      <ol>
+        <li>
+          <p><strong>哪些播放器可以播放？</strong>
+          <p>目前确定可以正常播放的只有 Windows Media Player 。
+        <li>
+          <p><strong>为什么点击在线播放按钮后没有播放？</strong>
+          <p>出现这种问题，是因为你的浏览器没有将 mms 协议关联到 Windows Media Player 所导致，你可以尝试重新关联 mms 协议即可。或者，你可以右键点击按钮复制链接地址，然后手动打开 Windows Media Player ，再按键盘组合键<code>ctrl</code>+<code>U</code>粘贴该地址即可播放。
+        </li>
+        <li>
+          <p><strong>为什么有时播放节目会卡顿或无法播放？</strong>
+          <p>由于 We 的硬件能力原因，以及节目提供源东北大学及大连理工大学接收到的节目信号有时不稳定，因此转播过来的节目可能会出现播放异常现象。只要在日后有足够的能力，使用硬件自行采集高清信号后，便可大大减少此类现象。对此引起的不便，敬请谅解。
+        </li>
+        <li>
+          <p><strong>为什么每次都要播放烦人的广告？</strong>
+          <p>虽然从东北大学及大连理工大学转播节目信号是免费的，但是为了提供更加丰富、清晰、稳定、流畅的节目， We 必须投入资金添购硬件设备自行采集节目信号。因此，播放烦人的广告是获得资金的一种方式，敬请谅解。
+        </li>
+      </ol>
+    </section>
+  </div>
+{% endblock %}

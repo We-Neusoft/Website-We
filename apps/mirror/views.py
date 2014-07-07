@@ -16,7 +16,18 @@ def index(request):
     result = get_navbar(request)
 
     results = []
-    mirrors = ['centos', 'epel', 'atomic', 'repoforge', 'kali', 'kali-security', 'kali-images', 'raspbian', 'ubuntu-releases', 'archlinux', 'gentoo', 'gentoo-portage', 'mariadb', 'cpan', 'pypi', 'rubygems', 'cygwin', 'eclipse', 'putty', 'android', 'qt', 'ldp', 'lfs', 'blfs']
+    mirrors = [
+        'centos', 'epel', 'atomic', 'repoforge',
+        'kali', 'kali-security', 'kali-images',
+        'raspbian', 'rpi-firmware', 'rpi-kernel',
+        'ubuntu-releases',
+        'archlinux', 'gentoo', 'gentoo-portage',
+        'mariadb',
+        'cpan', 'pypi', 'rubygems',
+        'cygwin', 'eclipse', 'putty',
+        'android', 'qt',
+        'ldp', 'lfs', 'blfs'
+    ]
     for mirror in mirrors:
         if mirror in ['cpan', 'kali', 'kali-security']:
             status = '实时同步'
@@ -32,7 +43,7 @@ def index(request):
                 style = 'success'
             else:
                 status = '同步失败'
-                style = 'error'
+                style = 'danger'
 
         count = get_value(mirror, 'count')
         size = get_value(mirror, 'size')

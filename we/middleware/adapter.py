@@ -35,6 +35,7 @@ class AdapterMiddleware(object):
 
         if get_geo(request):
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
+            response.content = re.sub('iptv.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn', response.content)
 
         return response
 

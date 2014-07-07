@@ -1,0 +1,15 @@
+{% extends "we/base.html" %}
+
+{% block title %}播放 {{ file.name }}{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="page-header">
+      <h3>正在播放：{{ file.name }} （上传于 {{ file.created|date:'Y 年 n 月 j 日 H:i' }}） <a href="download.we" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> 下载</a></h3>
+    </div>
+    <video width="1280" height="720" controls>
+      <source src="http://play.we.neusoft.edu.cn/{{ path }}" type="video/mp4">
+    </video>
+    <div>播放体验取决于连接速率、浏览器兼容性及显卡驱动程序设置等综合因素，如无法流畅播放，请先下载后再观看。</div>
+  </div>
+{% endblock %}
