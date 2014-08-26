@@ -1,5 +1,6 @@
 from referer.models import Url
 
+from ip import get_geo
 from urlparse import urlparse
 
 def validate_referer(request):
@@ -14,3 +15,6 @@ def validate_referer(request):
         return True
     except Url.DoesNotExist:
         return False
+
+def validate_ip(request):
+    return get_geo(request)[:6] == 'server'

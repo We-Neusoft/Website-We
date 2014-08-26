@@ -31,21 +31,32 @@
           <h1>
             {{ channel.name }}
             <a id="play" href="mms://mms.we.neusoft.edu.cn/{{ channel.point }}" class="btn btn-primary" title="如果点击后无法播放，请右键点击复制链接地址，然后手动打开 Windows Media Player 播放器，再按键盘组合键 Ctrl + U 粘贴本地址即可播放。"><span class="glyphicon glyphicon-play"></span> 本地播放</a>
-{% if channel.channel == "cctv5" %}
-            <a id="play" href="mms://mms.we.neusoft.edu.cn/CCTV-5-SD" class="btn btn-link" title="由于东北大学接收到的高清信号有时不稳定，当转播信号有严重卡顿时，请使用此备用源播放。">备用播放</a>
-{% endif %}
           </h1>
         </header>
         <div class="row">
           <div class="col-md-6">
+{% if items %}
 {% for item in items.am %}
-            <p>{{ item.time }}&nbsp;&nbsp;{{ item.name }}<br>
+{% if item.current %}
+            <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+{% else %}
+            <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
+{% endif %}
 {% endfor %}
           </div>
           <div class="col-md-6">
 {% for item in items.pm %}
-            <p>{{ item.time }}&nbsp;&nbsp;{{ item.name }}<br>
+{% if item.current %}
+            <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+{% else %}
+            <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
+{% endif %}
 {% endfor %}
+{% else %}
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+{% endif %}
           </div>
         </div>
       </div>

@@ -142,13 +142,21 @@
           <tbody>
             <tr>
               <td>
+  {% elif forloop.counter0 <= 65 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>闭幕式
+          <tbody>
+            <tr>
+              <td>
   {% endif %}
   {% if item.id %}
                 <a href="{% url 'file:detail' item.id %}">{{ item.name }}</a>
   {% else %}
                 {{ item.name }}
   {% endif %}
-  {% if forloop.counter0 == 0 or forloop.counter0 == 48 or forloop.counter0 == 56 or forloop.counter0 == 60 or forloop.counter0 == 62 or forloop.counter0 == 63 or forloop.last %}
+  {% if forloop.counter0 == 0 or forloop.counter0 == 48 or forloop.counter0 == 56 or forloop.counter0 == 60 or forloop.counter0 == 62 or forloop.counter0 == 63 or forloop.counter0 == 64 or forloop.last %}
         </table>
   {% endif %}
 {% endfor %}

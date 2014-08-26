@@ -20,13 +20,13 @@ class AdapterMiddleware(object):
         if response.has_header('location'):
             if response['location'].startswith('/'):
                 response['location'] = re.sub(r'/([^/]+)(.*)', self.handle_location, response['location'])
-            elif response['location'].startswith('http://api.neusoft.edu.cn/'):
-                response['location'] = re.sub(r'http://api.neusoft.edu.cn/([^/]+)(.*)', self.handle_api, response['location'])
+            elif response['location'].startswith('http://hub.neusoft.edu.cn/'):
+                response['location'] = re.sub(r'http://hub.neusoft.edu.cn/([^/]+)(.*)', self.handle_hub, response['location'])
             return response
         if not hasattr(response, 'content'):
             return response
 
-        response.content = re.sub(r'http://api.neusoft.edu.cn/([^/]+)([^"]+)', self.handle_api, response.content)
+        response.content = re.sub(r'http://hub.neusoft.edu.cn/([^/]+)([^"]+)', self.handle_hub, response.content)
         response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
         response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
         response.content = re.sub(r'<a([^>]*)href="/([^/]+)([^"]*)"([^>]*)>', self.handle_a, response.content)
@@ -45,11 +45,11 @@ class AdapterMiddleware(object):
 
         return self.handle_url(target_app, target_url)
 
-    def handle_api(self, match):
+    def handle_hub(self, match):
         target_app = match.group(1)
         target_url = match.group(2)
 
-        return '//' + target_app + '.api.neusoft.edu.cn' + target_url
+        return '//' + target_app + '.hub.neusoft.edu.cn' + target_url
 
     def handle_link(self, match):
         target_url = match.group(2)

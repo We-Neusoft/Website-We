@@ -13,11 +13,11 @@
       <header class="page-header">
         <h3>说明</h3>
       </header>
-      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，We 经过与其协商，现将部分节目引入到校园网以利于大家更方便的进行学习与研究。由于能力原因，We 在校园网内转播了其中高清频道 12 套，标清频道 30 套。
+      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，We 经过与其协商，现将部分节目引入到校园网以利于大家更方便的进行学习与研究。
     </section>
     <section>
       <header class="page-header">
-        <h3>频道列表 <a href="{% url 'iptv:worldcup' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> 世界杯专版</a></h3>
+        <h3>频道列表 <a href="{% url 'iptv:voice_of_china' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> 中国好声音专版</a></h3>
       </header>
       <ul>
 {% for group in channels %}
@@ -29,6 +29,14 @@
 {% endfor %}
       </ul>
     </section>
+    <section>
+      <header class="page-header">
+        <h3>往期节目</h3>
+      </header>
+      <ul>
+        <li>
+          <a href="{% url 'iptv:worldcup_2014' %}">2014 巴西世界杯</a>
+      </ul>
     <section>
       <header class="page-header">
         <h3>常见问题</h3>

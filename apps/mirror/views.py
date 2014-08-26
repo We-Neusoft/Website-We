@@ -29,7 +29,7 @@ def index(request):
         'ldp', 'lfs', 'blfs'
     ]
     for mirror in mirrors:
-        if mirror in ['cpan', 'kali', 'kali-security']:
+        if mirror in ['cpan']:
             status = '实时同步'
             style = 'success'
         else:
@@ -37,6 +37,9 @@ def index(request):
 
             if status == '-1':
                 status = '正在同步'
+                style = 'info'
+            elif status == '-2':
+                status = '正在统计'
                 style = 'info'
             elif status == '0':
                 status = '同步成功'
