@@ -1,0 +1,78 @@
+{% extends "we/base.html" %}
+{% load staticfiles %}
+
+{% block title %}2014 中国好声音 - 网络电视{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'iptv/css/we-iptv.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'iptv:index' %}">网络电视</a>
+      <li class="active">2014 中国好声音
+    </ol>
+    <p class="alert alert-warning"><strong>版权声明：</strong>本页面所有录像版权归浙江卫视所有，不得用于商业用途，不得进行任何形式的复制、剪辑、转码、发布，如需获得使用权利，请与浙江卫视联系。
+    <section>
+      <div>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="3">盲选赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/N0PcsbnTQiaQMbmbdnqQJg.we">第一期 (7/18)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/S7meJFJSRZKRew3yFwjnSA.we">第三期 (8/1)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/ouN3O2reRCuDjfWwCZkNHw.we">第五期 (8/15)</a>
+            <tr class="active">
+              <td>
+                <a href="//file.we.neusoft.edu.cn/XWy5sTDEQ6aci3Gwv-triQ.we">第二期 (7/25)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/II0JWkBoSVWI1AwR768IXg.we">第四期 (8/8)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/8xJwQuCRRYu0-7kq8M7q5g.we">第六期 (8/22)</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">组内淘汰赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/wWdM-ZZ-SjWwkWXNU1I-Yg.we">那英 导师战队 (8/29)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/zE7EveRGRYO9duI4uHVvfg.we">杨坤 导师战队 (9/12)</a>
+            <tr class="active">
+              <td>
+                <a href="//file.we.neusoft.edu.cn/GX-sM3t6T3mgTJ_xvR2xgA.we">汪峰 导师战队 (9/5)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/W9gc3SmHRYWBTMxGycd7-g.we">齐秦 导师战队 (9/19)</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">终极考核
+          <tbody>
+            <tr>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/tBj54KhGTBShg5wevdlLHQ.we">那英/杨坤 导师战队 (9/26)</a>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/GGxoXILOTxCnWYoHJ5DDpw.we">齐秦/汪峰 导师战队 (9/30)</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>巅峰对战总决赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="//file.we.neusoft.edu.cn/QuNwlvF1SE-m2K7x_KxaLw.we">总决赛 (10/7)</a>
+        </table>
+      </div>
+    </section>
+  </div>
+{% endblock %}

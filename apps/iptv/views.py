@@ -21,7 +21,7 @@ def tv(request):
     result = get_navbar(request)
     get_active_channel(result)
 
-    channel = request.GET.get('channel', 'cctv1')
+    channel = request.GET.get('channel', 'CCTV-1')
     for group in result['channels']:
         for item in group['channels']:
             if item['channel'] == channel:
@@ -63,10 +63,15 @@ def tv(request):
 
 def get_active_channel(result):
     data = json.loads(open(DATA_ROOT + 'tv_channel.json').read())
-    for group in data:
-        for channel in group['channels']:
-            if not isfile(SCREENSHOT_ROOT + channel['point'] + '.png'):
+    for group in data[:]:
+        for channel in group['channels'][:]:
+            for point in channel['point'][:]:
+                if not isfile(SCREENSHOT_ROOT + point['point'] + '.png'):
+                    channel['point'].remove(point)
+            if not channel['point']:
                 group['channels'].remove(channel)
+        if not group['channels']:
+            data.remove(group)
 
     result.update({'channels': data})
 
@@ -80,6 +85,11 @@ def voice_of_china(request):
     result.update({'items': list})
     
     return render_to_response('iptv/voice_of_china.html', result)
+
+def voice_of_china_2014(request):
+    result = get_navbar(request)
+
+    return render_to_response('iptv/voice_of_china_2014.html', result)
 
 def worldcup_2014(request):
     result = get_navbar(request)

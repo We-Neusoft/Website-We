@@ -13,18 +13,20 @@
       <header class="page-header">
         <h3>说明</h3>
       </header>
-      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，We 经过与其协商，现将部分节目引入到校园网以利于大家更方便的进行学习与研究。
+      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，经过与其协商授权，We 现将部分节目引入到校园网以利于大家更方便的进行学习与研究。
+      <p>频道列表中所列的频道为当前可播放的频道，节目单中的接入点为当前可播放的接入点，接入点名称为上游信号提供源，不代表信号采集源。
+      <p>感谢北京邮电大学、大连理工大学、上海交通大学、吉林大学采集信号，感谢东北大学、大连理工大学提供信号。
     </section>
     <section>
       <header class="page-header">
-        <h3>频道列表 <a href="{% url 'iptv:voice_of_china' %}" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-bullhorn"></span> 中国好声音专版</a></h3>
+        <h3>频道列表</h3>
       </header>
       <ul>
 {% for group in channels %}
         <li>
           <strong>{{ group.name }}：</strong>
 {% for channel in group.channels %}
-          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel }}"><span class="glyphicon glyphicon-{{ group.type }}-video"></span>{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
+          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.type == "hd" %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
 {% endfor %}
 {% endfor %}
       </ul>
@@ -34,6 +36,8 @@
         <h3>往期节目</h3>
       </header>
       <ul>
+        <li>
+          <a href="{% url 'iptv:voice_of_china_2014' %}">2014 中国好声音</a>
         <li>
           <a href="{% url 'iptv:worldcup_2014' %}">2014 巴西世界杯</a>
       </ul>
@@ -54,8 +58,8 @@
           <p>由于 We 的硬件能力原因，以及节目提供源东北大学及大连理工大学接收到的节目信号有时不稳定，因此转播过来的节目可能会出现播放异常现象。只要在日后有足够的能力，使用硬件自行采集高清信号后，便可大大减少此类现象。对此引起的不便，敬请谅解。
         </li>
         <li>
-          <p><strong>为什么每次都要播放烦人的广告？</strong>
-          <p>虽然从东北大学及大连理工大学转播节目信号是免费的，但是为了提供更加丰富、清晰、稳定、流畅的节目， We 必须投入资金添购硬件设备自行采集节目信号。因此，播放烦人的广告是获得资金的一种方式，敬请谅解。
+          <p><strong>喜欢看一档节目，可以帮助录制吗？</strong>
+          <p>可以的，请尽早与 We 联系，以方便安排录制计划。在不与其他录制计划冲突并且信号稳定的前提下，我们将尽力完整录制。
         </li>
       </ol>
     </section>

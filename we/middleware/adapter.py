@@ -33,7 +33,7 @@ class AdapterMiddleware(object):
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<img([^>]*)src="/([^/]+)([^"]*)"([^>]*)>', self.handle_img, response.content)
 
-        if get_geo(request):
+        if get_geo(request)[0]:
             response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
             response.content = re.sub('iptv.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn', response.content)
 

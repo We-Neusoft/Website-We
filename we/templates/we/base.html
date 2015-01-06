@@ -5,12 +5,12 @@
   <meta name="keywords" content="大连东软信息学院, 网络中心, We-Cloud 维云技术小组{% block meta_keywords %}{% endblock %}">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   <title>{% block title %}{% endblock %} | We-Cloud 维云技术小组 - 东软校园内的云服务平台</title>
 {% if intranet %}
   <link href="//lib.hub.neusoft.edu.cn/bootstrap/latest/css/bootstrap.min.css" rel="stylesheet" />
 {% else %}
-  <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" />
 {% endif %}
   <link href="{% static 'css/we.css' %}" rel="stylesheet" />
 {% block extra_css %}
@@ -30,17 +30,26 @@
 <div id="wrap">
   <nav class="navbar navbar-inverse navbar-fixed-top navbar-fixed-top-we" role="navigation">
     <div class="container">
-      <a class="navbar-brand" href="http://we.neusoft.edu.cn">We-Cloud</a>
-      <ul class="nav navbar-nav">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-items">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://we.neusoft.edu.cn">We-Cloud</a>
+      </div>
+      <div class="collapse navbar-collapse" id="nav-items">
+        <ul class="nav navbar-nav">
 {% for navbar_item in navbar_items %}
-        <li{% if active_item == navbar_item.key %} class="active"{% endif %}><a href="{{ navbar_item.url }}">{{ navbar_item.title }}</a>
+          <li{% if active_item == navbar_item.key %} class="active"{% endif %}><a href="{{ navbar_item.url }}">{{ navbar_item.title }}</a>
 {% endfor %}
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
 {% block nav_more %}
 {% endblock %}
-        <li><a id="me" href="javascript:;"></a>
-      </ul>
+          <li><a id="me" href="javascript:;"></a>
+        </ul>
+      </div>
     </div>
   </nav>
 {% block main %}
@@ -57,8 +66,8 @@
     <!--[if lte IE 8]><span style="filter: FlipH; -ms-filter: "FlipH"; display: inline-block;"><![endif]-->
       <span style="-moz-transform: scaleX(-1); -o-transform: scaleX(-1); -webkit-transform: scaleX(-1); -ms-transform: scaleX(-1); transform: scaleX(-1); display: inline-block;">&copy;</span>
     <!--[if lte IE 8]></span><![endif]-->
-    Copyleft 2008-2014 <a href="mailto:we@nou.com.cn"><span class="glyphicon glyphicon-envelope"></span>We-Cloud 维云技术小组</a> All rights reversed.<br />
-    感谢大连东软信息学院网络中心提供本小组所有硬件及网络资源。
+    Copyleft 2008-2015 <a href="mailto:we@nou.com.cn"><span class="glyphicon glyphicon-envelope"></span>We-Cloud 维云技术小组</a> All rights reversed.<br />
+    本小组所有硬件及网络资源均由大连东软信息学院网络中心提供。
     </div>
   </footer>
   <img src="{{ open_server }}/qrcode/small" class="qrcode">
@@ -78,7 +87,7 @@
 {% if intranet %}
   <script src="//lib.hub.neusoft.edu.cn/bootstrap/latest/js/bootstrap.min.js"></script>
 {% else %}
-  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 {% endif %}
 
   <script src="{% static 'js/we.js' %}"></script>

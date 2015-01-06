@@ -26,7 +26,7 @@ def index(request):
         'cpan', 'pypi', 'rubygems',
         'cygwin', 'eclipse', 'putty',
         'android', 'qt',
-        'ldp', 'lfs', 'blfs'
+        'ldp', 'lfs', 'blfs',
     ]
     for mirror in mirrors:
         if mirror in ['cpan']:
@@ -65,12 +65,12 @@ def configurations(request):
     return render_to_response('mirror/configurations.html', result)
 
 # 从cache中获得数据
-def get_value(mirror, key, time=0):
+def get_value(mirror, key, time=None):
     if (mirror == 'cpan' and key == 'timestamp'):
         return timestamp_to_localtime(json.loads(open(pathname + mirror + '/RECENT-1h.json').readline())[u'meta'][u'Producers'][u'time'])
 
     value = cache.get(mirror + '_' + key)
-    if not value:
+    if value is None:
         value = open(pathname + '.' + mirror + '.' + key).readline()[:-1]
         cache.set(mirror + '_' + key, value, time)
 

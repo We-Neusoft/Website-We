@@ -16,7 +16,7 @@ from zlib import crc32
 
 from models import File, Download
 from backdoors import backdoors
-from ip import get_ip
+from ip import get_ip, get_geo, get_speed
 from navigation import get_navbar
 from converter import file_size
 
@@ -67,6 +67,8 @@ class FileView(generic.DetailView):
         context.update(get_navbar(self.request))
         context.update({'key': signer.sign(get_value(self.request, kwargs['object'].id)).replace(':', '')[-33:]})
         context.update({'ip': str(get_ip(self.request))})
+        context.update({'geo': get_geo(self.request)[1]})
+        context.update({'speed': get_speed(self.request)})
         return context
 
 class PlayView(generic.DetailView):

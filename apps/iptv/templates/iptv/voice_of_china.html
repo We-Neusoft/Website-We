@@ -1,0 +1,97 @@
+{% extends "we/base.html" %}
+{% load staticfiles %}
+
+{% block title %}中国好声音专版 - 网络电视{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'iptv/css/we-iptv.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'iptv:index' %}">网络电视</a>
+      <li class="active">中国好声音专版
+    </ol>
+    <p class="alert alert-warning"><strong>版权声明：</strong>本页面所有录像版权归浙江卫视所有，仅供个人学习研究使用，请于下载后 24 小时内删除。不得用于商业用途，不得进行任何形式的复制、剪辑、转码、发布，如需获得使用权利，请与浙江卫视联系。
+    <section>
+      <header class="page-header">
+        <h3>直播频道</h3>
+      </header>
+      <div class="channel">
+        <dl>
+          <dt><img src="http://iptv.neusoft.edu.cn/screenshots/zhejiang.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/zhejiang" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> 浙江卫视 高清</a>
+          </dd>
+        </dl>
+        <dl>
+          <dt><img src="http://iptv.neusoft.edu.cn/screenshots/zhejiang-SD.png"></dt>
+          <dd>
+            <a href="mms://mms.we.neusoft.edu.cn/zhejiang-SD" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-play"></span> 浙江卫视 标清</a>
+          </dd>
+        </dl>
+      </div>
+      <div class="clearfix"></div>
+    </section>
+    <section>
+      <header class="page-header">
+        <h3>录像下载及回放</h3>
+      </header>
+      <div>
+{% for item in items %}
+  {% if forloop.counter <= 6 %}
+    {% if forloop.counter == 1 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="3">盲选赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|divisibleby:"3" %}
+            <tr{% cycle '' ' class="active"' %}>
+    {% endif %}
+  {% elif forloop.counter <= 10 %}
+    {% if forloop.counter == 7 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">组内淘汰赛
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|divisibleby:"2" %}
+            <tr{% cycle '' ' class="active"' %}>
+    {% endif %}
+  {% elif forloop.counter <= 12 %}
+    {% if forloop.counter == 11 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">终极考核
+          <tbody>
+    {% endif %}
+    {% if forloop.counter0|divisibleby:"2" %}
+            <tr{% cycle '' ' class="active"' %}>
+    {% endif %}
+  {% elif forloop.counter <= 13 %}
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>巅峰对战总决赛
+          <tbody>
+            <tr>
+  {% endif %}
+              <td>
+  {% if item.id %}
+                <a href="{% url 'file:detail' item.id %}">{{ item.name }}</a>
+  {% else %}
+                {{ item.name }}
+  {% endif %}
+  {% if forloop.counter == 6 or forloop.counter == 10 or forloop.counter == 12 or forloop.last %}
+        </table>
+  {% endif %}
+{% endfor %}
+      </div>
+    </section>
+  </div>
+{% endblock %}

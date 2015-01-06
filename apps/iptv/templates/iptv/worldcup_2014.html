@@ -1,0 +1,228 @@
+{% extends "we/base.html" %}
+{% load staticfiles %}
+
+{% block title %}2014 巴西世界杯 - 网络电视{% endblock %}
+
+{% block extra_css %}
+  <link href="{% static 'iptv/css/we-iptv.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <ol class="breadcrumb">
+      <li><a href="{% url 'iptv:index' %}">网络电视</a>
+      <li class="active">2014 巴西世界杯
+    </ol>
+    <p class="alert alert-warning"><strong>版权声明：</strong>本页面所有录像版权归中央电视台所有，不得用于商业用途，不得进行任何形式的复制、剪辑、转码、发布，如需获得使用权利，请与中央电视台联系。
+    <section>
+      <div>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>开幕式
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'GloHXSoYS3ecDB9T9dTAmQ' %}">开幕式</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="4">小组赛
+          <tbody>
+            <tr>
+              <td rowspan="2">A 组
+              <td>
+                <a href="{% url 'file:detail' 'WKd_AVwtRb2HCIJLZF6hUg' %}">巴西 3-1 克罗地亚</a>
+              <td>
+                <a href="{% url 'file:detail' '7henb4ghTL-i1ngk1mzXgA' %}">巴西 0-0 墨西哥（补录到88:59）</a>
+              <td>
+                <a href="{% url 'file:detail' '7zovIAASRI21cKyC72a5yw' %}">喀麦隆 1-4 巴西</a>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'gYIgn0xhSx2U9TPyq20jqQ' %}">墨西哥 1-0 喀麦隆</a>
+              <td>
+                <a href="{% url 'file:detail' 'pKst0L6HSz6pg7cW3GvGqQ' %}">喀麦隆 0-4 克罗地亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'bRD76W1SQayZL4iW6Za3-g' %}">克罗地亚 1-3 墨西哥</a>
+            <tr class="active">
+              <td rowspan="2">B 组
+              <td>
+                <a href="{% url 'file:detail' 'yTnZxCXHTVOr3gtFqlxNwg' %}">西班牙 1-5 荷兰</a>
+              <td>
+                <a href="{% url 'file:detail' '_LLKO0eVQgetOa06gR2xhQ' %}">澳大利亚 2-3 荷兰</a>
+              <td>
+                <a href="{% url 'file:detail' 'ZeJlnWTpRiOisoqx2TIdwg' %}">荷兰 2-0 智利</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' 'XJNvfP62Q6CwqiSrcB1aLA' %}">智利 3-1 澳大利亚</a>
+              <td>
+                <a href="{% url 'file:detail' '_2Xa2njaQLib2DZxBha49w' %}">西班牙 0-2 智利</a>
+              <td>
+                <a href="{% url 'file:detail' 'lbw_Bww6SLGCN7km1EJ3ZQ' %}">澳大利亚 0-3 西班牙</a>
+            <tr>
+              <td rowspan="2">C 组
+              <td>
+                <a href="{% url 'file:detail' 'ZReYwCDZSZS-y2267Na4gw' %}">哥伦比亚 3-0 希腊</a>
+              <td>
+                <a href="{% url 'file:detail' 'SSvJqeVeSReZnnx1qGB8yg' %}">哥伦比亚 2-1 科特迪瓦</a>
+              <td>
+                <a href="{% url 'file:detail' 'wdoFk2GZQmitj14gTo70Kg' %}">日本 1-4 哥伦比亚</a>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'fa7IzuccSS6qHRSfAnPbUg' %}">科特迪瓦 2-1 日本</a>
+              <td>
+                <a href="{% url 'file:detail' '5HV9Hi_bTgSPzZ_ZivYTVw' %}">日本 0-0 希腊</a>
+              <td>
+                <a href="{% url 'file:detail' '_4IL3PkgRc6y8WruHxIH7w' %}">希腊 2-1 科特迪瓦</a>
+            <tr class="active">
+              <td rowspan="2">D 组
+              <td>
+                <a href="{% url 'file:detail' 'Cn2IpszCSc-rnAnzG7nY5w' %}">乌拉圭 1-3 哥斯达黎加</a>
+              <td>
+                <a href="{% url 'file:detail' 'iZ7eE62dRHG1eCe7oIcHIA' %}">乌拉圭 2-1 英格兰</a>
+              <td>
+                <a href="{% url 'file:detail' 'x9gKDvroQuq0zKwUDoluqg' %}">意大利 0-1 乌拉圭</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' 'NWppYbegTCyqxe0lYpO34w' %}">英格兰 1-2 意大利</a>
+              <td>
+                <a href="{% url 'file:detail' 'aHuhrJ3lR3u-bIZNz0w_VA' %}">意大利 0-1 哥斯达黎加</a>
+              <td>
+                <a href="{% url 'file:detail' 'c3ujfA0iR22QpbPwNclopA' %}">哥斯达黎加 0-0 英格兰</a>
+            <tr>
+              <td rowspan="2">E 组
+              <td>
+                <a href="{% url 'file:detail' 'lmnkojTmSMaSgDZSKIZwyQ' %}">瑞士 2-1 厄瓜多尔</a>
+              <td>
+                <a href="{% url 'file:detail' 'U9GnjZTPSmuCtsGErLTgXA' %}">瑞士 2-5 法国</a>
+              <td>
+                <a href="{% url 'file:detail' 'G9FOpKZHTV-A4_wHsnrASQ' %}">洪都拉斯 0-3 瑞士</a>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'yR1oes9uQgaqxXXyPaIAmw' %}">法国 3-0 洪都拉斯</a>
+              <td>
+                <a href="{% url 'file:detail' 'NZ14OYy4QwCibcDBhWAIsA' %}">洪都拉斯 1-2 厄瓜多尔</a>
+              <td>
+                <a href="{% url 'file:detail' 'JBscT7nrQz-9xwGnNA8z1w' %}">厄瓜多尔 0-0 法国</a>
+            <tr class="active">
+              <td rowspan="2">F 组
+              <td>
+                <a href="{% url 'file:detail' 'IWfBv0fVTLa2BP0fxbbXVQ' %}">阿根廷 2-1 波黑</a>
+              <td>
+                <a href="{% url 'file:detail' 'LcWp5sUaTNusCIuCZgkkcA' %}">阿根廷 1-0 伊朗</a>
+              <td>
+                <a href="{% url 'file:detail' 'k2MBZAPbS7Kz6J8C_J530g' %}">尼日利亚 2-3 阿根廷</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' 'eJuQ5Zw0SUa4hg_u3EyivQ' %}">伊朗 0-0 尼日利亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'hAsFQn3RRWK1-tozl-P4cA' %}">尼日利亚 1-0 波黑</a>
+              <td>
+                <a href="{% url 'file:detail' 'xuSAHZVlQLOUNjXW0zjCpA' %}">波黑 3-1 伊朗</a>
+            <tr>
+              <td rowspan="2">G 组
+              <td>
+                <a href="{% url 'file:detail' 'OKvooS4JRhqzYp1ooFsfhQ' %}">德国 4-0 葡萄牙</a>
+              <td>
+                <a href="{% url 'file:detail' 'Na3TEutRRIa6fOEvuRCuUQ' %}">德国 2-2 加纳</a>
+              <td>
+                <a href="{% url 'file:detail' 'uPW7ggT5Te-HXXJL57Zn2A' %}">葡萄牙 2-1 加纳</a>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' '45zTZ0hdQemabiVe18eQqQ' %}">加纳 1-2 美国</a>
+              <td>
+                <a href="{% url 'file:detail' 'z2zoVfQFSfWoY5Rm85FZrw' %}">美国 2-2 葡萄牙</a>
+              <td>
+                <a href="{% url 'file:detail' 'PtAZ78AvTTWs7zCy8Eus-A' %}">美国 0-1 德国</a>
+            <tr class="active">
+              <td rowspan="2">H 组
+              <td>
+                <a href="{% url 'file:detail' 'XboAFI2-Qx-wCZc_CQ0n4w' %}">比利时 2-1 阿尔及利亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'lDXaRRDAQQisNFiR8vJ9Og' %}">比利时 1-0 俄罗斯</a>
+              <td>
+                <a href="{% url 'file:detail' '2HTVyCX0TbyKcYvXcGrDHA' %}">韩国 0-1 比利时</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' '6U0usofQSpKnczz5iP9qhg' %}">俄罗斯 1-1 韩国（补录到89:29）</a>
+              <td>
+                <a href="{% url 'file:detail' 'K8mjpmeZQ_iOIsmBpcmJgA' %}">韩国 2-4 阿尔及利亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'eV60t6NsRrCMB7GcSNZhnQ' %}">阿尔及利亚 1-1 俄罗斯</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="4">1/8 决赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'kr4H4BIVQhGy-cwUrnVhyQ' %}">巴西 1-1(3-2) 智利</a>
+              <td>
+                <a href="{% url 'file:detail' 'NwvIjwKASNi9pZNHHf5Jzg' %}">荷兰 2-1 墨西哥</a>
+              <td>
+                <a href="{% url 'file:detail' 'MdRBz2u6S8qbCgX2_rcoCw' %}">法国 2-0 尼日利亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'imqrTDT4QCaVOv7UFby55g' %}">阿根廷 1-0 瑞士</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' 'UBMKaHP0TsCA0rbs7NnmZg' %}">哥伦比亚 2-0 乌拉圭</a>
+              <td>
+                <a href="{% url 'file:detail' 'B1tFvvoNRsqwjI_lPiWqAw' %}">哥斯达黎加 1-1(5-3) 希腊</a>
+              <td>
+                <a href="{% url 'file:detail' '60g9t7X3SRadRk_c5kVt8Q' %}">德国 2-1 阿尔及利亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'O2XL5_QXT3quPP6pIdRokw' %}">比利时 2-1 美国</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">1/4 决赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' '95sO5DKnTseDnwKb2f_k7A' %}">巴西 2-1 哥伦比亚</a>
+              <td>
+                <a href="{% url 'file:detail' 'RJi-Ehk5T9SuHXXCo8AKug' %}">荷兰 0-0(4-3) 哥斯达黎加</a>
+            <tr class="active">
+              <td>
+                <a href="{% url 'file:detail' 'aba2x7GbR8GsVBchDloU-A' %}">法国 0-1 德国</a>
+              <td>
+                <a href="{% url 'file:detail' 'kwcvhZKUQOyBkxl1uHtdgA' %}">阿根廷 1-0 比利时</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">半决赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'Hiu4mxYbSQm9lM2gyPWyRQ' %}">巴西 7-1 德国（部分声画不同步）</a>
+              <td>
+                <a href="{% url 'file:detail' 'SORh9wJlTMyeLKSh991OXQ' %}">荷兰 0-0(2-4) 阿根廷</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th colspan="2">决赛
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'S7GhINb0R0uiRGJSUSQYzQ' %}">巴西 0-3 荷兰</a>
+              <td>
+                <a href="{% url 'file:detail' 'SjdxyHQ9S_Cd4j65TjU3fg' %}">德国 1-0 阿根廷</a>
+        </table>
+        <table class="table table-iptv table-condensed">
+          <thead>
+            <tr>
+              <th>闭幕式
+          <tbody>
+            <tr>
+              <td>
+                <a href="{% url 'file:detail' 'tHPTB2SJRBiM-5KFhcItfA' %}">闭幕式</a>
+        </table>
+      </div>
+    </section>
+  </div>
+{% endblock %}

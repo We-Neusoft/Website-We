@@ -19,7 +19,7 @@
           <div id="{{ group.group }}" class="panel-collapse collapse{% if group.active %} in{% endif %}">
             <div class="panel-body">
 {% for channel in group.channels %}
-              <a href="?channel={{ channel.channel }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ channel.name }}</a><br>
+              <a href="?channel={{ channel.channel|urlencode }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ channel.name }}</a><br>
 {% endfor %}
             </div>
           </div>
@@ -30,7 +30,9 @@
         <header class="page-header">
           <h1>
             {{ channel.name }}
-            <a id="play" href="mms://mms.we.neusoft.edu.cn/{{ channel.point }}" class="btn btn-primary" title="如果点击后无法播放，请右键点击复制链接地址，然后手动打开 Windows Media Player 播放器，再按键盘组合键 Ctrl + U 粘贴本地址即可播放。"><span class="glyphicon glyphicon-play"></span> 本地播放</a>
+{% for point in channel.point %}
+            <a id="play" href="mms://mms.we.neusoft.edu.cn/{{ point.point }}" class="btn btn-primary"><span class="glyphicon glyphicon-{{ point.type }}-video"></span> {{ point.name }}</a>
+{% endfor %}
           </h1>
         </header>
         <div class="row">
@@ -39,7 +41,7 @@
 {% for item in items.am %}
 {% if item.current %}
             <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
 {% else %}
             <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
 {% endif %}
@@ -49,13 +51,13 @@
 {% for item in items.pm %}
 {% if item.current %}
             <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
 {% else %}
             <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
 {% endif %}
 {% endfor %}
 {% else %}
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point }}.png">
+            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
 {% endif %}
           </div>
         </div>
