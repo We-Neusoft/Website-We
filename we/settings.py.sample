@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn']
+ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn']
 
 
 # Application definition
@@ -40,7 +40,9 @@ INSTALLED_APPS = (
     'apps.www',
     'apps.mirror',
     'apps.dreamspark',
+    'apps.genuine',
     'apps.file',
+    'apps.iptv',
     'apps.open',
 
     'backdoors.referer',
@@ -65,6 +67,17 @@ MIDDLEWARE_CLASSES = (
     'we.middleware.adapter.AdapterMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django.core.context_processors.tz',
+    'django.contrib.messages.context_processors.messages',
+)
+
 ROOT_URLCONF = 'we.urls'
 
 WSGI_APPLICATION = 'we.wsgi.application'
@@ -75,7 +88,8 @@ WSGI_APPLICATION = 'we.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.WE_CLOUD',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'HOST': 'WE_CLOUD',
         'NAME': 'WE_CLOUD',
         'USER': 'WE_CLOUD',
     }
@@ -114,10 +128,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = '/data/www/we/'
+STATIC_ROOT = '/root/we/'
 
 STATICFILES_DIRS = (
-    '/data/git/we/we/static',
+    '/root/we/we/static',
 )
 
 
@@ -149,7 +163,7 @@ EMAIL_SUBJECT_PREFIX = '[We] '
 
 
 TEMPLATE_DIRS = (
-    '/data/git/we/we/templates',
+    '/root/we/we/templates',
 )
 
 
@@ -158,13 +172,14 @@ DREAMSPARK_KEY = 'WE_CLOUD'
 DREAMSPARK_OPEN_REDIRECT_URI = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we'
 
 
+DATA_ROOT = '/data/www/source/'
 FILE_ROOT = '/storage/file/'
+SCREENSHOT_ROOT = '/data/www/we/iptv/screenshots/'
 
+OPEN_CLIENT_ID = 'WE_CLOUD'
+OPEN_CLIENT_SECRET = 'WE_CLOUD'
 
-OPEN_CLIENT_ID = 'wecloud'
-OPEN_CLIENT_SECRET = 'vH4aD7H3Q0q4UrlpHVmvag'
-
-OPEN_SERVER_DOMAIN = 'http://dev.api.neusoft.edu.cn'
+OPEN_SERVER_DOMAIN = 'http://dev.hub.neusoft.edu.cn'
 OPEN_SERVER_AUTHORIZE = OPEN_SERVER_DOMAIN + '/oauth/authorize'
 OPEN_SERVER_TOKEN = OPEN_SERVER_DOMAIN + '/oauth/token'
 OPEN_SERVER_USER_GET_INFO = OPEN_SERVER_DOMAIN + '/user/get_info'
