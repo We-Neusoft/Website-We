@@ -1,0 +1,43 @@
+{% extends "we/sidenav_base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ more_title }}{% endblock %}
+
+{% block more_css %}
+  <link href="{% static 'css/prettify.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block nav_more %}
+  <li class="dropdown dropdown-we">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{ more_dropdown }}&nbsp;<b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      {% for more in more_list %}
+        <li><a href="{{ more_url }}#{{ more.key }}">{{ more.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </li>
+{% endblock %}
+
+{% block nav_list %}
+  {% for more in more_list %}
+    <li><a href="#{{ more.key }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ more.title }}</a></li>
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+  {% for more in more_list %}
+    <section id="{{ more.key }}">
+      <header class="page-header">
+        <h1>{{ more.title }} <small>{{ more.subtitle }}</small></h1>
+      </header>
+      {% autoescape off %}{{ more.content }}{% endautoescape %}
+    </section>
+  {% endfor %}
+{% endblock %}
+
+{% block more_js %}
+  <script src="{% static 'js/prettify.js' %}"></script>
+  <script type="application/javascript">
+    pretty_print();
+  </script>
+{% endblock %}
