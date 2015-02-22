@@ -21,7 +21,7 @@ class NavbarItem(models.Model):
 
 class NavbarMore(models.Model):
     id = UUIDField(primary_key=True)
-    app = models.CharField('应用', max_length=16)
+    app = models.ForeignKey(NavbarItem)
     key = models.CharField('标识', max_length=16)
     order = models.IntegerField('排序')
     title = models.CharField('标题', max_length=64)

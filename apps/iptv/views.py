@@ -62,7 +62,11 @@ def tv(request):
     return render_to_response('iptv/tv.html', result)
 
 def get_active_channel(result):
-    data = json.loads(open(DATA_ROOT + 'tv_channel.json').read())
+    try:
+        data = json.loads(open(DATA_ROOT + 'tv_channel.json').read())
+    except IOError:
+        return
+
     for group in data[:]:
         for channel in group['channels'][:]:
             for point in channel['point'][:]:

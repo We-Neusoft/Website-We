@@ -15,28 +15,31 @@ def index(request):
 def download(request):
     result = get_navbar(request)
 
-    data = json.loads(open(DATA_ROOT + 'genuine.json').read())
-    product = request.GET.get('product', 'windows')
+    try:
+        data = json.loads(open(DATA_ROOT + 'genuine.json').read())
+        product = request.GET.get('product', 'windows')
 
-    for navigation in data['navigation']:
-        for item in navigation['item']:
-            if item['id'] == product:
-                navigation.update({'active': True})
-                break
+        for navigation in data['navigation']:
+            for item in navigation['item']:
+                if item['id'] == product:
+                    navigation.update({'active': True})
+                    break
 
-    items = []
-    for software in data['software']:
-        if software['id'] == product:
-            for edition in software['edition']:
-                edition.update({
-                    'channel': {
-                        'name': data['channel'][edition['channel']['type']]['name'],
-                        'url': data['channel'][edition['channel']['type']]['url'] + edition['channel']['id']
-                    }
-            })
+        items = []
+        for software in data['software']:
+            if software['id'] == product:
+                for edition in software['edition']:
+                    edition.update({
+                        'channel': {
+                            'name': data['channel'][edition['channel']['type']]['name'],
+                            'url': data['channel'][edition['channel']['type']]['url'] + edition['channel']['id']
+                        }
+                })
 
-            items.append(software)
+                items.append(software)
 
-    result.update({'navigation': data['navigation'], 'items': items})
+        result.update({'navigation': data['navigation'], 'items': items})
+    except IOError:
+        pass
 
     return render_to_response('genuine/download.html', result)

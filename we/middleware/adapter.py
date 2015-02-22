@@ -27,15 +27,15 @@ class AdapterMiddleware(object):
             return response
 
         response.content = re.sub(r'http://hub.neusoft.edu.cn/([^/]+)([^"]+)', self.handle_hub, response.content)
-        response.content = re.sub(r'<link([^>]*)href="/static/([^"]*)"([^>]*)>', self.handle_link, response.content)
-        response.content = re.sub(r'<script([^>]*)src="/static/([^"]*)"([^>]*)>', self.handle_script, response.content)
+        response.content = re.sub(r'<link([^>]*)href="/([^"]*)"([^>]*)>', self.handle_link, response.content)
+        response.content = re.sub(r'<script([^>]*)src="/([^"]*)"([^>]*)>', self.handle_script, response.content)
         response.content = re.sub(r'<a([^>]*)href="/([^/]+)([^"]*)"([^>]*)>', self.handle_a, response.content)
         response.content = re.sub(r'<form([^>]*)action="/([^/]+)([^"]*)"([^>]*)>', self.handle_form, response.content)
         response.content = re.sub(r'<img([^>]*)src="/([^/]+)([^"]*)"([^>]*)>', self.handle_img, response.content)
 
-        if get_geo(request)[0]:
-            response.content = re.sub('mirrors.neusoft.edu.cn', 'mirror.we.neusoft.edu.cn', response.content)
-            response.content = re.sub('iptv.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn', response.content)
+        response.content = re.sub('iptv.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn', response.content)
+        if not get_geo(request)[0]:
+            response.content = re.sub('mirror.we.neusoft.edu.cn', 'mirrors.neusoft.edu.cn', response.content)
 
         return response
 
@@ -90,7 +90,7 @@ class AdapterMiddleware(object):
         return '<img' + property_pre + 'src="' + self.handle_url(target_app, target_url) + '"' + property_suf + '>'
 
     def handle_url(self, target_app, target_url):
-        if target_app in ['admin', 'static']:
+        if target_app == 'admin':
             return '/' + target_app + target_url
         elif target_app == self.app:
             return target_url
@@ -100,7 +100,5 @@ class AdapterMiddleware(object):
     def handle_domain(self, target_app):
         if target_app == 'www':
             return 'we.neusoft.edu.cn'
-        elif target_app == 'mirror':
-            return 'mirrors.neusoft.edu.cn'
         else:
             return target_app + '.we.neusoft.edu.cn'

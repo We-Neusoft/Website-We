@@ -3,7 +3,7 @@ from django.core.signing import TimestampSigner, BadSignature
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError
 from django.db.models import Count, Sum
-from django.http import Http404, HttpResponse, HttpResponseRedirect, StreamingHttpResponse
+from django.http import Http404, HttpResponse, StreamingHttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.utils.baseconv import base62
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode

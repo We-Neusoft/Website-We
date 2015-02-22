@@ -1,13 +1,15 @@
 #coding=utf-8
 from django.contrib import admin
 
-from apps.file.models import File, Download
+from .models import File, Download
+
+from converter import uuid_encode
 
 class FileAdmin(admin.ModelAdmin):
     list_display = ('name', 'extension', 'size', 'mime', 'created', 'encoded_id', 'file_path', 'download_times')
 
     def encoded_id(self, obj):
-        return obj.id.encode()
+        return uuid_encode(obj.id)
 
     def file_path(self, obj):
         return str(obj.crc32)[-2:] + '/' + obj.md5sum + obj.sha1sum
