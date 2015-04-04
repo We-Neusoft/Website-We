@@ -11,54 +11,57 @@
   <div class="container">
     <section>
       <div id="channels" class="panel-group col-md-3">
-{% for group in channels %}
+  {% for group in channels %}
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#channels" href="#{{ group.group }}">{{ group.name }}</a></h4>
+            <h4 class="panel-title"><a data-toggle="collapse" data-parent="#channels" href="#group{{ forloop.counter0 }}">{{ group.name }}</a></h4>
           </div>
-          <div id="{{ group.group }}" class="panel-collapse collapse{% if group.active %} in{% endif %}">
+          <div id="group{{ forloop.counter0 }}" class="panel-collapse collapse{% if group.active %} in{% endif %}">
             <div class="panel-body">
-{% for channel in group.channels %}
+    {% for channel in group.channels %}
               <a href="?channel={{ channel.channel|urlencode }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ channel.name }}</a><br>
-{% endfor %}
+    {% endfor %}
             </div>
           </div>
         </div>
-{% endfor %}
+  {% endfor %}
       </div>
       <div class="col-md-9">
         <header class="page-header">
           <h1>
             {{ channel.name }}
-{% for point in channel.point %}
-            <a id="play" href="mms://mms.we.neusoft.edu.cn/{{ point.point }}" class="btn btn-primary"><span class="glyphicon glyphicon-{{ point.type }}-video"></span> {{ point.name }}</a>
-{% endfor %}
+  {% for point in channel.point %}
+            <a id="play" href="/iptv/iptv/{{ point.source }}.m3u8" class="btn btn-primary"><span class="glyphicon glyphicon-{% if point.hd %}hd{% else %}sd{% endif %}-video"></span> {% if point.hd %}高清频道{% else %}标清频道{% endif %}</a>
+  {% endfor %}
           </h1>
         </header>
         <div class="row">
           <div class="col-md-6">
-{% if items %}
-{% for item in items.am %}
-{% if item.current %}
-            <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
-{% else %}
-            <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
-{% endif %}
-{% endfor %}
+  {% if items.am or items.pm %}
+    {% if current.am < 0 and current.pm < 0 %}
+            <p><img src="/iptv/screenshot/{{ channel.point.0.target }}.png">
+    {% endif %}
+    {% for item in items.am %}
+      {% if forloop.counter0 == current.am %}
+            <p><strong>{{ item.time|date:'H:i' }}&nbsp;&nbsp;{{ item.name }}</strong>
+            <p><img src="/iptv/screenshot/{{ channel.point.0.target }}.png">
+      {% else %}
+            <p{% if forloop.counter0 < current.am or current.pm %} class="text-muted"{% endif %}>{{ item.time|date:'H:i' }}&nbsp;&nbsp;{{ item.name }}
+      {% endif %}
+    {% endfor %}
           </div>
           <div class="col-md-6">
-{% for item in items.pm %}
-{% if item.current %}
-            <p><strong>{{ item.time }}&nbsp;&nbsp;{{ item.name }}</strong>
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
-{% else %}
-            <p{% if item.played %} class="text-muted"{% endif %}>{{ item.time }}&nbsp;&nbsp;{{ item.name }}
-{% endif %}
-{% endfor %}
-{% else %}
-            <p><img src="http://iptv.neusoft.edu.cn/screenshots/{{ channel.point.0.point }}.png">
-{% endif %}
+    {% for item in items.pm %}
+      {% if forloop.counter0 == current.pm %}
+            <p><strong>{{ item.time|date:'H:i' }}&nbsp;&nbsp;{{ item.name }}</strong>
+            <p><img src="/iptv/screenshot/{{ channel.point.0.target }}.png">
+      {% else %}
+            <p{% if forloop.counter0 < current.pm %} class="text-muted"{% endif %}>{{ item.time|date:'H:i' }}&nbsp;&nbsp;{{ item.name }}
+      {% endif %}
+    {% endfor %}
+  {% else %}
+            <p><img src="/iptv/screenshot/{{ channel.point.0.target }}.png">
+  {% endif %}
           </div>
         </div>
       </div>

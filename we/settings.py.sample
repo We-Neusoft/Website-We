@@ -174,7 +174,6 @@ DREAMSPARK_OPEN_REDIRECT_URI = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we
 
 DATA_ROOT = '/data/www/source/'
 FILE_ROOT = '/storage/file/'
-SCREENSHOT_ROOT = '/data/www/we/iptv/screenshots/'
 
 OPEN_CLIENT_ID = 'WE_CLOUD'
 OPEN_CLIENT_SECRET = 'WE_CLOUD'

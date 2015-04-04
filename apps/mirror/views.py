@@ -1,9 +1,5 @@
 #coding=utf-8
-from django.core.cache import cache
 from django.shortcuts import render_to_response
-from django.views.decorators.cache import cache_page
-
-import json
 
 from navigation import get_navbar
 from converter import file_size
@@ -19,7 +15,7 @@ def index(request):
     result.update({'more_list': get_more_list(request)})
 
     results = []
-    mirrors = Mirror.objects.order_by('order')
+    mirrors = Mirror.objects.filter(active=True).order_by('order')
     for mirror in mirrors:
         item = mirror.status
 

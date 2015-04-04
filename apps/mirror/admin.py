@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Mirror, Status
 
 class MirrorAdmin(admin.ModelAdmin):
-    list_display = ('name', 'order')
+    list_display = ('name', 'order', 'active')
 admin.site.register(Mirror, MirrorAdmin)
 
 class StatusAdmin(admin.ModelAdmin):

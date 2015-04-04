@@ -1,15 +1,14 @@
 from django.conf import settings
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 
-from datetime import datetime
+from .models import Group, Channel, Guide
+
+from datetime import datetime, time
 from os.path import isfile
 import csv
 import json
 
 from navigation import get_navbar
-
-DATA_ROOT = getattr(settings, 'DATA_ROOT', '/data/www/source/')
-SCREENSHOT_ROOT = getattr(settings, 'SCREENSHOT_ROOT', '/data/www/we/iptv/screenshots/')
 
 def index(request):
     result = get_navbar(request)
@@ -21,74 +20,46 @@ def tv(request):
     result = get_navbar(request)
     get_active_channel(result)
 
-    channel = request.GET.get('channel', 'CCTV-1')
+    channel = get_object_or_404(Channel, channel=request.GET.get('channel', 'CCTV-1'))
     for group in result['channels']:
         for item in group['channels']:
-            if item['channel'] == channel:
+            if item['channel'] == channel.channel:
                 group.update({'active': True})
                 result.update({'channel': item})
                 break
 
-    all_list = json.loads(open(DATA_ROOT + 'tv_time.json').read())
-    for item in all_list:
-        if item['channel'] == channel:
-            list = item['list']
+    guide = Guide.objects.filter(channel=channel)
 
-            am = []
-            pm = []
-            for item in list:
-                if datetime.strptime(item['time'], '%H:%M').time().hour < 12:
-                    am.append(item)
-                else:
-                    pm.append(item)
+    noon = time(12)
+    am = guide.filter(time__lt=noon)
+    pm = guide.filter(time__gte=noon)
+    result.update({'items': {'am': am, 'pm': pm}})
 
-            playing = 0
-            for index in range(len(list)):
-                current = datetime.strptime(list[index]['time'], '%H:%M').time()
-                now = datetime.now().time()
-
-                if (now < current):
-                    break
-                else:
-                    playing = index
-
-            if playing < len(am):
-                am[playing].update({'current': True})
-            else:
-                pm[playing - len(am)].update({'current': True})
-
-            result.update({'items': {'am': am, 'pm': pm}})
+    now = datetime.now().time()
+    index = guide.filter(time__lt=now).count() - 1
+    if index < len(am):
+        result.update({'current': {'am': index}})
+    else:
+        result.update({'current': {'pm': index - len(am)}})
 
     return render_to_response('iptv/tv.html', result)
 
 def get_active_channel(result):
-    try:
-        data = json.loads(open(DATA_ROOT + 'tv_channel.json').read())
-    except IOError:
-        return
+    groups = Group.objects.all()
 
-    for group in data[:]:
-        for channel in group['channels'][:]:
-            for point in channel['point'][:]:
-                if not isfile(SCREENSHOT_ROOT + point['point'] + '.png'):
-                    channel['point'].remove(point)
-            if not channel['point']:
-                group['channels'].remove(channel)
-        if not group['channels']:
-            data.remove(group)
+    data = []
+    for group in groups:
+        channels = []
+        for channel in group.channel_set.all():
+            points = []
+            for point in channel.point_set.filter(active=True):
+                points.append(point)
+            if points:
+                channels.append({'name': channel.name, 'channel': channel.channel, 'point': points, 'hd': points[0].hd})
+        if channels:
+            data.append({'name': group.name, 'channels': channels})
 
     result.update({'channels': data})
-
-def voice_of_china(request):
-    result = get_navbar(request)
-
-    list = []
-    reader = csv.reader(open(DATA_ROOT + 'voice_of_china.csv'))
-    for row in reader:
-        list.append({'name': row[0], 'id': row[1]})
-    result.update({'items': list})
-    
-    return render_to_response('iptv/voice_of_china.html', result)
 
 def voice_of_china_2014(request):
     result = get_navbar(request)

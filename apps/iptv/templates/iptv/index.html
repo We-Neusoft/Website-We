@@ -13,9 +13,8 @@
       <header class="page-header">
         <h3>说明</h3>
       </header>
-      <p><a href="http://cnc.neu.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>东北大学计算中心[网络中心]</a>和<a href="http://its.dlut.edu.cn" target="_blank"><span class="glyphicon glyphicon-new-window"></span>大连理工大学网络与信息化中心</a>向其校园提供了网络电视节目信号，经过与其协商授权，We 现将部分节目引入到校园网以利于大家更方便的进行学习与研究。
-      <p>频道列表中所列的频道为当前可播放的频道，节目单中的接入点为当前可播放的接入点，接入点名称为上游信号提供源，不代表信号采集源。
-      <p>感谢北京邮电大学、大连理工大学、上海交通大学、吉林大学采集信号，感谢东北大学、大连理工大学提供信号。
+      <p>本站所有频道均为北京邮电大学采集的歌华有线和东北大学采集的地面数字电视信号，并由东北大学传送至 We 。目前 We 完整转播了全部 86 套节目，其中高清频道 24 套，标清频道 62 套。
+      <p>现在本系统为试运行阶段，期间所有频道均可免费自由观看。
     </section>
     <section>
       <header class="page-header">
@@ -26,7 +25,7 @@
         <li>
           <strong>{{ group.name }}：</strong>
 {% for channel in group.channels %}
-          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.type == "hd" %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
+          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.hd %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
 {% endfor %}
 {% endfor %}
       </ul>
@@ -41,6 +40,7 @@
         <li>
           <a href="{% url 'iptv:worldcup_2014' %}">2014 巴西世界杯</a>
       </ul>
+    </section>
     <section>
       <header class="page-header">
         <h3>常见问题</h3>
@@ -48,19 +48,21 @@
       <ol>
         <li>
           <p><strong>哪些播放器可以播放？</strong>
-          <p>目前确定可以正常播放的只有 Windows Media Player 。
+          <p>目前 PC 上经过测试的只有 VLC 播放器，iOS 系统及部分 android 系统可直接播放。
         <li>
           <p><strong>为什么点击在线播放按钮后没有播放？</strong>
-          <p>出现这种问题，是因为你的浏览器没有将 mms 协议关联到 Windows Media Player 所导致，你可以尝试重新关联 mms 协议即可。或者，你可以右键点击按钮复制链接地址，然后手动打开 Windows Media Player ，再按键盘组合键<code>ctrl</code>+<code>U</code>粘贴该地址即可播放。
-        </li>
+          <p>由于 PC 上的 VLC 播放器没有通过浏览器插件及后台服务等手段对浏览器和剪贴版进行监视，因此需要手动进行以下操作方可播放：
+          <ol>
+            <li>在页面中的频道按钮上右击选择<strong>「复制链接地址」</strong>一类的选项；
+            <li>打开 VLC 播放器，按键盘组合键<code>ctrl</code>+<code>N</code>；
+            <li>在弹出的窗口中粘贴后点击<strong>「播放按钮」</strong>即可观看。
+          </ol>
         <li>
           <p><strong>为什么有时播放节目会卡顿或无法播放？</strong>
-          <p>由于 We 的硬件能力原因，以及节目提供源东北大学及大连理工大学接收到的节目信号有时不稳定，因此转播过来的节目可能会出现播放异常现象。只要在日后有足够的能力，使用硬件自行采集高清信号后，便可大大减少此类现象。对此引起的不便，敬请谅解。
-        </li>
+          <p>由于节目是由北京邮电大学实时采集，又经由东北大学转发，其中任何环境出现问题都会造成节目信号卡顿甚至中断，出现此类问题只需等待一段时间或直接与 We 联系即可。
         <li>
           <p><strong>喜欢看一档节目，可以帮助录制吗？</strong>
           <p>可以的，请尽早与 We 联系，以方便安排录制计划。在不与其他录制计划冲突并且信号稳定的前提下，我们将尽力完整录制。
-        </li>
       </ol>
     </section>
   </div>
