@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['.we.neusoft.edu.cn', 'iptv.neusoft.edu.cn']
+ALLOWED_HOSTS = ['.we.neusoft.edu.cn']
 
 
 # Application definition
@@ -39,7 +39,6 @@ INSTALLED_APPS = (
 
     'apps.www',
     'apps.mirror',
-    'apps.dreamspark',
     'apps.genuine',
     'apps.file',
     'apps.iptv',
@@ -169,11 +168,11 @@ TEMPLATE_DIRS = (
 
 DREAMSPARK_ACCOUNT = 'WE_CLOUD'
 DREAMSPARK_KEY = 'WE_CLOUD'
-DREAMSPARK_OPEN_REDIRECT_URI = 'http://dev.we.neusoft.edu.cn/dreamspark/login.we'
+DREAMSPARK_OPEN_REDIRECT_URI = 'http://dev.we.neusoft.edu.cn/genuine/iuv.we'
 
 
 DATA_ROOT = '/data/www/source/'
-FILE_ROOT = '/storage/file/'
+FILE_ROOT = '/var/www/file.we.neusoft.edu.cn/htdocs/'
 
 OPEN_CLIENT_ID = 'WE_CLOUD'
 OPEN_CLIENT_SECRET = 'WE_CLOUD'
