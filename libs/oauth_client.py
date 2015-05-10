@@ -1,11 +1,8 @@
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 
-import urllib, urllib2
-from json import loads
-
-from oauth_forms import TokenForm
+from requests.auth import HTTPBasicAuth
+from requests_oauthlib import OAuth2Session
 
 CLIENT_ID = getattr(settings, 'OPEN_CLIENT_ID')
 CLIENT_SECRET = getattr(settings, 'OPEN_CLIENT_SECRET')
@@ -15,64 +12,38 @@ OPEN_GET_USER_INFO_URL = getattr(settings, 'OPEN_SERVER_USER_GET_INFO')
 OPEN_GET_USER_PRIVACY_URL = getattr(settings, 'OPEN_SERVER_USER_GET_PRIVACY')
 
 def login(request, redirect_uri):
-    form = TokenForm(request.session)
-    if not form.is_valid():
-        request.session.clear()
-        request.session.set_expiry(0)
+    cloud = OAuth2Session(CLIENT_ID, redirect_uri=redirect_uri, state=request.GET.get('state', None))
 
-        params = {
-            'response_type': 'code',
-            'client_id': CLIENT_ID,
-            'redirect_uri': redirect_uri,
-            'state': 'wecloud',
-        }
+    authorization_url, state = cloud.authorization_url(OPEN_AUTHORIZE_URL)
+    request.session['oauth_state'] = state
 
-        return HttpResponseRedirect(OPEN_AUTHORIZE_URL + '?%s' % urllib.urlencode(params))
+    return HttpResponseRedirect(authorization_url)
 
 def get_token(request, redirect_uri, code):
-    params = {
-        'grant_type': 'authorization_code',
-        'code': code,
-        'redirect_uri': redirect_uri,
-    }
-    url = OPEN_TOKEN_URL
+    cloud = OAuth2Session(CLIENT_ID, redirect_uri=redirect_uri, state=request.session['oauth_state'])
 
-    basic_auth = urllib2.HTTPBasicAuthHandler()
-    basic_auth.add_password(realm='Please provide your client_id and client_secret.', uri=url, user=CLIENT_ID, passwd=CLIENT_SECRET)
-    urllib2.install_opener(urllib2.build_opener(basic_auth))
+    token = cloud.fetch_token(OPEN_TOKEN_URL, code=code, auth=HTTPBasicAuth(CLIENT_ID, CLIENT_SECRET))
+    request.session['oauth_token'] = token
 
-    auth_request = urllib2.Request(url)
-    auth_request.add_data(urllib.urlencode(params))
+    return True
 
-    try:
-        token = loads(urllib2.urlopen(auth_request).read())
-        request.session.clear()
-        request.session.set_expiry(None)
-        request.session.update({'type': token['token_type'], 'token': token['access_token']})
+def logout(request):
+    del request.session['oauth_state']
+    del request.session['oauth_token']
 
-        return True
-    except urllib2.HTTPError:
-        return False
+def get_user_info(request):
+    cloud = OAuth2Session(CLIENT_ID, token=request.session['oauth_token'])
 
-def get_user_info(request, token):
-    url = OPEN_GET_USER_INFO_URL
-
-    request = urllib2.Request(url)
-    request.add_header('Authorization', 'Bearer ' + token)
-
-    result = urllib2.urlopen(request).read()
+    result = cloud.get(OPEN_GET_USER_INFO_URL).text
     if result.lower() == 'none':
         return None
     else:
         return result
 
-def get_user_privacy(request, token):
-    url = OPEN_GET_USER_PRIVACY_URL
+def get_user_privacy(request):
+    cloud = OAuth2Session(CLIENT_ID, token=request.session['oauth_token'])
 
-    request = urllib2.Request(url)
-    request.add_header('Authorization', 'Bearer ' + token)
-
-    result = urllib2.urlopen(request).read()
+    result = cloud.get(OPEN_GET_USER_PRIVACY_URL).text
     if result.lower() == 'none':
         return None
     else:

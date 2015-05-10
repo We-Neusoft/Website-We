@@ -1,16 +1,13 @@
 from django.conf import settings
 from django.core.signing import TimestampSigner, BadSignature
-from django.core.urlresolvers import reverse
 from django.db import IntegrityError
-from django.db.models import Count, Sum
-from django.http import Http404, HttpResponse, StreamingHttpResponse
+from django.http import Http404, StreamingHttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.utils.baseconv import base62
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 from django.views import generic
 
 from datetime import date, datetime, timedelta
-from netaddr import IPAddress
 from uuid import UUID
 from zlib import crc32
 
@@ -20,7 +17,7 @@ from ip import get_ip, get_geo, get_speed
 from navigation import get_navbar
 from converter import file_size
 
-FILE_ROOT = getattr(settings, 'FILE_ROOT', '/storage/file/')
+FILE_ROOT = getattr(settings, 'FILE_ROOT', '/var/www/file.we.neusoft.edu.cn/htdocs/')
 signer = TimestampSigner()
 
 def index(request):
@@ -65,6 +62,7 @@ class FileView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super(FileView, self).get_context_data(**kwargs)
         context.update(get_navbar(self.request))
+        context.update({'id': urlsafe_base64_encode(kwargs['object'].id.bytes)})
         context.update({'key': signer.sign(get_value(self.request, kwargs['object'].id)).replace(':', '')[-33:]})
         context.update({'ip': str(get_ip(self.request))})
         context.update({'geo': get_geo(self.request)[1]})

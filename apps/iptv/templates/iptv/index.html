@@ -21,13 +21,13 @@
         <h3>频道列表</h3>
       </header>
       <ul>
-{% for group in channels %}
+  {% for group in channels %}
         <li>
           <strong>{{ group.name }}：</strong>
-{% for channel in group.channels %}
+    {% for channel in group.channels %}
           <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.hd %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
-{% endfor %}
-{% endfor %}
+    {% endfor %}
+  {% endfor %}
       </ul>
     </section>
     <section>
@@ -55,7 +55,7 @@
           <ol>
             <li>在页面中的频道按钮上右击选择<strong>「复制链接地址」</strong>一类的选项；
             <li>打开 VLC 播放器，按键盘组合键<code>ctrl</code>+<code>N</code>；
-            <li>在弹出的窗口中粘贴后点击<strong>「播放按钮」</strong>即可观看。
+            <li>在弹出的窗口中粘贴后点击<strong>「播放」</strong>按钮即可观看。
           </ol>
         <li>
           <p><strong>为什么有时播放节目会卡顿或无法播放？</strong>

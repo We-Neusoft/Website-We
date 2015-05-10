@@ -5,7 +5,7 @@ class Mirror(models.Model):
     name = models.CharField(u'镜像名称', max_length=32)
     order = models.IntegerField(u'排序')
     description = models.TextField(u'描述', blank=True)
-    active = models.BooleanField(u'活动')
+    active = models.BooleanField(u'活动', default=False)
 
     def __unicode__(self):
         return self.name

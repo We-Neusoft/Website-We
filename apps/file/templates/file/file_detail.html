@@ -29,9 +29,9 @@
       <tr>
         <td rowspan="2"><strong>下载地址</strong>
         <td rowspan="2">
-          <a href="{% url 'file:download' file.id.encode %}?key={{ key }}" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> 从 We 下载（{{ file.download_times }} 次）</a>
+          <a href="{% url 'file:download' id %}?key={{ key }}" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> 从 We 下载（{{ file.download_times }} 次）</a>
 {% if file.mime == "video/mp4" %}
-          <a href="{% url 'file:play' file.id.encode %}" class="btn btn-primary"><span class="glyphicon glyphicon-play"></span> 从 We 在线播放</a>
+          <a href="{% url 'file:play' id %}" class="btn btn-primary"><span class="glyphicon glyphicon-play"></span> 从 We 在线播放</a>
 {% endif %}
         <td><strong>MD5</strong>
         <td>{{ file.md5 }}

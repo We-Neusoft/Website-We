@@ -3,7 +3,7 @@ from django.db import models
 
 class Url(models.Model):
     url = models.URLField('URL')
-    enable = models.BooleanField('启用')
+    enable = models.BooleanField('启用', default=False)
 
     class Meta:
         verbose_name = '地址'

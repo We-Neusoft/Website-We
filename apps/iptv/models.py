@@ -34,8 +34,8 @@ class Point(models.Model):
     channel = models.ForeignKey(Channel, verbose_name=u'频道')
     source = models.CharField(u'源名称', max_length=32)
     target = models.CharField(u'目标名', max_length=32)
-    hd = models.BooleanField(u'高清')
-    active = models.BooleanField(u'活动')
+    hd = models.BooleanField(u'高清', default=False)
+    active = models.BooleanField(u'活动', default=False)
 
     def __unicode__(self):
         return self.channel.name

@@ -92,6 +92,8 @@ class AdapterMiddleware(object):
     def handle_url(self, target_app, target_url):
         if target_app == 'admin':
             return '/' + target_app + target_url
+        elif target_app == 'static':
+            return '/' + target_app + target_url
         elif target_app == self.app:
             return target_url
         else:

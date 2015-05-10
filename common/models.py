@@ -8,8 +8,8 @@ class NavbarItem(models.Model):
     key = models.CharField('标识', max_length=16, unique=True)
     order = models.IntegerField('排序')
     title = models.CharField('标题', max_length=64)
-    intranet = models.BooleanField('校园网')
-    internet = models.BooleanField('互联网')
+    intranet = models.BooleanField('校园网', default=False)
+    internet = models.BooleanField('互联网', default=False)
 
     def __unicode__(self):
         return self.title
@@ -27,8 +27,8 @@ class NavbarMore(models.Model):
     title = models.CharField('标题', max_length=64)
     subtitle = models.CharField('副标题', max_length=64)
     content = models.TextField('正文')
-    intranet = models.BooleanField('校园网')
-    internet = models.BooleanField('互联网')
+    intranet = models.BooleanField('校园网', default=False)
+    internet = models.BooleanField('互联网', default=False)
     modified = models.DateTimeField('最后修改', auto_now=True)
 
     def __unicode__(self):

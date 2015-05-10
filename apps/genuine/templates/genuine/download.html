@@ -11,23 +11,23 @@
     <div class="container">
       <section>
         <div id="navigation" class="panel-group col-md-3">
-{% for item in navigation %}
+  {% for item in navigation %}
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title"><a data-toggle="collapse" data-parent="#navigation" href="#{{ item.id }}">{{ item.title }}</a></h4>
             </div>
             <div id="{{ item.id }}" class="panel-collapse collapse{% if item.active %} in{% endif %}">
               <div class="panel-body">
-{% for item in item.item %}
+    {% for item in item.item %}
                 <a href="?product={{ item.id }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ item.name }}</a><br>
-{% endfor %}
+    {% endfor %}
               </div>
             </div>
           </div>
-{% endfor %}
+  {% endfor %}
         </div>
         <div class="col-md-9">
-{% for item in items %}
+  {% for item in items %}
           <div id="{{ item.id }}" class="page-header">
             <h3>{{ item.title }}</h3>
           </div>
@@ -35,28 +35,28 @@
             <thead>
               <tr>
                 <th>软件版本
-{% for meta in item.meta %}
+    {% for meta in item.meta %}
                 <th>{{ meta }}
-{% endfor %}
+    {% endfor %}
                 <th>授权渠道
             </thead>
             <tbody>
-{% for edition in item.edition %}
+    {% for edition in item.edition %}
               <tr>
                 <td>{{ edition.name|safe }}
-{% for file in edition.file %}
-{% if file == None %}
+      {% for file in edition.file %}
+        {% if file == None %}
                 <td class="text-muted">无此版本
-{% elif file|length == 0 %}
+        {% elif file|length == 0 %}
                 <td class="text-muted">暂无下载
-{% else %}
+        {% else %}
                 <td><a href="{% url 'file:detail' file %}">点此下载</a>
-{% endif %}
-{% endfor %}
+        {% endif %}
+      {% endfor %}
                 <td><a href="{{ edition.channel.url }}" target="_blank">{{ edition.channel.name }}</a>
-{% endfor %}
+    {% endfor %}
           </table>
-{% endfor %}
+  {% endfor %}
         </div>
       </section>
     </div>

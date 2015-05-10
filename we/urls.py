@@ -10,7 +10,6 @@ urlpatterns = patterns('',
     (r'^([^/]+/)?common/', include('common.urls')),
     (r'^www/', include('apps.www.urls', namespace='www')),
     (r'^mirror/', include('apps.mirror.urls', namespace='mirror')),
-    (r'^dreamspark/', include('apps.dreamspark.urls', namespace='dreamspark')),
     (r'^genuine/', include('apps.genuine.urls', namespace='genuine')),
     (r'^file/', include('apps.file.urls', namespace='file')),
     (r'^iptv/', include('apps.iptv.urls', namespace='iptv')),
@@ -20,6 +19,3 @@ urlpatterns = patterns('',
 
     (r'^admin/', include(admin.site.urls)),
 )
-
-handler404 = 'we.views.http_404_view'
-handler500 = 'we.views.http_500_view'
