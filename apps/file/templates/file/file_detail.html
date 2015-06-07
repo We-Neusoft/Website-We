@@ -17,7 +17,7 @@
         <td><strong>文件大小</strong>
         <td>{{ file.size_unit }}
         <td><strong>MIME信息</strong>
-        <td>{{ file.mime }}
+        <td><span class="glyphicon glyphicon-{{ mimeicon }}"></span>{{ file.mime }}
       <tr>
         <td><strong>文件属性</strong>
         <td colspan="3">{{ file.type }}
@@ -29,10 +29,12 @@
       <tr>
         <td rowspan="2"><strong>下载地址</strong>
         <td rowspan="2">
-          <a href="{% url 'file:download' id %}?key={{ key }}" class="btn btn-primary"><span class="glyphicon glyphicon-download-alt"></span> 从 We 下载（{{ file.download_times }} 次）</a>
+          <a href="{% url 'file:download' id %}?key={{ key }}" class="btn btn-primary"><span class="glyphicon glyphicon-download"></span> 从 We 下载（{{ file.download_times }} 次）</a>
+{% comment %}
 {% if file.mime == "video/mp4" %}
           <a href="{% url 'file:play' id %}" class="btn btn-primary"><span class="glyphicon glyphicon-play"></span> 从 We 在线播放</a>
 {% endif %}
+{% endcomment %}
         <td><strong>MD5</strong>
         <td>{{ file.md5 }}
       <tr>
@@ -44,7 +46,7 @@
     </div>
     <ol>
       <li>本下载地址仅限<strong>当前 IP 地址（{{ ip }}）</strong>进行无限次数多线程及断点下载；
-      <li>在<strong>{{ geo }}</strong>环境下载，最高可达到<strong> {{ speed.bitrate }}（约 {{ speed.byterate }}）</strong>下载速度。<a href="http://speedtest.we.neusoft.edu.cn/" target="_blank" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-dashboard"></span> 点此测速</a>；
+      <li>在<strong>{{ geo }}</strong>环境下载，最高可达到<strong> {{ speed.bitrate }}（约 {{ speed.byterate }}）</strong>下载速度。<a href="http://speedtest.neusoft.edu.cn/" target="_blank" class="btn btn-link btn-xs"><span class="glyphicon glyphicon-dashboard"></span> 点此测速</a>；
       <li>下载完成后，请计算文件 CRC32 、 MD5 及 SHA1 值确认文件完整性。
       <li><em>如何你使用带有<strong>镜像搜索</strong>功能的下载工具，请注意选择<strong>仅从原始地址下载</strong>选项，否则可能会降低下载体验。<br>只要下载方式正确，一定可以达到所在线路的最大速率。</em>
     </ol>

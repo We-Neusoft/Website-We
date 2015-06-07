@@ -12,13 +12,13 @@
 
 {% block content %}
   <div class="container">
-    <p class="alert alert-info"><strong>提示：</strong>你可以点击<a href="{% url 'genuine:download' %}"><span class="glyphicon glyphicon-link"></span>这里</a>从校园网高速下载微软 DreamSpark 计划中部分及赛尔校园先锋全部正版授权软件。
+    <p class="alert alert-info"><strong>提示：</strong>你可以点击<a href="{% url 'genuine:download' %}"><span class="glyphicon glyphicon-link"></span>这里</a>从校园网高速下载以下全部正版授权软件。
     <section>
       <header class="page-header">
         <h2>微软 DreamSpark 计划</h2>
       </header>
       <p>DreamSpark 是一项 Microsoft 计划，通过允许出于学习、教学和研究的目的来访问 Microsoft 软件，从而为技术教育提供支持。
-      <p>学院教学支持与实验中心购买了最高级别的 DreamSpark 计划，学院全体教职员工及具有统招学历的在校学生均可<strong>免费</strong>获得该计划内全部软件的正版授权。
+      <p>我们购买了最高级别的 DreamSpark 计划，学院全体教职员工及具有统招学历的在校学生均可<strong>免费</strong>获得该计划内全部软件的正版授权。
       <header class="page-header">
         <h3>使用方法</h3>
       </header>
@@ -32,19 +32,28 @@
     </section>
     <section>
       <header class="page-header">
-        <h2>赛尔校园先锋</h2>
+        <h2>微软批量授权服务</h2>
       </header>
-      <p>赛尔校园先锋是赛尔网络旗下的面向中国高校师生的教育类商品特惠购买平台，在这里，所有中国高校师生都可以以特惠价格购买微软、Adobe、Apple 等国际著名公司提供的正版软件、硬件、培训、技能认证、图书等特惠商品，并享受高品质的下载及售后服务。
+      <p>微软批量授权服务是微软针对企业内部提供的一套操作系统集中授权激活服务，与零售授权不同的是，批量授权仅可在企业内部网络中进行授权激活，当离开企业内部网络后，授权激活将在 180 天内失效。
+      <p>我们购买的批量授权服务支持激活的操作系统有 Windows 8.1 、 8 、 7 、 Vista 的企业版及专业版（Vista 商业版）， Windows Server 2012 R2 、 2012 、 2008 R2 、 2008 的所有版本，以及 Office 2010 、 2013 办公套件。
       <header class="page-header">
-        <h3>使用方法</h3>
+        <h3>配置方法</h3>
       </header>
+      <h4>Windows 激活</h4>
       <ol>
-        <li>有互联网访问权限的用户，点击<a href="http://shop.edu.cn/" target="_blank"><span class="glyphicon glyphicon-new-window"></span>这里</a>访问赛尔校园先锋网站；
-        <li>免费注册账户，登录邮箱查收激活邮件并激活账户；
-        <li>在激活账户页面中，点击<strong>「申请购买」</strong>按钮，选择合适的方式验证身份；
-        <li>选择需要的产品，加入购物车进行结算。
-        <li><em>为了提高成功率，请尽量使用校园有线网进行访问。</em>
+        <li>按键盘上的<code>⊞</code>键，在开始菜单/开始屏幕中输入<code>cmd</code>（注意不要按回车键），稍等片刻，在搜索结果列表的<strong>『命令提示符』</strong>一项上右击，选择<strong>「以管理员身份运行」</strong>；</li>
+        <li>在<strong>『命令提示符』</strong>窗口中，输入<code>slmgr /skms kms.we.neusoft.edu.cn&lt;回车&gt;</code>；</li>
+        <li>稍等片刻，依次关闭新弹出的窗口及<strong>『命令提示符』</strong>窗口即可。</li>
       </ol>
+      <h4>Office 激活</h4>
+      <ol>
+        <li>首先需要记下你的 Office 安装位置， Office 2013 默认安装位置为<code>C:\Program Files\Microsoft Office\Office15</code>或<code>C:\Program Files (x86)\Microsoft Office\Office15</code>（在 64 位系统中安装 32 位 Office）， Office 2010 默认安装位置为<code>C:\Program Files\Microsoft Office\Office14</code>或<code>C:\Program Files (x86)\Microsoft Office\Office14</code>（在 64 位系统中安装 32 位 Office）；</li>
+        <li>按键盘上的<code>⊞</code>键，在开始菜单/开始屏幕中输入<code>cmd</code>（注意不要按回车键），稍等片刻，在搜索结果列表的<strong>『命令提示符』</strong>一项上右击，选择<strong>「以管理员身份运行」</strong>；</li>
+        <li>在<strong>『命令提示符』</strong>窗口中，输入<code>cd /d "&lt;安装位置&gt;"&lt;回车&gt;</code>；</li>
+        <li>在<strong>『命令提示符』</strong>窗口中，继续输入<code>cscript ospp.vbs /sethst:kms.we.neusoft.edu.cn&lt;回车&gt;</code>；</li>
+        <li>稍等片刻，关闭<strong>『命令提示符』</strong>窗口即可。</li>
+      </ol>
+      <p>经过以上设置之后，将会在接下来一段时间内自动激活相应软件。</p>
     </section>
   </div>
 {% endblock %}

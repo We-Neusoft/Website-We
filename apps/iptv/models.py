@@ -35,6 +35,7 @@ class Point(models.Model):
     source = models.CharField(u'源名称', max_length=32)
     target = models.CharField(u'目标名', max_length=32)
     hd = models.BooleanField(u'高清', default=False)
+    sound = models.IntegerField(u'声道数')
     active = models.BooleanField(u'活动', default=False)
 
     def __unicode__(self):

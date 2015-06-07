@@ -2,19 +2,23 @@
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.shortcuts import render_to_response, redirect
+from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
 
 import json
 import requests
+from uuid import UUID
 
 from libs import oauth_client
 from navigation import get_navbar
 
-DATA_ROOT = getattr(settings, 'DATA_ROOT', '/data/www/source')
+from .models import Catalog, Item
 
-DREAMSPARK_ACCOUNT = getattr(settings, 'DREAMSPARK_ACCOUNT')
-DREAMSPARK_KEY = getattr(settings, 'DREAMSPARK_KEY')
+DATA_ROOT = settings.DATA_ROOT
 
-OPEN_LOGIN_REDIRECT_URI = getattr(settings, 'DREAMSPARK_OPEN_REDIRECT_URI')
+DREAMSPARK_ACCOUNT = settings.DREAMSPARK_ACCOUNT
+DREAMSPARK_KEY = settings.DREAMSPARK_KEY
+
+OPEN_LOGIN_REDIRECT_URI = settings.DREAMSPARK_OPEN_REDIRECT_URI
 
 def index(request):
     result = get_navbar(request)
@@ -26,7 +30,7 @@ def iuv(request):
         action = request.GET['action']
 
         if request.GET['action'] == 'signin':
-            return oauth_client.login(request, OPEN_LOGIN_REDIRECT_URI)
+            return oauth_client.login(request, OPEN_LOGIN_REDIRECT_URI, ['get_user_email'])
 
         elif request.GET['action'] == 'signout':
             return redirect('http://e5.onthehub.com/d.ashx?s=jlg1p270bi')
@@ -35,7 +39,11 @@ def iuv(request):
         code = request.GET['code']
 
         if oauth_client.get_token(request, OPEN_LOGIN_REDIRECT_URI, code):
-            email = json.loads(oauth_client.get_user_privacy(request))['email']
+            response = json.loads(oauth_client.get_user_email(request))
+            if 'email' not in response:
+                return oauth_client.login(request, OPEN_LOGIN_REDIRECT_URI, ['get_user_email'])
+
+            email = response['email']
             oauth_client.logout(request)
 
             domain = email.split('@')[1]
@@ -54,13 +62,13 @@ def iuv(request):
 
             try:
                 r = requests.get('https://e5.onthehub.com/WebStore/Security/AuthenticateUser.aspx', params=payload)
-
-                if r.status_code == requests.codes.ok:
-                    return redirect(r.text)
-                else:
-                    return HttpResponse(r.text)
             except requests.exceptions.ConnectionError:
                 return HttpResponseServerError('与 DreamSpark 服务器通信超时，请稍后重试。')
+
+            if r.status_code == requests.codes.ok:
+                return redirect(r.text)
+            else:
+                return HttpResponse(r.text)
 
     if 'error' in request.GET:
         return redirect('http://e5.onthehub.com/d.ashx?s=jlg1p270bi')
@@ -70,31 +78,35 @@ def iuv(request):
 def download(request):
     result = get_navbar(request)
 
-    try:
-        data = json.loads(open(DATA_ROOT + 'genuine.json').read())
-        product = request.GET.get('product', 'windows')
+    # Catalog > Product > Version > Edition > Item
+    product = request.GET.get('product', None)
+    if product:
+        current = Catalog.objects.get(id=UUID(bytes=urlsafe_base64_decode(product)))
+    else:
+        current = Catalog.objects.filter(name='Windows')[0] # HARD CODING
 
-        for navigation in data['navigation']:
-            for item in navigation['item']:
-                if item['id'] == product:
-                    navigation.update({'active': True})
-                    break
+    catalogs = []
+    for catalog in Catalog.objects.filter(parent=None):
+        active = False
+        products = []
+        for product in catalog.catalog_set.all():
+            products.append({'name': product.name, 'id': urlsafe_base64_encode(product.id.bytes)})
+            if not active and product == current:
+                active = True
+        catalogs.append({'name': catalog.name, 'products': products, 'active': active})
 
-        items = []
-        for software in data['software']:
-            if software['id'] == product:
-                for edition in software['edition']:
-                    edition.update({
-                        'channel': {
-                            'name': data['channel'][edition['channel']['type']]['name'],
-                            'url': data['channel'][edition['channel']['type']]['url'] + edition['channel']['id']
-                        }
-                })
+    result.update({'catalogs': catalogs})
 
-                items.append(software)
+    versions = []
+    for version in current.catalog_set.order_by('-order'):
+        editions = []
+        for edition in version.catalog_set.all():
+            items = []
+            for item in edition.item_set.all():
+                items.append({'name': item.name, 'file': item.file_id})
+            editions.append({'name': edition.name, 'items': items})
+        versions.append({'id': version.id, 'name': version.name, 'editions': editions})
 
-        result.update({'navigation': data['navigation'], 'items': items})
-    except IOError:
-        pass
+    result.update({'versions': versions})
 
     return render_to_response('genuine/download.html', result)

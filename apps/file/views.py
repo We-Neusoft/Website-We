@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.http import Http404, StreamingHttpResponse
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.utils.baseconv import base62
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.http import urlquote, urlsafe_base64_decode, urlsafe_base64_encode
 from django.views import generic
 
 from datetime import date, datetime, timedelta
@@ -17,7 +17,7 @@ from ip import get_ip, get_geo, get_speed
 from navigation import get_navbar
 from converter import file_size
 
-FILE_ROOT = getattr(settings, 'FILE_ROOT', '/var/www/file.we.neusoft.edu.cn/htdocs/')
+FILE_ROOT = settings.FILE_ROOT
 signer = TimestampSigner()
 
 def index(request):
@@ -67,6 +67,16 @@ class FileView(generic.DetailView):
         context.update({'ip': str(get_ip(self.request))})
         context.update({'geo': get_geo(self.request)[1]})
         context.update({'speed': get_speed(self.request)})
+
+        mimetype = kwargs['object'].mime
+        if mimetype == 'application/x-iso9660-image':
+            mimeicon = 'cd'
+        elif mimetype.startswith('video'):
+            mimeicon = 'film'
+        else:
+            mimeicon = 'file'
+        context.update({'mimeicon': mimeicon})
+
         return context
 
 class PlayView(generic.DetailView):
@@ -128,7 +138,7 @@ def download(request, id):
             pass
 
     response = StreamingHttpResponse(download_generator(file, int(start), int(stop)), 'application/octet-stream', 200 if not range else 206)
-    response['Content-Disposition'] = 'attachment; filename="' + file.name + '"'
+    response['Content-Disposition'] = 'attachment; filename*=UTF-8\'\'' + urlquote(file.name)
     response['Content-Length'] = str(int(stop) - int(start) + 1)
     if range:
         response['Content-Range'] = 'bytes ' + str(start) + '-' + str(stop) + '/' + str(file.size)

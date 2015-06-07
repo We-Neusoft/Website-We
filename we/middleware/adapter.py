@@ -6,7 +6,7 @@ import re
 
 from ip import get_geo
 
-DEBUG_ENABLED = getattr(settings, 'DEBUG', True)
+DEBUG_ENABLED = settings.DEBUG
 
 class AdapterMiddleware(object):
     def process_response(self, request, response):

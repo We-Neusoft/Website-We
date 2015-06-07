@@ -11,7 +11,7 @@ class ChannelAdmin(admin.ModelAdmin):
 admin.site.register(Channel, ChannelAdmin)
 
 class PointAdmin(admin.ModelAdmin):
-    list_display = ('channel', 'source', 'target', 'hd', 'active')
+    list_display = ('channel', 'source', 'target', 'hd', 'sound', 'active')
 admin.site.register(Point, PointAdmin)
 
 class GuideAdmin(admin.ModelAdmin):

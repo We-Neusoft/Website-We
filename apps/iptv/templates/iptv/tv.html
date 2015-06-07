@@ -31,7 +31,7 @@
           <h1>
             {{ channel.name }}
   {% for point in channel.point %}
-            <a id="play" href="/iptv/iptv/{{ point.source }}.m3u8" class="btn btn-primary"><span class="glyphicon glyphicon-{% if point.hd %}hd{% else %}sd{% endif %}-video"></span> {% if point.hd %}高清频道{% else %}标清频道{% endif %}</a>
+            <a id="play" href="/iptv/iptv/{{ point.source }}.m3u8" class="btn btn-primary"><span class="glyphicon glyphicon-{% if point.hd %}hd{% else %}sd{% endif %}-video"></span>{% if point.sound > 1 %}<span class="glyphicon glyphicon-sound-{% if point.sound == 2 %}stereo{% elif point.sound == 6 %}5-1{% endif %}"></span>{% endif %} {% if point.hd %}高清频道{% else %}标清频道{% endif %}</a>
   {% endfor %}
           </h1>
         </header>

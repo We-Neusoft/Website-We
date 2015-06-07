@@ -4,22 +4,22 @@
 {% block title %}下载正版授权软件{% endblock %}
 
 {% block extra_css %}
-  <link href="{% static 'dreamspark/css/we-dreamspark.css' %}" rel="stylesheet" />
+  <link href="{% static 'genuine/css/we-genuine.css' %}" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <div class="container">
       <section>
         <div id="navigation" class="panel-group col-md-3">
-  {% for item in navigation %}
+  {% for catalog in catalogs %}
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h4 class="panel-title"><a data-toggle="collapse" data-parent="#navigation" href="#{{ item.id }}">{{ item.title }}</a></h4>
+              <h4 class="panel-title"><a data-toggle="collapse" data-parent="#navigation" href="#catalog{{ forloop.counter }}">{{ catalog.name }}</a></h4>
             </div>
-            <div id="{{ item.id }}" class="panel-collapse collapse{% if item.active %} in{% endif %}">
+            <div id="catalog{{ forloop.counter }}" class="panel-collapse collapse{% if catalog.active %} in{% endif %}">
               <div class="panel-body">
-    {% for item in item.item %}
-                <a href="?product={{ item.id }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ item.name }}</a><br>
+    {% for product in catalog.products %}
+                <a href="?product={{ product.id }}"><i class="glyphicon glyphicon-chevron-right"></i>{{ product.name }}</a><br>
     {% endfor %}
               </div>
             </div>
@@ -27,33 +27,28 @@
   {% endfor %}
         </div>
         <div class="col-md-9">
-  {% for item in items %}
-          <div id="{{ item.id }}" class="page-header">
-            <h3>{{ item.title }}</h3>
+  {% for version in versions %}
+          <div id="{{ version.id }}" class="page-header">
+            <h3>{{ version.name }}</h3>
           </div>
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>软件版本
-    {% for meta in item.meta %}
-                <th>{{ meta }}
-    {% endfor %}
-                <th>授权渠道
-            </thead>
+                <th>版本
+                <th colspan="4">下载链接
             <tbody>
-    {% for edition in item.edition %}
+    {% for edition in version.editions %}
               <tr>
                 <td>{{ edition.name|safe }}
-      {% for file in edition.file %}
-        {% if file == None %}
-                <td class="text-muted">无此版本
-        {% elif file|length == 0 %}
-                <td class="text-muted">暂无下载
-        {% else %}
-                <td><a href="{% url 'file:detail' file %}">点此下载</a>
-        {% endif %}
+      {% for item in edition.items %}
+                <td
+                {% if edition.items|length == 1 %}
+                  colspan="4"
+                {% elif edition.items|length == 2 %}
+                  colspan="2"
+                {% endif %}
+                ><a href="{% url 'file:detail' item.file %}">{{ item.name }}</a>
       {% endfor %}
-                <td><a href="{{ edition.channel.url }}" target="_blank">{{ edition.channel.name }}</a>
     {% endfor %}
           </table>
   {% endfor %}

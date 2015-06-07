@@ -25,7 +25,7 @@
         <li>
           <strong>{{ group.name }}：</strong>
     {% for channel in group.channels %}
-          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.hd %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
+          <a href="{% url 'iptv:tv' %}?channel={{ channel.channel|urlencode }}">{% if channel.point.0.hd %}<span class="glyphicon glyphicon-hd-video"></span>{% endif %}{% if channel.point.0.sound == 6 %}<span class="glyphicon glyphicon-sound-5-1"></span>{% endif %}{{ channel.name }}</a>{% if not forloop.last %}、{% endif %}
     {% endfor %}
   {% endfor %}
       </ul>
@@ -35,6 +35,8 @@
         <h3>往期节目</h3>
       </header>
       <ul>
+        <li>
+          <strong>2014/15赛季欧冠决赛：</strong><a href="{% url 'file:detail' 'DSPteB_DS1Kd7buNokQAaw' %}">H.264</a>、<a href="{% url 'file:detail' 'Jt8mXiOVTE-x83R2LqktuA' %}">H.265</a>
         <li>
           <a href="{% url 'iptv:voice_of_china_2014' %}">2014 中国好声音</a>
         <li>
